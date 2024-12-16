@@ -1,0 +1,1302 @@
+openapi: 3.1.0
+info:
+  description: ""
+  title: NinjaAPI
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /v1/assets/{asset}:
+    delete:
+      operationId: icosa_api_assets_delete_asset
+      parameters:
+      - explode: false
+        in: path
+        name: asset
+        required: true
+        schema:
+          title: Asset
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                title: Response
+                type: integer
+          description: No Content
+      security:
+      - AuthBearer: []
+      summary: Delete Asset
+      tags:
+      - Assets
+    get:
+      operationId: icosa_api_assets_get_asset
+      parameters:
+      - explode: false
+        in: path
+        name: asset
+        required: true
+        schema:
+          title: Asset
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetSchemaOut'
+          description: OK
+      summary: Get Asset
+      tags:
+      - Assets
+  /v1/assets/{asset}/unpublish:
+    patch:
+      operationId: icosa_api_assets_unpublish_asset
+      parameters:
+      - explode: false
+        in: path
+        name: asset
+        required: true
+        schema:
+          title: Asset
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetSchemaOut'
+          description: OK
+      security:
+      - AuthBearer: []
+      summary: Unpublish Asset
+      tags:
+      - Assets
+  /v1/assets/{userurl}/{asseturl}:
+    get:
+      operationId: icosa_api_assets_get_user_asset
+      parameters:
+      - explode: false
+        in: path
+        name: userurl
+        required: true
+        schema:
+          title: Userurl
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asseturl
+        required: true
+        schema:
+          title: Asseturl
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetSchemaOut'
+          description: OK
+      summary: Get User Asset
+      tags:
+      - Assets
+  /v1/assets:
+    get:
+      operationId: icosa_api_assets_get_assets
+      parameters:
+      - explode: true
+        in: query
+        name: category
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: curated
+        required: false
+        schema:
+          default: false
+          title: Curated
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: format
+        required: false
+        schema:
+          items:
+            nullable: true
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: description
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: tag
+        required: false
+        schema:
+          items:
+            nullable: true
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: maxComplexity
+        required: false
+        schema:
+          $ref: '#/components/schemas/Complexity'
+        style: form
+      - explode: true
+        in: query
+        name: triangleCountMin
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: triangleCountMax
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: authorName
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: author_name
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: license
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageToken
+        required: false
+        schema:
+          title: Pagetoken
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_token
+        required: false
+        schema:
+          title: Page Token
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          title: Pagesize
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          title: Page Size
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAssetSchemaOut'
+          description: OK
+      summary: Get Assets
+      tags:
+      - Assets
+  /v1/login/device_login:
+    post:
+      operationId: icosa_api_login_device_login
+      parameters:
+      - explode: true
+        in: query
+        name: device_code
+        required: true
+        schema:
+          title: Device Code
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginToken'
+          description: OK
+      summary: Device Login
+      tags:
+      - Login
+  /v1/oembed:
+    get:
+      operationId: icosa_api_oembed_oembed
+      parameters:
+      - explode: true
+        in: query
+        name: url
+        required: false
+        schema:
+          title: Url
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: format
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: maxwidth
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: maxheight
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OembedOut'
+          description: OK
+      summary: Oembed
+      tags:
+      - Oembed
+  /v1/poly:
+    get:
+      operationId: icosa_api_poly_add
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      summary: Add
+      tags:
+      - Poly
+  /v1/users/me:
+    get:
+      operationId: icosa_api_users_get_users_me
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullUserSchema'
+          description: OK
+      security:
+      - AuthBearer: []
+      summary: Get Users Me
+      tags:
+      - Users
+    patch:
+      operationId: icosa_api_users_update_user
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchUserSchema'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FullUserSchema'
+          description: OK
+      security:
+      - AuthBearer: []
+      summary: Update User
+      tags:
+      - Users
+  /v1/users/me/assets:
+    get:
+      operationId: icosa_api_users_get_me_assets
+      parameters:
+      - explode: true
+        in: query
+        name: category
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: curated
+        required: false
+        schema:
+          default: false
+          title: Curated
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: format
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: description
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: tag
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: maxComplexity
+        required: false
+        schema:
+          $ref: '#/components/schemas/Complexity'
+        style: form
+      - explode: true
+        in: query
+        name: triangleCountMin
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: triangleCountMax
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: visibility
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageToken
+        required: false
+        schema:
+          title: Pagetoken
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_token
+        required: false
+        schema:
+          title: Page Token
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          title: Pagesize
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          title: Page Size
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAssetSchemaOut'
+          description: OK
+      security:
+      - AuthBearer: []
+      summary: Get Me Assets
+      tags:
+      - Users
+  /v1/users/me/likedassets:
+    get:
+      operationId: icosa_api_users_get_me_likedassets
+      parameters:
+      - explode: true
+        in: query
+        name: category
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: curated
+        required: false
+        schema:
+          default: false
+          title: Curated
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: format
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: keywords
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: description
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: tag
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order_by
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: maxComplexity
+        required: false
+        schema:
+          $ref: '#/components/schemas/Complexity'
+        style: form
+      - explode: true
+        in: query
+        name: triangleCountMin
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: triangleCountMax
+        required: false
+        schema:
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: authorName
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: author_name
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: license
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageToken
+        required: false
+        schema:
+          title: Pagetoken
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_token
+        required: false
+        schema:
+          title: Page Token
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          title: Pagesize
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          title: Page Size
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAssetSchemaOut'
+          description: OK
+      security:
+      - AuthBearer: []
+      summary: Get Me Likedassets
+      tags:
+      - Users
+components:
+  schemas:
+    AssetFormat:
+      example:
+        formatComplexity:
+          lodHint: 6
+          triangleCount: 0
+        root:
+          relativePath: relativePath
+          contentType: contentType
+          url: url
+        resources:
+        - relativePath: relativePath
+          contentType: contentType
+          url: url
+        - relativePath: relativePath
+          contentType: contentType
+          url: url
+        formatType: formatType
+      properties:
+        root:
+          $ref: '#/components/schemas/AssetResource'
+        resources:
+          items:
+            $ref: '#/components/schemas/AssetResource'
+          nullable: true
+          type: array
+        formatComplexity:
+          $ref: '#/components/schemas/FormatComplexity'
+        formatType:
+          title: Formattype
+          type: string
+      required:
+      - formatComplexity
+      - formatType
+      - resources
+      - root
+      title: AssetFormat
+    AssetResource:
+      example:
+        relativePath: relativePath
+        contentType: contentType
+        url: url
+      properties:
+        relativePath:
+          title: Relativepath
+          type: string
+        contentType:
+          title: Contenttype
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - contentType
+      - relativePath
+      - url
+      title: AssetResource
+    AssetSchemaOut:
+      example:
+        presentationParams: "{}"
+        thumbnail:
+          relativePath: relativePath
+          contentType: contentType
+          url: url
+        formats:
+        - formatComplexity:
+            lodHint: 6
+            triangleCount: 0
+          root:
+            relativePath: relativePath
+            contentType: contentType
+            url: url
+          resources:
+          - relativePath: relativePath
+            contentType: contentType
+            url: url
+          - relativePath: relativePath
+            contentType: contentType
+            url: url
+          formatType: formatType
+        - formatComplexity:
+            lodHint: 6
+            triangleCount: 0
+          root:
+            relativePath: relativePath
+            contentType: contentType
+            url: url
+          resources:
+          - relativePath: relativePath
+            contentType: contentType
+            url: url
+          - relativePath: relativePath
+            contentType: contentType
+            url: url
+          formatType: formatType
+        visibility: visibility
+        displayName: displayName
+        description: description
+        updateTime: 2000-01-23T04:56:07.000+00:00
+        authorId: authorId
+        url: url
+        tags:
+        - tags
+        - tags
+        license: license
+        createTime: 2000-01-23T04:56:07.000+00:00
+        authorName: authorName
+        assetId: assetId
+        name: name
+        triangleCount: 1
+        isCurated: true
+      properties:
+        authorId:
+          title: Authorid
+          type: string
+        authorName:
+          title: Authorname
+          type: string
+        name:
+          title: Name
+          type: string
+        description:
+          nullable: true
+          type: string
+        createTime:
+          format: date-time
+          title: Createtime
+          type: string
+        updateTime:
+          format: date-time
+          title: Updatetime
+          type: string
+        url:
+          nullable: true
+          type: string
+        assetId:
+          title: Assetid
+          type: string
+        formats:
+          items:
+            $ref: '#/components/schemas/AssetFormat'
+          type: array
+        displayName:
+          nullable: true
+          type: string
+        visibility:
+          title: Visibility
+          type: string
+        tags:
+          default: []
+          items:
+            type: string
+          type: array
+        isCurated:
+          nullable: true
+          type: boolean
+        thumbnail:
+          $ref: '#/components/schemas/Thumbnail'
+        triangleCount:
+          title: Trianglecount
+          type: integer
+        presentationParams:
+          nullable: true
+          type: object
+        license:
+          nullable: true
+          type: string
+      required:
+      - assetId
+      - authorName
+      - createTime
+      - description
+      - displayName
+      - formats
+      - name
+      - thumbnail
+      - triangleCount
+      - updateTime
+      - url
+      - visibility
+      title: AssetSchemaOut
+    FormatComplexity:
+      example:
+        lodHint: 6
+        triangleCount: 0
+      properties:
+        triangleCount:
+          nullable: true
+          type: integer
+        lodHint:
+          nullable: true
+          type: integer
+      title: FormatComplexity
+    Thumbnail:
+      example:
+        relativePath: relativePath
+        contentType: contentType
+        url: url
+      properties:
+        relativePath:
+          nullable: true
+          type: string
+        contentType:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+      title: Thumbnail
+    AssetFilters:
+      properties:
+        category:
+          nullable: true
+          type: string
+        curated:
+          default: false
+          title: Curated
+          type: boolean
+        format:
+          items:
+            type: string
+          type: array
+        keywords:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        tag:
+          items:
+            type: string
+          type: array
+        orderBy:
+          nullable: true
+          type: string
+        order_by:
+          nullable: true
+          type: string
+        maxComplexity:
+          $ref: '#/components/schemas/Complexity'
+        triangleCountMin:
+          nullable: true
+          type: integer
+        triangleCountMax:
+          nullable: true
+          type: integer
+        authorName:
+          nullable: true
+          type: string
+        author_name:
+          nullable: true
+          type: string
+        license:
+          nullable: true
+          type: string
+      title: AssetFilters
+    Complexity:
+      enum:
+      - COMPLEX
+      - MEDIUM
+      - SIMPLE
+      title: Complexity
+      type: string
+    Input:
+      properties:
+        pageToken:
+          title: Pagetoken
+          type: string
+        page_token:
+          title: Page Token
+          type: string
+        pageSize:
+          title: Pagesize
+          type: string
+        page_size:
+          title: Page Size
+          type: string
+      title: Input
+    PagedAssetSchemaOut:
+      example:
+        assets:
+        - presentationParams: "{}"
+          thumbnail:
+            relativePath: relativePath
+            contentType: contentType
+            url: url
+          formats:
+          - formatComplexity:
+              lodHint: 6
+              triangleCount: 0
+            root:
+              relativePath: relativePath
+              contentType: contentType
+              url: url
+            resources:
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            formatType: formatType
+          - formatComplexity:
+              lodHint: 6
+              triangleCount: 0
+            root:
+              relativePath: relativePath
+              contentType: contentType
+              url: url
+            resources:
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            formatType: formatType
+          visibility: visibility
+          displayName: displayName
+          description: description
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          authorId: authorId
+          url: url
+          tags:
+          - tags
+          - tags
+          license: license
+          createTime: 2000-01-23T04:56:07.000+00:00
+          authorName: authorName
+          assetId: assetId
+          name: name
+          triangleCount: 1
+          isCurated: true
+        - presentationParams: "{}"
+          thumbnail:
+            relativePath: relativePath
+            contentType: contentType
+            url: url
+          formats:
+          - formatComplexity:
+              lodHint: 6
+              triangleCount: 0
+            root:
+              relativePath: relativePath
+              contentType: contentType
+              url: url
+            resources:
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            formatType: formatType
+          - formatComplexity:
+              lodHint: 6
+              triangleCount: 0
+            root:
+              relativePath: relativePath
+              contentType: contentType
+              url: url
+            resources:
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            - relativePath: relativePath
+              contentType: contentType
+              url: url
+            formatType: formatType
+          visibility: visibility
+          displayName: displayName
+          description: description
+          updateTime: 2000-01-23T04:56:07.000+00:00
+          authorId: authorId
+          url: url
+          tags:
+          - tags
+          - tags
+          license: license
+          createTime: 2000-01-23T04:56:07.000+00:00
+          authorName: authorName
+          assetId: assetId
+          name: name
+          triangleCount: 1
+          isCurated: true
+        totalSize: 0
+        nextPageToken: nextPageToken
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/AssetSchemaOut'
+          type: array
+        totalSize:
+          title: Totalsize
+          type: integer
+        nextPageToken:
+          nullable: true
+          type: string
+      required:
+      - assets
+      - totalSize
+      title: PagedAssetSchemaOut
+    LoginToken:
+      example:
+        access_token: access_token
+        token_type: token_type
+      properties:
+        access_token:
+          title: Access Token
+          type: string
+        token_type:
+          title: Token Type
+          type: string
+      required:
+      - access_token
+      - token_type
+      title: LoginToken
+    OembedOut:
+      example:
+        author_name: author_name
+        cache_age: cache_age
+        provider_url: provider_url
+        type: rich
+        title: title
+        thumbnail_url: thumbnail_url
+        version: "1.0"
+        thumbnail_height: thumbnail_height
+        author_url: author_url
+        thumbnail_width: thumbnail_width
+        width: 0
+        html: html
+        provider_name: provider_name
+        height: 6
+      properties:
+        type:
+          enum:
+          - rich
+          title: Type
+          type: string
+        version:
+          enum:
+          - "1.0"
+          title: Version
+          type: string
+        title:
+          nullable: true
+          type: string
+        author_name:
+          nullable: true
+          type: string
+        author_url:
+          nullable: true
+          type: string
+        provider_name:
+          nullable: true
+          type: string
+        provider_url:
+          nullable: true
+          type: string
+        cache_age:
+          nullable: true
+          type: string
+        thumbnail_url:
+          nullable: true
+          type: string
+        thumbnail_width:
+          nullable: true
+          type: string
+        thumbnail_height:
+          nullable: true
+          type: string
+        html:
+          title: Html
+          type: string
+        width:
+          title: Width
+          type: integer
+        height:
+          title: Height
+          type: integer
+      required:
+      - height
+      - html
+      - type
+      - version
+      - width
+      title: OembedOut
+    FullUserSchema:
+      example:
+        displayName: displayName
+        description: description
+        id: 0
+        url: url
+        email: email
+      properties:
+        id:
+          title: Id
+          type: integer
+        url:
+          title: Url
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        displayName:
+          title: Displayname
+          type: string
+        description:
+          nullable: true
+          type: string
+      required:
+      - email
+      - id
+      - url
+      title: FullUserSchema
+    PatchUserSchema:
+      example:
+        displayname: displayname
+        description: description
+        url: url
+      properties:
+        url:
+          nullable: true
+          type: string
+        displayname:
+          title: Displayname
+          type: string
+        description:
+          nullable: true
+          type: string
+      title: PatchUserSchema
+    UserAssetFilters:
+      properties:
+        category:
+          nullable: true
+          type: string
+        curated:
+          default: false
+          title: Curated
+          type: boolean
+        format:
+          items:
+            type: string
+          type: array
+        keywords:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        tag:
+          items:
+            type: string
+          type: array
+        orderBy:
+          nullable: true
+          type: string
+        order_by:
+          nullable: true
+          type: string
+        maxComplexity:
+          $ref: '#/components/schemas/Complexity'
+        triangleCountMin:
+          nullable: true
+          type: integer
+        triangleCountMax:
+          nullable: true
+          type: integer
+        visibility:
+          nullable: true
+          type: string
+      title: UserAssetFilters
+  securitySchemes:
+    AuthBearer:
+      scheme: bearer
+      type: http
+

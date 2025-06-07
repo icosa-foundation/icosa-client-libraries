@@ -35,10 +35,10 @@ class TestAssetFilters(unittest.TestCase):
         model = AssetFilters()
         if include_optional:
             return AssetFilters(
-                category = '',
+                category = 'MISCELLANEOUS',
                 curated = True,
                 format = [
-                    ''
+                    'TILT'
                     ],
                 keywords = '',
                 name = '',
@@ -46,14 +46,13 @@ class TestAssetFilters(unittest.TestCase):
                 tag = [
                     ''
                     ],
-                order_by = '',
-                order_by = '',
+                order_by = 'NEWEST',
                 max_complexity = 'COMPLEX',
                 triangle_count_min = 56,
                 triangle_count_max = 56,
+                zip_archive_url = '',
                 author_name = '',
-                author_name = '',
-                license = ''
+                license = 'REMIXABLE'
             )
         else:
             return AssetFilters(

@@ -54,31 +54,53 @@ namespace Org.OpenAPITools.Test.Api
         }
 
         /// <summary>
+        /// Test IcosaApiUsersDeleteAsset
+        /// </summary>
+        [Test]
+        public void IcosaApiUsersDeleteAssetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string asset = null;
+            //var response = instance.IcosaApiUsersDeleteAsset(asset);
+            //Assert.IsType<int>(response);
+        }
+
+        /// <summary>
+        /// Test IcosaApiUsersGetMeAsset
+        /// </summary>
+        [Test]
+        public void IcosaApiUsersGetMeAssetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string asset = null;
+            //var response = instance.IcosaApiUsersGetMeAsset(asset);
+            //Assert.IsType<AssetSchema>(response);
+        }
+
+        /// <summary>
         /// Test IcosaApiUsersGetMeAssets
         /// </summary>
         [Test]
         public void IcosaApiUsersGetMeAssetsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? category = null;
+            //Category? category = null;
             //bool? curated = null;
-            //List<string>? format = null;
+            //List<FormatFilter>? format = null;
             //string? keywords = null;
             //string? name = null;
             //string? description = null;
             //List<string>? tag = null;
-            //string? orderBy = null;
-            //string? orderBy2 = null;
+            //Order? orderBy = null;
             //Complexity? maxComplexity = null;
             //int? triangleCountMin = null;
             //int? triangleCountMax = null;
+            //string? zipArchiveUrl = null;
             //string? visibility = null;
             //string? pageToken = null;
-            //string? pageToken2 = null;
             //string? pageSize = null;
-            //string? pageSize2 = null;
-            //var response = instance.IcosaApiUsersGetMeAssets(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, visibility, pageToken, pageToken2, pageSize, pageSize2);
-            //Assert.IsType<PagedAssetSchemaOut>(response);
+            //var response = instance.IcosaApiUsersGetMeAssets(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, visibility, pageToken, pageSize);
+            //Assert.IsType<PagedAssetSchema>(response);
         }
 
         /// <summary>
@@ -88,27 +110,24 @@ namespace Org.OpenAPITools.Test.Api
         public void IcosaApiUsersGetMeLikedassetsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? category = null;
+            //Category? category = null;
             //bool? curated = null;
-            //List<string>? format = null;
+            //List<FormatFilter>? format = null;
             //string? keywords = null;
             //string? name = null;
             //string? description = null;
             //List<string>? tag = null;
-            //string? orderBy = null;
-            //string? orderBy2 = null;
+            //Order? orderBy = null;
             //Complexity? maxComplexity = null;
             //int? triangleCountMin = null;
             //int? triangleCountMax = null;
+            //string? zipArchiveUrl = null;
             //string? authorName = null;
-            //string? authorName2 = null;
-            //string? license = null;
+            //LicenseFilter? license = null;
             //string? pageToken = null;
-            //string? pageToken2 = null;
             //string? pageSize = null;
-            //string? pageSize2 = null;
-            //var response = instance.IcosaApiUsersGetMeLikedassets(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, authorName, authorName2, license, pageToken, pageToken2, pageSize, pageSize2);
-            //Assert.IsType<PagedAssetSchemaOut>(response);
+            //var response = instance.IcosaApiUsersGetMeLikedassets(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, authorName, license, pageToken, pageSize);
+            //Assert.IsType<PagedAssetSchema>(response);
         }
 
         /// <summary>

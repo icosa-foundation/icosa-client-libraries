@@ -35,7 +35,7 @@ class TestPatchUserSchema(unittest.TestCase):
         model = PatchUserSchema()
         if include_optional:
             return PatchUserSchema(
-                url = '',
+                email = '',
                 displayname = '',
                 description = ''
             )

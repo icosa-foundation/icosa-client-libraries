@@ -16,8 +16,8 @@ Please update as you see appropriate
 describe("patch_user_schema", function()
   local openapiclient_patch_user_schema = require "openapiclient.model.patch_user_schema"
 
-  -- unit tests for the property 'url'
-  describe("property url test", function()
+  -- unit tests for the property 'email'
+  describe("property email test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

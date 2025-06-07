@@ -55,12 +55,12 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Url'
+        /// Test the property 'Email'
         /// </summary>
         [Test]
-        public void UrlTest()
+        public void EmailTest()
         {
-            // TODO unit test for the property 'Url'
+            // TODO unit test for the property 'Email'
         }
         /// <summary>
         /// Test the property 'Displayname'

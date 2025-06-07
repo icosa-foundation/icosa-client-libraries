@@ -36,8 +36,6 @@ class TestInput(unittest.TestCase):
         if include_optional:
             return Input(
                 page_token = '',
-                page_token = '',
-                page_size = '',
                 page_size = ''
             )
         else:

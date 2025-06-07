@@ -23,8 +23,8 @@ describe("full_user_schema", function()
     end)
   end)
 
-  -- unit tests for the property 'url'
-  describe("property url test", function()
+  -- unit tests for the property 'username'
+  describe("property username test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -46,6 +46,13 @@ describe("full_user_schema", function()
 
   -- unit tests for the property 'description'
   describe("property description test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'url'
+  describe("property url test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

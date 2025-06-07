@@ -63,22 +63,6 @@ namespace Org.OpenAPITools.Test.Model
             // TODO unit test for the property 'PageToken'
         }
         /// <summary>
-        /// Test the property 'PageToken'
-        /// </summary>
-        [Test]
-        public void PageTokenTest()
-        {
-            // TODO unit test for the property 'PageToken'
-        }
-        /// <summary>
-        /// Test the property 'PageSize'
-        /// </summary>
-        [Test]
-        public void PageSizeTest()
-        {
-            // TODO unit test for the property 'PageSize'
-        }
-        /// <summary>
         /// Test the property 'PageSize'
         /// </summary>
         [Test]

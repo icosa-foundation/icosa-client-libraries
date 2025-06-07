@@ -44,4 +44,18 @@ describe("asset_format", function()
     end)
   end)
 
+  -- unit tests for the property 'zip_archive_url'
+  describe("property zip_archive_url test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'role'
+  describe("property role test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
 end)

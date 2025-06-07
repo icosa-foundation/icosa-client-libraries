@@ -86,5 +86,21 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO unit test for the property 'FormatType'
         }
+        /// <summary>
+        /// Test the property 'ZipArchiveUrl'
+        /// </summary>
+        [Test]
+        public void ZipArchiveUrlTest()
+        {
+            // TODO unit test for the property 'ZipArchiveUrl'
+        }
+        /// <summary>
+        /// Test the property 'Role'
+        /// </summary>
+        [Test]
+        public void RoleTest()
+        {
+            // TODO unit test for the property 'Role'
+        }
     }
 }

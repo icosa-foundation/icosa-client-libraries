@@ -15,13 +15,6 @@ Please update as you see appropriate
 ]]
 describe("assets_api", function()
   local openapiclient_assets_api = require "openapiclient.api.assets_api"
-  -- unit tests for icosa_api_assets_delete_asset
-  describe("icosa_api_assets_delete_asset test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for icosa_api_assets_get_asset
   describe("icosa_api_assets_get_asset test", function()
     it("should work", function()
@@ -31,20 +24,6 @@ describe("assets_api", function()
 
   -- unit tests for icosa_api_assets_get_assets
   describe("icosa_api_assets_get_assets test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for icosa_api_assets_get_user_asset
-  describe("icosa_api_assets_get_user_asset test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for icosa_api_assets_unpublish_asset
-  describe("icosa_api_assets_unpublish_asset test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

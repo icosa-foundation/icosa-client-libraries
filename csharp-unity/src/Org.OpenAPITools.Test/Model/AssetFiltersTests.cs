@@ -119,14 +119,6 @@ namespace Org.OpenAPITools.Test.Model
             // TODO unit test for the property 'OrderBy'
         }
         /// <summary>
-        /// Test the property 'OrderBy'
-        /// </summary>
-        [Test]
-        public void OrderByTest()
-        {
-            // TODO unit test for the property 'OrderBy'
-        }
-        /// <summary>
         /// Test the property 'MaxComplexity'
         /// </summary>
         [Test]
@@ -151,12 +143,12 @@ namespace Org.OpenAPITools.Test.Model
             // TODO unit test for the property 'TriangleCountMax'
         }
         /// <summary>
-        /// Test the property 'AuthorName'
+        /// Test the property 'ZipArchiveUrl'
         /// </summary>
         [Test]
-        public void AuthorNameTest()
+        public void ZipArchiveUrlTest()
         {
-            // TODO unit test for the property 'AuthorName'
+            // TODO unit test for the property 'ZipArchiveUrl'
         }
         /// <summary>
         /// Test the property 'AuthorName'

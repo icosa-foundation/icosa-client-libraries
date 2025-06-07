@@ -36,16 +36,18 @@ class TestFullUserSchema(unittest.TestCase):
         if include_optional:
             return FullUserSchema(
                 id = 56,
-                url = '',
+                username = '',
                 email = '',
                 display_name = '',
-                description = ''
+                description = '',
+                url = ''
             )
         else:
             return FullUserSchema(
                 id = 56,
-                url = '',
+                username = '',
                 email = '',
+                url = '',
         )
         """
 

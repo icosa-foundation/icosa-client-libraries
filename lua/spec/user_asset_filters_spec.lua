@@ -72,13 +72,6 @@ describe("user_asset_filters", function()
     end)
   end)
 
-  -- unit tests for the property 'order_by'
-  describe("property order_by test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'max_complexity'
   describe("property max_complexity test", function()
     it("should work", function()
@@ -95,6 +88,13 @@ describe("user_asset_filters", function()
 
   -- unit tests for the property 'triangle_count_max'
   describe("property triangle_count_max test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'zip_archive_url'
+  describe("property zip_archive_url test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

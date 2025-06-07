@@ -48,24 +48,15 @@ class TestAssetFormat(unittest.TestCase):
                 format_complexity = openapi_client.models.format_complexity.FormatComplexity(
                     triangle_count = 56, 
                     lod_hint = 56, ),
-                format_type = ''
+                format_type = '',
+                zip_archive_url = '',
+                role = ''
             )
         else:
             return AssetFormat(
-                root = openapi_client.models.asset_resource.AssetResource(
-                    relative_path = '', 
-                    content_type = '', 
-                    url = '', ),
-                resources = [
-                    openapi_client.models.asset_resource.AssetResource(
-                        relative_path = '', 
-                        content_type = '', 
-                        url = '', )
-                    ],
                 format_complexity = openapi_client.models.format_complexity.FormatComplexity(
                     triangle_count = 56, 
                     lod_hint = 56, ),
-                format_type = '',
         )
         """
 

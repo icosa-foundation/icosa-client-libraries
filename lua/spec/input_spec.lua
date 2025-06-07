@@ -23,20 +23,6 @@ describe("input", function()
     end)
   end)
 
-  -- unit tests for the property 'page_token'
-  describe("property page_token test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'page_size'
-  describe("property page_size test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'page_size'
   describe("property page_size test", function()
     it("should work", function()

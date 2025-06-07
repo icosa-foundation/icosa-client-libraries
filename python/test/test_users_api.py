@@ -26,6 +26,20 @@ class TestUsersApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_icosa_api_users_delete_asset(self) -> None:
+        """Test case for icosa_api_users_delete_asset
+
+        Delete Asset
+        """
+        pass
+
+    def test_icosa_api_users_get_me_asset(self) -> None:
+        """Test case for icosa_api_users_get_me_asset
+
+        Get Me Asset
+        """
+        pass
+
     def test_icosa_api_users_get_me_assets(self) -> None:
         """Test case for icosa_api_users_get_me_assets
 

@@ -63,12 +63,12 @@ namespace Org.OpenAPITools.Test.Model
             // TODO unit test for the property 'Id'
         }
         /// <summary>
-        /// Test the property 'Url'
+        /// Test the property 'Username'
         /// </summary>
         [Test]
-        public void UrlTest()
+        public void UsernameTest()
         {
-            // TODO unit test for the property 'Url'
+            // TODO unit test for the property 'Username'
         }
         /// <summary>
         /// Test the property 'Email'
@@ -93,6 +93,14 @@ namespace Org.OpenAPITools.Test.Model
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
+        }
+        /// <summary>
+        /// Test the property 'Url'
+        /// </summary>
+        [Test]
+        public void UrlTest()
+        {
+            // TODO unit test for the property 'Url'
         }
     }
 }

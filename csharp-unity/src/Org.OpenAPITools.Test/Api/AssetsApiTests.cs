@@ -54,18 +54,6 @@ namespace Org.OpenAPITools.Test.Api
         }
 
         /// <summary>
-        /// Test IcosaApiAssetsDeleteAsset
-        /// </summary>
-        [Test]
-        public void IcosaApiAssetsDeleteAssetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string asset = null;
-            //var response = instance.IcosaApiAssetsDeleteAsset(asset);
-            //Assert.IsType<int>(response);
-        }
-
-        /// <summary>
         /// Test IcosaApiAssetsGetAsset
         /// </summary>
         [Test]
@@ -74,7 +62,7 @@ namespace Org.OpenAPITools.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string asset = null;
             //var response = instance.IcosaApiAssetsGetAsset(asset);
-            //Assert.IsType<AssetSchemaOut>(response);
+            //Assert.IsType<AssetSchema>(response);
         }
 
         /// <summary>
@@ -84,52 +72,24 @@ namespace Org.OpenAPITools.Test.Api
         public void IcosaApiAssetsGetAssetsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? category = null;
+            //Category? category = null;
             //bool? curated = null;
-            //List<string>? format = null;
+            //List<FormatFilter>? format = null;
             //string? keywords = null;
             //string? name = null;
             //string? description = null;
             //List<string>? tag = null;
-            //string? orderBy = null;
-            //string? orderBy2 = null;
+            //Order? orderBy = null;
             //Complexity? maxComplexity = null;
             //int? triangleCountMin = null;
             //int? triangleCountMax = null;
+            //string? zipArchiveUrl = null;
             //string? authorName = null;
-            //string? authorName2 = null;
-            //string? license = null;
+            //LicenseFilter? license = null;
             //string? pageToken = null;
-            //string? pageToken2 = null;
             //string? pageSize = null;
-            //string? pageSize2 = null;
-            //var response = instance.IcosaApiAssetsGetAssets(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, authorName, authorName2, license, pageToken, pageToken2, pageSize, pageSize2);
-            //Assert.IsType<PagedAssetSchemaOut>(response);
-        }
-
-        /// <summary>
-        /// Test IcosaApiAssetsGetUserAsset
-        /// </summary>
-        [Test]
-        public void IcosaApiAssetsGetUserAssetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string userurl = null;
-            //string asseturl = null;
-            //var response = instance.IcosaApiAssetsGetUserAsset(userurl, asseturl);
-            //Assert.IsType<AssetSchemaOut>(response);
-        }
-
-        /// <summary>
-        /// Test IcosaApiAssetsUnpublishAsset
-        /// </summary>
-        [Test]
-        public void IcosaApiAssetsUnpublishAssetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int asset = null;
-            //var response = instance.IcosaApiAssetsUnpublishAsset(asset);
-            //Assert.IsType<AssetSchemaOut>(response);
+            //var response = instance.IcosaApiAssetsGetAssets(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, authorName, license, pageToken, pageSize);
+            //Assert.IsType<PagedAssetSchema>(response);
         }
     }
 }

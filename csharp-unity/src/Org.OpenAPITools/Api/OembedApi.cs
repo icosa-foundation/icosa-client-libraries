@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxwidth"> (optional)</param>
         /// <param name="maxheight"> (optional)</param>
         /// <returns>OembedOut</returns>
-        OembedOut IcosaApiOembedOembed(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?));
+        OembedOut IcosaApiOembedOembed(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?));
 
         /// <summary>
         /// Oembed
@@ -49,7 +49,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxwidth"> (optional)</param>
         /// <param name="maxheight"> (optional)</param>
         /// <returns>ApiResponse of OembedOut</returns>
-        ApiResponse<OembedOut> IcosaApiOembedOembedWithHttpInfo(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?));
+        ApiResponse<OembedOut> IcosaApiOembedOembedWithHttpInfo(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?));
         #endregion Synchronous Operations
     }
 
@@ -72,7 +72,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxheight"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OembedOut</returns>
-        System.Threading.Tasks.Task<OembedOut> IcosaApiOembedOembedAsync(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OembedOut> IcosaApiOembedOembedAsync(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Oembed
@@ -87,7 +87,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxheight"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OembedOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OembedOut>> IcosaApiOembedOembedWithHttpInfoAsync(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OembedOut>> IcosaApiOembedOembedWithHttpInfoAsync(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -241,7 +241,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxwidth"> (optional)</param>
         /// <param name="maxheight"> (optional)</param>
         /// <returns>OembedOut</returns>
-        public OembedOut IcosaApiOembedOembed(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?))
+        public OembedOut IcosaApiOembedOembed(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?))
         {
             Org.OpenAPITools.Client.ApiResponse<OembedOut> localVarResponse = IcosaApiOembedOembedWithHttpInfo(url, format, maxwidth, maxheight);
             return localVarResponse.Data;
@@ -256,7 +256,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxwidth"> (optional)</param>
         /// <param name="maxheight"> (optional)</param>
         /// <returns>ApiResponse of OembedOut</returns>
-        public Org.OpenAPITools.Client.ApiResponse<OembedOut> IcosaApiOembedOembedWithHttpInfo(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?))
+        public Org.OpenAPITools.Client.ApiResponse<OembedOut> IcosaApiOembedOembedWithHttpInfo(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?))
         {
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
 
@@ -314,7 +314,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxheight"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OembedOut</returns>
-        public async System.Threading.Tasks.Task<OembedOut> IcosaApiOembedOembedAsync(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OembedOut> IcosaApiOembedOembedAsync(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             var task = IcosaApiOembedOembedWithHttpInfoAsync(url, format, maxwidth, maxheight, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
@@ -335,7 +335,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="maxheight"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OembedOut)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<OembedOut>> IcosaApiOembedOembedWithHttpInfoAsync(string? url = default(string?), string? format = default(string?), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<OembedOut>> IcosaApiOembedOembedWithHttpInfoAsync(string url = default(string), string format = default(string), int? maxwidth = default(int?), int? maxheight = default(int?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();

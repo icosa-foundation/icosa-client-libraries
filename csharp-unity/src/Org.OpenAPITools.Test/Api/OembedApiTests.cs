@@ -60,8 +60,8 @@ namespace Org.OpenAPITools.Test.Api
         public void IcosaApiOembedOembedTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string? url = null;
-            //string? format = null;
+            //string url = null;
+            //string format = null;
             //int? maxwidth = null;
             //int? maxheight = null;
             //var response = instance.IcosaApiOembedOembed(url, format, maxwidth, maxheight);

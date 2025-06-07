@@ -197,7 +197,7 @@ catch (ApiException e)
 
 <a id="icosaapiusersgetmeassets"></a>
 # **IcosaApiUsersGetMeAssets**
-> PagedAssetSchema IcosaApiUsersGetMeAssets (Category? category = null, bool? curated = null, List<FormatFilter>? format = null, string? keywords = null, string? name = null, string? description = null, List<string>? tag = null, Order? orderBy = null, Complexity? maxComplexity = null, int? triangleCountMin = null, int? triangleCountMax = null, string? zipArchiveUrl = null, string? visibility = null, string? pageToken = null, string? pageSize = null)
+> PagedAssetSchema IcosaApiUsersGetMeAssets (Category? category = null, bool? curated = null, List<FormatFilter> format = null, string keywords = null, string name = null, string description = null, List<string> tag = null, Order? orderBy = null, Complexity? maxComplexity = null, int? triangleCountMin = null, int? triangleCountMax = null, string zipArchiveUrl = null, string visibility = null, string pageToken = null, string pageSize = null)
 
 Get Me Assets
 
@@ -221,21 +221,21 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new UsersApi(config);
-            var category = new Category?(); // Category? |  (optional) 
+            var category = ANIMALS;  // Category? |  (optional) 
             var curated = false;  // bool? |  (optional)  (default to false)
-            var format = new List<FormatFilter>?(); // List<FormatFilter>? | Filter by format (optional) 
-            var keywords = "keywords_example";  // string? |  (optional) 
-            var name = "name_example";  // string? |  (optional) 
-            var description = "description_example";  // string? |  (optional) 
-            var tag = new List<string>?(); // List<string>? |  (optional) 
-            var orderBy = new Order?(); // Order? |  (optional) 
-            var maxComplexity = new Complexity?(); // Complexity? |  (optional) 
+            var format = new List<FormatFilter>(); // List<FormatFilter> | Filter by format (optional) 
+            var keywords = "keywords_example";  // string |  (optional) 
+            var name = "name_example";  // string |  (optional) 
+            var description = "description_example";  // string |  (optional) 
+            var tag = new List<string>(); // List<string> |  (optional) 
+            var orderBy = (Order) "NEWEST";  // Order? |  (optional) 
+            var maxComplexity = (Complexity) "COMPLEX";  // Complexity? |  (optional) 
             var triangleCountMin = 56;  // int? |  (optional) 
             var triangleCountMax = 56;  // int? |  (optional) 
-            var zipArchiveUrl = "zipArchiveUrl_example";  // string? |  (optional) 
-            var visibility = "visibility_example";  // string? |  (optional) 
-            var pageToken = "pageToken_example";  // string? |  (optional) 
-            var pageSize = "pageSize_example";  // string? |  (optional) 
+            var zipArchiveUrl = "zipArchiveUrl_example";  // string |  (optional) 
+            var visibility = "visibility_example";  // string |  (optional) 
+            var pageToken = "pageToken_example";  // string |  (optional) 
+            var pageSize = "pageSize_example";  // string |  (optional) 
 
             try
             {
@@ -278,21 +278,21 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **category** | [**Category?**](Category?.md) |  | [optional]  |
+| **category** | **Category?** |  | [optional]  |
 | **curated** | **bool?** |  | [optional] [default to false] |
-| **format** | [**List&lt;FormatFilter&gt;?**](FormatFilter.md) | Filter by format | [optional]  |
-| **keywords** | **string?** |  | [optional]  |
-| **name** | **string?** |  | [optional]  |
-| **description** | **string?** |  | [optional]  |
-| **tag** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
-| **orderBy** | [**Order?**](Order?.md) |  | [optional]  |
-| **maxComplexity** | [**Complexity?**](Complexity?.md) |  | [optional]  |
+| **format** | [**List&lt;FormatFilter&gt;**](FormatFilter.md) | Filter by format | [optional]  |
+| **keywords** | **string** |  | [optional]  |
+| **name** | **string** |  | [optional]  |
+| **description** | **string** |  | [optional]  |
+| **tag** | [**List&lt;string&gt;**](string.md) |  | [optional]  |
+| **orderBy** | **Order?** |  | [optional]  |
+| **maxComplexity** | **Complexity?** |  | [optional]  |
 | **triangleCountMin** | **int?** |  | [optional]  |
 | **triangleCountMax** | **int?** |  | [optional]  |
-| **zipArchiveUrl** | **string?** |  | [optional]  |
-| **visibility** | **string?** |  | [optional]  |
-| **pageToken** | **string?** |  | [optional]  |
-| **pageSize** | **string?** |  | [optional]  |
+| **zipArchiveUrl** | **string** |  | [optional]  |
+| **visibility** | **string** |  | [optional]  |
+| **pageToken** | **string** |  | [optional]  |
+| **pageSize** | **string** |  | [optional]  |
 
 ### Return type
 
@@ -317,7 +317,7 @@ catch (ApiException e)
 
 <a id="icosaapiusersgetmelikedassets"></a>
 # **IcosaApiUsersGetMeLikedassets**
-> PagedAssetSchema IcosaApiUsersGetMeLikedassets (Category? category = null, bool? curated = null, List<FormatFilter>? format = null, string? keywords = null, string? name = null, string? description = null, List<string>? tag = null, Order? orderBy = null, Complexity? maxComplexity = null, int? triangleCountMin = null, int? triangleCountMax = null, string? zipArchiveUrl = null, string? authorName = null, LicenseFilter? license = null, string? pageToken = null, string? pageSize = null)
+> PagedAssetSchema IcosaApiUsersGetMeLikedassets (Category? category = null, bool? curated = null, List<FormatFilter> format = null, string keywords = null, string name = null, string description = null, List<string> tag = null, Order? orderBy = null, Complexity? maxComplexity = null, int? triangleCountMin = null, int? triangleCountMax = null, string zipArchiveUrl = null, string authorName = null, LicenseFilter? license = null, string pageToken = null, string pageSize = null)
 
 Get Me Likedassets
 
@@ -341,22 +341,22 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new UsersApi(config);
-            var category = new Category?(); // Category? |  (optional) 
+            var category = ANIMALS;  // Category? |  (optional) 
             var curated = false;  // bool? |  (optional)  (default to false)
-            var format = new List<FormatFilter>?(); // List<FormatFilter>? | Filter by format (optional) 
-            var keywords = "keywords_example";  // string? |  (optional) 
-            var name = "name_example";  // string? |  (optional) 
-            var description = "description_example";  // string? |  (optional) 
-            var tag = new List<string>?(); // List<string>? |  (optional) 
-            var orderBy = new Order?(); // Order? |  (optional) 
-            var maxComplexity = new Complexity?(); // Complexity? |  (optional) 
+            var format = new List<FormatFilter>(); // List<FormatFilter> | Filter by format (optional) 
+            var keywords = "keywords_example";  // string |  (optional) 
+            var name = "name_example";  // string |  (optional) 
+            var description = "description_example";  // string |  (optional) 
+            var tag = new List<string>(); // List<string> |  (optional) 
+            var orderBy = (Order) "NEWEST";  // Order? |  (optional) 
+            var maxComplexity = (Complexity) "COMPLEX";  // Complexity? |  (optional) 
             var triangleCountMin = 56;  // int? |  (optional) 
             var triangleCountMax = 56;  // int? |  (optional) 
-            var zipArchiveUrl = "zipArchiveUrl_example";  // string? |  (optional) 
-            var authorName = "authorName_example";  // string? |  (optional) 
-            var license = new LicenseFilter?(); // LicenseFilter? |  (optional) 
-            var pageToken = "pageToken_example";  // string? |  (optional) 
-            var pageSize = "pageSize_example";  // string? |  (optional) 
+            var zipArchiveUrl = "zipArchiveUrl_example";  // string |  (optional) 
+            var authorName = "authorName_example";  // string |  (optional) 
+            var license = (LicenseFilter) "REMIXABLE";  // LicenseFilter? |  (optional) 
+            var pageToken = "pageToken_example";  // string |  (optional) 
+            var pageSize = "pageSize_example";  // string |  (optional) 
 
             try
             {
@@ -399,22 +399,22 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **category** | [**Category?**](Category?.md) |  | [optional]  |
+| **category** | **Category?** |  | [optional]  |
 | **curated** | **bool?** |  | [optional] [default to false] |
-| **format** | [**List&lt;FormatFilter&gt;?**](FormatFilter.md) | Filter by format | [optional]  |
-| **keywords** | **string?** |  | [optional]  |
-| **name** | **string?** |  | [optional]  |
-| **description** | **string?** |  | [optional]  |
-| **tag** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
-| **orderBy** | [**Order?**](Order?.md) |  | [optional]  |
-| **maxComplexity** | [**Complexity?**](Complexity?.md) |  | [optional]  |
+| **format** | [**List&lt;FormatFilter&gt;**](FormatFilter.md) | Filter by format | [optional]  |
+| **keywords** | **string** |  | [optional]  |
+| **name** | **string** |  | [optional]  |
+| **description** | **string** |  | [optional]  |
+| **tag** | [**List&lt;string&gt;**](string.md) |  | [optional]  |
+| **orderBy** | **Order?** |  | [optional]  |
+| **maxComplexity** | **Complexity?** |  | [optional]  |
 | **triangleCountMin** | **int?** |  | [optional]  |
 | **triangleCountMax** | **int?** |  | [optional]  |
-| **zipArchiveUrl** | **string?** |  | [optional]  |
-| **authorName** | **string?** |  | [optional]  |
-| **license** | [**LicenseFilter?**](LicenseFilter?.md) |  | [optional]  |
-| **pageToken** | **string?** |  | [optional]  |
-| **pageSize** | **string?** |  | [optional]  |
+| **zipArchiveUrl** | **string** |  | [optional]  |
+| **authorName** | **string** |  | [optional]  |
+| **license** | **LicenseFilter?** |  | [optional]  |
+| **pageToken** | **string** |  | [optional]  |
+| **pageSize** | **string** |  | [optional]  |
 
 ### Return type
 

@@ -98,7 +98,7 @@ No authorization required
 
 <a id="icosaapiassetsgetassets"></a>
 # **IcosaApiAssetsGetAssets**
-> PagedAssetSchema IcosaApiAssetsGetAssets (Category? category = null, bool? curated = null, List<FormatFilter>? format = null, string? keywords = null, string? name = null, string? description = null, List<string>? tag = null, Order? orderBy = null, Complexity? maxComplexity = null, int? triangleCountMin = null, int? triangleCountMax = null, string? zipArchiveUrl = null, string? authorName = null, LicenseFilter? license = null, string? pageToken = null, string? pageSize = null)
+> PagedAssetSchema IcosaApiAssetsGetAssets (Category? category = null, bool? curated = null, List<FormatFilter> format = null, string keywords = null, string name = null, string description = null, List<string> tag = null, Order? orderBy = null, Complexity? maxComplexity = null, int? triangleCountMin = null, int? triangleCountMax = null, string zipArchiveUrl = null, string authorName = null, LicenseFilter? license = null, string pageToken = null, string pageSize = null)
 
 Get Assets
 
@@ -119,22 +119,22 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.icosa.gallery";
             var apiInstance = new AssetsApi(config);
-            var category = new Category?(); // Category? |  (optional) 
+            var category = ANIMALS;  // Category? |  (optional) 
             var curated = false;  // bool? |  (optional)  (default to false)
-            var format = new List<FormatFilter>?(); // List<FormatFilter>? | Filter by format (optional) 
-            var keywords = "keywords_example";  // string? |  (optional) 
-            var name = "name_example";  // string? |  (optional) 
-            var description = "description_example";  // string? |  (optional) 
-            var tag = new List<string>?(); // List<string>? |  (optional) 
-            var orderBy = new Order?(); // Order? |  (optional) 
-            var maxComplexity = new Complexity?(); // Complexity? |  (optional) 
+            var format = new List<FormatFilter>(); // List<FormatFilter> | Filter by format (optional) 
+            var keywords = "keywords_example";  // string |  (optional) 
+            var name = "name_example";  // string |  (optional) 
+            var description = "description_example";  // string |  (optional) 
+            var tag = new List<string>(); // List<string> |  (optional) 
+            var orderBy = (Order) "NEWEST";  // Order? |  (optional) 
+            var maxComplexity = (Complexity) "COMPLEX";  // Complexity? |  (optional) 
             var triangleCountMin = 56;  // int? |  (optional) 
             var triangleCountMax = 56;  // int? |  (optional) 
-            var zipArchiveUrl = "zipArchiveUrl_example";  // string? |  (optional) 
-            var authorName = "authorName_example";  // string? |  (optional) 
-            var license = new LicenseFilter?(); // LicenseFilter? |  (optional) 
-            var pageToken = "pageToken_example";  // string? |  (optional) 
-            var pageSize = "pageSize_example";  // string? |  (optional) 
+            var zipArchiveUrl = "zipArchiveUrl_example";  // string |  (optional) 
+            var authorName = "authorName_example";  // string |  (optional) 
+            var license = (LicenseFilter) "REMIXABLE";  // LicenseFilter? |  (optional) 
+            var pageToken = "pageToken_example";  // string |  (optional) 
+            var pageSize = "pageSize_example";  // string |  (optional) 
 
             try
             {
@@ -177,22 +177,22 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **category** | [**Category?**](Category?.md) |  | [optional]  |
+| **category** | **Category?** |  | [optional]  |
 | **curated** | **bool?** |  | [optional] [default to false] |
-| **format** | [**List&lt;FormatFilter&gt;?**](FormatFilter.md) | Filter by format | [optional]  |
-| **keywords** | **string?** |  | [optional]  |
-| **name** | **string?** |  | [optional]  |
-| **description** | **string?** |  | [optional]  |
-| **tag** | [**List&lt;string&gt;?**](string.md) |  | [optional]  |
-| **orderBy** | [**Order?**](Order?.md) |  | [optional]  |
-| **maxComplexity** | [**Complexity?**](Complexity?.md) |  | [optional]  |
+| **format** | [**List&lt;FormatFilter&gt;**](FormatFilter.md) | Filter by format | [optional]  |
+| **keywords** | **string** |  | [optional]  |
+| **name** | **string** |  | [optional]  |
+| **description** | **string** |  | [optional]  |
+| **tag** | [**List&lt;string&gt;**](string.md) |  | [optional]  |
+| **orderBy** | **Order?** |  | [optional]  |
+| **maxComplexity** | **Complexity?** |  | [optional]  |
 | **triangleCountMin** | **int?** |  | [optional]  |
 | **triangleCountMax** | **int?** |  | [optional]  |
-| **zipArchiveUrl** | **string?** |  | [optional]  |
-| **authorName** | **string?** |  | [optional]  |
-| **license** | [**LicenseFilter?**](LicenseFilter?.md) |  | [optional]  |
-| **pageToken** | **string?** |  | [optional]  |
-| **pageSize** | **string?** |  | [optional]  |
+| **zipArchiveUrl** | **string** |  | [optional]  |
+| **authorName** | **string** |  | [optional]  |
+| **license** | **LicenseFilter?** |  | [optional]  |
+| **pageToken** | **string** |  | [optional]  |
+| **pageSize** | **string** |  | [optional]  |
 
 ### Return type
 

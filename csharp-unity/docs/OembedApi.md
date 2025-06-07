@@ -8,7 +8,7 @@ All URIs are relative to *https://api.icosa.gallery*
 
 <a id="icosaapioembedoembed"></a>
 # **IcosaApiOembedOembed**
-> OembedOut IcosaApiOembedOembed (string? url = null, string? format = null, int? maxwidth = null, int? maxheight = null)
+> OembedOut IcosaApiOembedOembed (string url = null, string format = null, int? maxwidth = null, int? maxheight = null)
 
 Oembed
 
@@ -29,8 +29,8 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://api.icosa.gallery";
             var apiInstance = new OembedApi(config);
-            var url = "url_example";  // string? |  (optional) 
-            var format = "format_example";  // string? |  (optional) 
+            var url = "url_example";  // string |  (optional) 
+            var format = "format_example";  // string |  (optional) 
             var maxwidth = 56;  // int? |  (optional) 
             var maxheight = 56;  // int? |  (optional) 
 
@@ -75,8 +75,8 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **url** | **string?** |  | [optional]  |
-| **format** | **string?** |  | [optional]  |
+| **url** | **string** |  | [optional]  |
+| **format** | **string** |  | [optional]  |
 | **maxwidth** | **int?** |  | [optional]  |
 | **maxheight** | **int?** |  | [optional]  |
 

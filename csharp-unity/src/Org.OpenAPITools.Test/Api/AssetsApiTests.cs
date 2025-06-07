@@ -74,20 +74,20 @@ namespace Org.OpenAPITools.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //Category? category = null;
             //bool? curated = null;
-            //List<FormatFilter>? format = null;
-            //string? keywords = null;
-            //string? name = null;
-            //string? description = null;
-            //List<string>? tag = null;
+            //List<FormatFilter> format = null;
+            //string keywords = null;
+            //string name = null;
+            //string description = null;
+            //List<string> tag = null;
             //Order? orderBy = null;
             //Complexity? maxComplexity = null;
             //int? triangleCountMin = null;
             //int? triangleCountMax = null;
-            //string? zipArchiveUrl = null;
-            //string? authorName = null;
+            //string zipArchiveUrl = null;
+            //string authorName = null;
             //LicenseFilter? license = null;
-            //string? pageToken = null;
-            //string? pageSize = null;
+            //string pageToken = null;
+            //string pageSize = null;
             //var response = instance.IcosaApiAssetsGetAssets(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, authorName, license, pageToken, pageSize);
             //Assert.IsType<PagedAssetSchema>(response);
         }

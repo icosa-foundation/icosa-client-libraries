@@ -19,7 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from openapi_client.models.category import Category
 from openapi_client.models.complexity import Complexity
+from openapi_client.models.format_filter import FormatFilter
+from openapi_client.models.order import Order
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,20 +30,20 @@ class UserAssetFilters(BaseModel):
     """
     UserAssetFilters
     """ # noqa: E501
-    category: Optional[StrictStr] = None
+    category: Optional[Category] = None
     curated: Optional[StrictBool] = False
-    format: Optional[List[StrictStr]] = None
+    format: Optional[List[FormatFilter]] = None
     keywords: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     tag: Optional[List[StrictStr]] = None
-    order_by: Optional[StrictStr] = Field(default=None, alias="orderBy")
-    order_by: Optional[StrictStr] = None
+    order_by: Optional[Order] = Field(default=None, alias="orderBy")
     max_complexity: Optional[Complexity] = Field(default=None, alias="maxComplexity")
     triangle_count_min: Optional[StrictInt] = Field(default=None, alias="triangleCountMin")
     triangle_count_max: Optional[StrictInt] = Field(default=None, alias="triangleCountMax")
+    zip_archive_url: Optional[StrictStr] = Field(default=None, alias="zipArchiveUrl")
     visibility: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["category", "curated", "format", "keywords", "name", "description", "tag", "orderBy", "order_by", "maxComplexity", "triangleCountMin", "triangleCountMax", "visibility"]
+    __properties: ClassVar[List[str]] = ["category", "curated", "format", "keywords", "name", "description", "tag", "orderBy", "maxComplexity", "triangleCountMin", "triangleCountMax", "zipArchiveUrl", "visibility"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,6 +89,11 @@ class UserAssetFilters(BaseModel):
         if self.category is None and "category" in self.model_fields_set:
             _dict['category'] = None
 
+        # set to None if format (nullable) is None
+        # and model_fields_set contains the field
+        if self.format is None and "format" in self.model_fields_set:
+            _dict['format'] = None
+
         # set to None if keywords (nullable) is None
         # and model_fields_set contains the field
         if self.keywords is None and "keywords" in self.model_fields_set:
@@ -106,11 +114,6 @@ class UserAssetFilters(BaseModel):
         if self.order_by is None and "order_by" in self.model_fields_set:
             _dict['orderBy'] = None
 
-        # set to None if order_by (nullable) is None
-        # and model_fields_set contains the field
-        if self.order_by is None and "order_by" in self.model_fields_set:
-            _dict['order_by'] = None
-
         # set to None if max_complexity (nullable) is None
         # and model_fields_set contains the field
         if self.max_complexity is None and "max_complexity" in self.model_fields_set:
@@ -125,6 +128,11 @@ class UserAssetFilters(BaseModel):
         # and model_fields_set contains the field
         if self.triangle_count_max is None and "triangle_count_max" in self.model_fields_set:
             _dict['triangleCountMax'] = None
+
+        # set to None if zip_archive_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.zip_archive_url is None and "zip_archive_url" in self.model_fields_set:
+            _dict['zipArchiveUrl'] = None
 
         # set to None if visibility (nullable) is None
         # and model_fields_set contains the field
@@ -151,10 +159,10 @@ class UserAssetFilters(BaseModel):
             "description": obj.get("description"),
             "tag": obj.get("tag"),
             "orderBy": obj.get("orderBy"),
-            "order_by": obj.get("order_by"),
             "maxComplexity": obj.get("maxComplexity"),
             "triangleCountMin": obj.get("triangleCountMin"),
             "triangleCountMax": obj.get("triangleCountMax"),
+            "zipArchiveUrl": obj.get("zipArchiveUrl"),
             "visibility": obj.get("visibility")
         })
         return _obj

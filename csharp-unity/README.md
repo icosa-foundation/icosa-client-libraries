@@ -55,28 +55,25 @@ using Org.OpenAPITools.Model;
 namespace Org.OpenAPIToolsExample
 {
 
-    public class IcosaApiAssetsDeleteAssetExample : MonoBehaviour
+    public class IcosaApiAssetsGetAssetExample : MonoBehaviour
     {
         async void Start()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost";
-            // Configure Bearer token for authorization: AuthBearer
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-
+            config.BasePath = "https://api.icosa.gallery";
             var apiInstance = new AssetsApi(config);
             var asset = "asset_example";  // string | 
 
             try
             {
-                // Delete Asset
-                int result = await apiInstance.IcosaApiAssetsDeleteAssetAsync(asset);
+                // Get Asset
+                AssetSchema result = await apiInstance.IcosaApiAssetsGetAssetAsync(asset);
                 Debug.Log(result);
                 Debug.Log("Done!");
             }
             catch (ApiException e)
             {
-                Debug.LogError("Exception when calling AssetsApi.IcosaApiAssetsDeleteAsset: " + e.Message );
+                Debug.LogError("Exception when calling AssetsApi.IcosaApiAssetsGetAsset: " + e.Message );
                 Debug.LogError("Status Code: "+ e.ErrorCode);
                 Debug.LogError(e.StackTrace);
             }
@@ -89,18 +86,16 @@ namespace Org.OpenAPIToolsExample
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.icosa.gallery*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssetsApi* | [**IcosaApiAssetsDeleteAsset**](AssetsApi.md#icosaapiassetsdeleteasset) | **DELETE** /v1/assets/{asset} | Delete Asset
 *AssetsApi* | [**IcosaApiAssetsGetAsset**](AssetsApi.md#icosaapiassetsgetasset) | **GET** /v1/assets/{asset} | Get Asset
 *AssetsApi* | [**IcosaApiAssetsGetAssets**](AssetsApi.md#icosaapiassetsgetassets) | **GET** /v1/assets | Get Assets
-*AssetsApi* | [**IcosaApiAssetsGetUserAsset**](AssetsApi.md#icosaapiassetsgetuserasset) | **GET** /v1/assets/{userurl}/{asseturl} | Get User Asset
-*AssetsApi* | [**IcosaApiAssetsUnpublishAsset**](AssetsApi.md#icosaapiassetsunpublishasset) | **PATCH** /v1/assets/{asset}/unpublish | Unpublish Asset
 *LoginApi* | [**IcosaApiLoginDeviceLogin**](LoginApi.md#icosaapilogindevicelogin) | **POST** /v1/login/device_login | Device Login
 *OembedApi* | [**IcosaApiOembedOembed**](OembedApi.md#icosaapioembedoembed) | **GET** /v1/oembed | Oembed
-*PolyApi* | [**IcosaApiPolyAdd**](PolyApi.md#icosaapipolyadd) | **GET** /v1/poly | Add
+*UsersApi* | [**IcosaApiUsersDeleteAsset**](UsersApi.md#icosaapiusersdeleteasset) | **DELETE** /v1/users/me/assets/{asset} | Delete Asset
+*UsersApi* | [**IcosaApiUsersGetMeAsset**](UsersApi.md#icosaapiusersgetmeasset) | **GET** /v1/users/me/assets/{asset} | Get Me Asset
 *UsersApi* | [**IcosaApiUsersGetMeAssets**](UsersApi.md#icosaapiusersgetmeassets) | **GET** /v1/users/me/assets | Get Me Assets
 *UsersApi* | [**IcosaApiUsersGetMeLikedassets**](UsersApi.md#icosaapiusersgetmelikedassets) | **GET** /v1/users/me/likedassets | Get Me Likedassets
 *UsersApi* | [**IcosaApiUsersGetUsersMe**](UsersApi.md#icosaapiusersgetusersme) | **GET** /v1/users/me | Get Users Me
@@ -113,14 +108,18 @@ Class | Method | HTTP request | Description
  - [Model.AssetFilters](AssetFilters.md)
  - [Model.AssetFormat](AssetFormat.md)
  - [Model.AssetResource](AssetResource.md)
- - [Model.AssetSchemaOut](AssetSchemaOut.md)
+ - [Model.AssetSchema](AssetSchema.md)
+ - [Model.Category](Category.md)
  - [Model.Complexity](Complexity.md)
  - [Model.FormatComplexity](FormatComplexity.md)
+ - [Model.FormatFilter](FormatFilter.md)
  - [Model.FullUserSchema](FullUserSchema.md)
  - [Model.Input](Input.md)
+ - [Model.LicenseFilter](LicenseFilter.md)
  - [Model.LoginToken](LoginToken.md)
  - [Model.OembedOut](OembedOut.md)
- - [Model.PagedAssetSchemaOut](PagedAssetSchemaOut.md)
+ - [Model.Order](Order.md)
+ - [Model.PagedAssetSchema](PagedAssetSchema.md)
  - [Model.PatchUserSchema](PatchUserSchema.md)
  - [Model.Thumbnail](Thumbnail.md)
  - [Model.UserAssetFilters](UserAssetFilters.md)
@@ -131,8 +130,8 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="AuthBearer"></a>
-### AuthBearer
+<a id="JWTAuth"></a>
+### JWTAuth
 
 - **Type**: Bearer Authentication
 

@@ -14,14 +14,130 @@ func _bzz_get_api_name() -> String:
 	return "UsersApi"
 
 
+# Operation icosaApiUsersDeleteAsset → DELETE /v1/users/me/assets/{asset}
+# Delete Asset
+func icosa_api_users_delete_asset(
+	# asset: String   Eg: asset_example
+	asset: String,
+	on_success: Callable = Callable(),  # func(response: ApiResponse)
+	on_failure: Callable = Callable(),  # func(error: ApiError)
+):
+
+	# Convert the String HTTP method to a Constant Godot understands
+	var bzz_method := self._bzz_convert_http_method("DELETE")
+
+	# Compute the URL path to the API resource
+	var bzz_path := "/v1/users/me/assets/{asset}".replace("{" + "asset" + "}", _bzz_urlize_path_param(asset))
+
+	# Collect the headers
+	var bzz_headers := Dictionary()
+	var bzz_mimes_produced_by_server := ['application/json']
+	for bzz_mime in BZZ_CONSUMABLE_CONTENT_TYPES:
+		if bzz_mime in bzz_mimes_produced_by_server:
+			bzz_headers["Accept"] = bzz_mime
+			break
+
+	# Collect the query parameters
+	# Note: we do not support multiple values for a single param (for now), nor arrays
+	var bzz_query := Dictionary()
+
+	var bzz_body = null
+
+	self._bzz_request(
+		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
+		func(bzz_response):
+			on_success.call(bzz_response)
+			,
+		func(bzz_error):
+			on_failure.call(bzz_error)
+			,  # ざわ‥
+	)
+
+
+func icosa_api_users_delete_asset_threaded(
+	# asset: String   Eg: asset_example
+	asset: String,
+	on_success: Callable = Callable(),  # func(response: ApiResponse)
+	on_failure: Callable = Callable(),  # func(error: ApiError)
+) -> Thread:
+	var bzz_thread := Thread.new()
+	var bzz_callable := Callable(self, "icosa_api_users_delete_asset")
+	bzz_callable.bind(
+		asset,
+		on_success,
+		on_failure,
+	)
+	bzz_thread.start(bzz_callable)
+	return bzz_thread
+
+
+# Operation icosaApiUsersGetMeAsset → GET /v1/users/me/assets/{asset}
+# Get Me Asset
+func icosa_api_users_get_me_asset(
+	# asset: String   Eg: asset_example
+	asset: String,
+	on_success: Callable = Callable(),  # func(response: ApiResponse)
+	on_failure: Callable = Callable(),  # func(error: ApiError)
+):
+
+	# Convert the String HTTP method to a Constant Godot understands
+	var bzz_method := self._bzz_convert_http_method("GET")
+
+	# Compute the URL path to the API resource
+	var bzz_path := "/v1/users/me/assets/{asset}".replace("{" + "asset" + "}", _bzz_urlize_path_param(asset))
+
+	# Collect the headers
+	var bzz_headers := Dictionary()
+	var bzz_mimes_produced_by_server := ['application/json']
+	for bzz_mime in BZZ_CONSUMABLE_CONTENT_TYPES:
+		if bzz_mime in bzz_mimes_produced_by_server:
+			bzz_headers["Accept"] = bzz_mime
+			break
+
+	# Collect the query parameters
+	# Note: we do not support multiple values for a single param (for now), nor arrays
+	var bzz_query := Dictionary()
+
+	var bzz_body = null
+
+	self._bzz_request(
+		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
+		func(bzz_response):
+			bzz_response.data = AssetSchema.bzz_denormalize_single(bzz_response.data)
+			on_success.call(bzz_response)
+			,
+		func(bzz_error):
+			on_failure.call(bzz_error)
+			,  # ざわ‥
+	)
+
+
+func icosa_api_users_get_me_asset_threaded(
+	# asset: String   Eg: asset_example
+	asset: String,
+	on_success: Callable = Callable(),  # func(response: ApiResponse)
+	on_failure: Callable = Callable(),  # func(error: ApiError)
+) -> Thread:
+	var bzz_thread := Thread.new()
+	var bzz_callable := Callable(self, "icosa_api_users_get_me_asset")
+	bzz_callable.bind(
+		asset,
+		on_success,
+		on_failure,
+	)
+	bzz_thread.start(bzz_callable)
+	return bzz_thread
+
+
 # Operation icosaApiUsersGetMeAssets → GET /v1/users/me/assets
 # Get Me Assets
 func icosa_api_users_get_me_assets(
-	# category: String   Eg: category_example
+	# category: Category   Eg: ANIMALS
 	category = null,
 	# curated: bool = false   Eg: true
 	curated = false,
 	# format: Array
+	# Filter by format
 	format = null,
 	# keywords: String   Eg: keywords_example
 	keywords = null,
@@ -31,26 +147,22 @@ func icosa_api_users_get_me_assets(
 	description = null,
 	# tag: Array
 	tag = null,
-	# orderBy: String   Eg: orderBy_example
+	# orderBy: Order
 	orderBy = null,
-	# orderBy2: String   Eg: orderBy_example
-	orderBy2 = null,
 	# maxComplexity: Complexity
 	maxComplexity = null,
 	# triangleCountMin: int   Eg: 56
 	triangleCountMin = null,
 	# triangleCountMax: int   Eg: 56
 	triangleCountMax = null,
+	# zipArchiveUrl: String   Eg: zipArchiveUrl_example
+	zipArchiveUrl = null,
 	# visibility: String   Eg: visibility_example
 	visibility = null,
 	# pageToken: String   Eg: pageToken_example
 	pageToken = null,
-	# pageToken2: String   Eg: pageToken_example
-	pageToken2 = null,
 	# pageSize: String   Eg: pageSize_example
 	pageSize = null,
-	# pageSize2: String   Eg: pageSize_example
-	pageSize2 = null,
 	on_success: Callable = Callable(),  # func(response: ApiResponse)
 	on_failure: Callable = Callable(),  # func(error: ApiError)
 ):
@@ -80,22 +192,20 @@ func icosa_api_users_get_me_assets(
 	bzz_query["description"] = description
 	bzz_query["tag"] = tag
 	bzz_query["orderBy"] = orderBy
-	bzz_query["order_by"] = orderBy2
 	bzz_query["maxComplexity"] = maxComplexity
 	bzz_query["triangleCountMin"] = triangleCountMin
 	bzz_query["triangleCountMax"] = triangleCountMax
+	bzz_query["zipArchiveUrl"] = zipArchiveUrl
 	bzz_query["visibility"] = visibility
 	bzz_query["pageToken"] = pageToken
-	bzz_query["page_token"] = pageToken2
 	bzz_query["pageSize"] = pageSize
-	bzz_query["page_size"] = pageSize2
 
 	var bzz_body = null
 
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
-			bzz_response.data = PagedAssetSchemaOut.bzz_denormalize_single(bzz_response.data)
+			bzz_response.data = PagedAssetSchema.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -105,11 +215,12 @@ func icosa_api_users_get_me_assets(
 
 
 func icosa_api_users_get_me_assets_threaded(
-	# category: String   Eg: category_example
+	# category: Category   Eg: ANIMALS
 	category = null,
 	# curated: bool = false   Eg: true
 	curated = false,
 	# format: Array
+	# Filter by format
 	format = null,
 	# keywords: String   Eg: keywords_example
 	keywords = null,
@@ -119,26 +230,22 @@ func icosa_api_users_get_me_assets_threaded(
 	description = null,
 	# tag: Array
 	tag = null,
-	# orderBy: String   Eg: orderBy_example
+	# orderBy: Order
 	orderBy = null,
-	# orderBy2: String   Eg: orderBy_example
-	orderBy2 = null,
 	# maxComplexity: Complexity
 	maxComplexity = null,
 	# triangleCountMin: int   Eg: 56
 	triangleCountMin = null,
 	# triangleCountMax: int   Eg: 56
 	triangleCountMax = null,
+	# zipArchiveUrl: String   Eg: zipArchiveUrl_example
+	zipArchiveUrl = null,
 	# visibility: String   Eg: visibility_example
 	visibility = null,
 	# pageToken: String   Eg: pageToken_example
 	pageToken = null,
-	# pageToken2: String   Eg: pageToken_example
-	pageToken2 = null,
 	# pageSize: String   Eg: pageSize_example
 	pageSize = null,
-	# pageSize2: String   Eg: pageSize_example
-	pageSize2 = null,
 	on_success: Callable = Callable(),  # func(response: ApiResponse)
 	on_failure: Callable = Callable(),  # func(error: ApiError)
 ) -> Thread:
@@ -153,15 +260,13 @@ func icosa_api_users_get_me_assets_threaded(
 		description,
 		tag,
 		orderBy,
-		orderBy2,
 		maxComplexity,
 		triangleCountMin,
 		triangleCountMax,
+		zipArchiveUrl,
 		visibility,
 		pageToken,
-		pageToken2,
 		pageSize,
-		pageSize2,
 		on_success,
 		on_failure,
 	)
@@ -172,11 +277,12 @@ func icosa_api_users_get_me_assets_threaded(
 # Operation icosaApiUsersGetMeLikedassets → GET /v1/users/me/likedassets
 # Get Me Likedassets
 func icosa_api_users_get_me_likedassets(
-	# category: String   Eg: category_example
+	# category: Category   Eg: ANIMALS
 	category = null,
 	# curated: bool = false   Eg: true
 	curated = false,
 	# format: Array
+	# Filter by format
 	format = null,
 	# keywords: String   Eg: keywords_example
 	keywords = null,
@@ -186,30 +292,24 @@ func icosa_api_users_get_me_likedassets(
 	description = null,
 	# tag: Array
 	tag = null,
-	# orderBy: String   Eg: orderBy_example
+	# orderBy: Order
 	orderBy = null,
-	# orderBy2: String   Eg: orderBy_example
-	orderBy2 = null,
 	# maxComplexity: Complexity
 	maxComplexity = null,
 	# triangleCountMin: int   Eg: 56
 	triangleCountMin = null,
 	# triangleCountMax: int   Eg: 56
 	triangleCountMax = null,
+	# zipArchiveUrl: String   Eg: zipArchiveUrl_example
+	zipArchiveUrl = null,
 	# authorName: String   Eg: authorName_example
 	authorName = null,
-	# authorName2: String   Eg: authorName_example
-	authorName2 = null,
-	# license: String   Eg: license_example
+	# license: LicenseFilter
 	license = null,
 	# pageToken: String   Eg: pageToken_example
 	pageToken = null,
-	# pageToken2: String   Eg: pageToken_example
-	pageToken2 = null,
 	# pageSize: String   Eg: pageSize_example
 	pageSize = null,
-	# pageSize2: String   Eg: pageSize_example
-	pageSize2 = null,
 	on_success: Callable = Callable(),  # func(response: ApiResponse)
 	on_failure: Callable = Callable(),  # func(error: ApiError)
 ):
@@ -239,24 +339,21 @@ func icosa_api_users_get_me_likedassets(
 	bzz_query["description"] = description
 	bzz_query["tag"] = tag
 	bzz_query["orderBy"] = orderBy
-	bzz_query["order_by"] = orderBy2
 	bzz_query["maxComplexity"] = maxComplexity
 	bzz_query["triangleCountMin"] = triangleCountMin
 	bzz_query["triangleCountMax"] = triangleCountMax
+	bzz_query["zipArchiveUrl"] = zipArchiveUrl
 	bzz_query["authorName"] = authorName
-	bzz_query["author_name"] = authorName2
 	bzz_query["license"] = license
 	bzz_query["pageToken"] = pageToken
-	bzz_query["page_token"] = pageToken2
 	bzz_query["pageSize"] = pageSize
-	bzz_query["page_size"] = pageSize2
 
 	var bzz_body = null
 
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
-			bzz_response.data = PagedAssetSchemaOut.bzz_denormalize_single(bzz_response.data)
+			bzz_response.data = PagedAssetSchema.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -266,11 +363,12 @@ func icosa_api_users_get_me_likedassets(
 
 
 func icosa_api_users_get_me_likedassets_threaded(
-	# category: String   Eg: category_example
+	# category: Category   Eg: ANIMALS
 	category = null,
 	# curated: bool = false   Eg: true
 	curated = false,
 	# format: Array
+	# Filter by format
 	format = null,
 	# keywords: String   Eg: keywords_example
 	keywords = null,
@@ -280,30 +378,24 @@ func icosa_api_users_get_me_likedassets_threaded(
 	description = null,
 	# tag: Array
 	tag = null,
-	# orderBy: String   Eg: orderBy_example
+	# orderBy: Order
 	orderBy = null,
-	# orderBy2: String   Eg: orderBy_example
-	orderBy2 = null,
 	# maxComplexity: Complexity
 	maxComplexity = null,
 	# triangleCountMin: int   Eg: 56
 	triangleCountMin = null,
 	# triangleCountMax: int   Eg: 56
 	triangleCountMax = null,
+	# zipArchiveUrl: String   Eg: zipArchiveUrl_example
+	zipArchiveUrl = null,
 	# authorName: String   Eg: authorName_example
 	authorName = null,
-	# authorName2: String   Eg: authorName_example
-	authorName2 = null,
-	# license: String   Eg: license_example
+	# license: LicenseFilter
 	license = null,
 	# pageToken: String   Eg: pageToken_example
 	pageToken = null,
-	# pageToken2: String   Eg: pageToken_example
-	pageToken2 = null,
 	# pageSize: String   Eg: pageSize_example
 	pageSize = null,
-	# pageSize2: String   Eg: pageSize_example
-	pageSize2 = null,
 	on_success: Callable = Callable(),  # func(response: ApiResponse)
 	on_failure: Callable = Callable(),  # func(error: ApiError)
 ) -> Thread:
@@ -318,17 +410,14 @@ func icosa_api_users_get_me_likedassets_threaded(
 		description,
 		tag,
 		orderBy,
-		orderBy2,
 		maxComplexity,
 		triangleCountMin,
 		triangleCountMax,
+		zipArchiveUrl,
 		authorName,
-		authorName2,
 		license,
 		pageToken,
-		pageToken2,
 		pageSize,
-		pageSize2,
 		on_success,
 		on_failure,
 	)

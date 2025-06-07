@@ -2,19 +2,113 @@
 # UsersApi   { #UsersApi }
 
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.icosa.gallery*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**icosa_api_users_delete_asset**](#icosa_api_users_delete_asset) | **DELETE** `/v1/users/me/assets/{asset}` | Delete Asset
+[**icosa_api_users_get_me_asset**](#icosa_api_users_get_me_asset) | **GET** `/v1/users/me/assets/{asset}` | Get Me Asset
 [**icosa_api_users_get_me_assets**](#icosa_api_users_get_me_assets) | **GET** `/v1/users/me/assets` | Get Me Assets
 [**icosa_api_users_get_me_likedassets**](#icosa_api_users_get_me_likedassets) | **GET** `/v1/users/me/likedassets` | Get Me Likedassets
 [**icosa_api_users_get_users_me**](#icosa_api_users_get_users_me) | **GET** `/v1/users/me` | Get Users Me
 [**icosa_api_users_update_user**](#icosa_api_users_update_user) | **PATCH** `/v1/users/me` | Update User
 
+# **icosa_api_users_delete_asset**   { #icosa_api_users_delete_asset }
+<a name="icosa_api_users_delete_asset"></a>
+
+> `icosa_api_users_delete_asset(asset: String, on_success: Callable, on_failure: Callable)`
+
+Delete Asset
+
+
+
+### Example
+
+* Bearer Authentication (`JWTAuth`)
+
+```gdscript
+
+# Customize configuration
+var config := ApiConfig.new()
+config.host = "localhost"
+config.port = 8080
+#config.tls_enabled = true
+#config.trusted_chain = preload("res://my_cert_chain.crt")
+
+# Instantiate the api
+var api = UsersApi.new(config)
+# You can also provide your own HTTPClient, to re-use it across apis.
+#var api = UsersApi.new(config, client)
+
+
+# Invoke an endpoint
+api.icosa_api_users_delete_asset(
+	# asset: String   Eg: asset_example
+	asset,
+	# On Success
+	func(response):  # response is ApiResponse
+		prints("Success!", "icosa_api_users_delete_asset", response)
+		assert(response.data is integer)
+		pass  # do things, make stuff
+		,
+	# On Error
+	func(error):  # error is ApiError
+		push_error(str(error))
+		,
+)
+
+```
+
+# **icosa_api_users_get_me_asset**   { #icosa_api_users_get_me_asset }
+<a name="icosa_api_users_get_me_asset"></a>
+
+> `icosa_api_users_get_me_asset(asset: String, on_success: Callable, on_failure: Callable)`
+
+Get Me Asset
+
+
+
+### Example
+
+* Bearer Authentication (`JWTAuth`)
+
+```gdscript
+
+# Customize configuration
+var config := ApiConfig.new()
+config.host = "localhost"
+config.port = 8080
+#config.tls_enabled = true
+#config.trusted_chain = preload("res://my_cert_chain.crt")
+
+# Instantiate the api
+var api = UsersApi.new(config)
+# You can also provide your own HTTPClient, to re-use it across apis.
+#var api = UsersApi.new(config, client)
+
+
+# Invoke an endpoint
+api.icosa_api_users_get_me_asset(
+	# asset: String   Eg: asset_example
+	asset,
+	# On Success
+	func(response):  # response is ApiResponse
+		prints("Success!", "icosa_api_users_get_me_asset", response)
+		assert(response.data is AssetSchema)
+		pass  # do things, make stuff
+		,
+	# On Error
+	func(error):  # error is ApiError
+		push_error(str(error))
+		,
+)
+
+```
+
 # **icosa_api_users_get_me_assets**   { #icosa_api_users_get_me_assets }
 <a name="icosa_api_users_get_me_assets"></a>
 
-> `icosa_api_users_get_me_assets(category = null,curated = false,format = null,keywords = null,name = null,description = null,tag = null,orderBy = null,orderBy2 = null,maxComplexity = null,triangleCountMin = null,triangleCountMax = null,visibility = null,pageToken = null,pageToken2 = null,pageSize = null,pageSize2 = null, on_success: Callable, on_failure: Callable)`
+> `icosa_api_users_get_me_assets(category = null,curated = false,format = null,keywords = null,name = null,description = null,tag = null,orderBy = null,maxComplexity = null,triangleCountMin = null,triangleCountMax = null,zipArchiveUrl = null,visibility = null,pageToken = null,pageSize = null, on_success: Callable, on_failure: Callable)`
 
 Get Me Assets
 
@@ -22,7 +116,7 @@ Get Me Assets
 
 ### Example
 
-* Bearer Authentication (`AuthBearer`)
+* Bearer Authentication (`JWTAuth`)
 
 ```gdscript
 
@@ -41,11 +135,12 @@ var api = UsersApi.new(config)
 
 # Invoke an endpoint
 api.icosa_api_users_get_me_assets(
-	# category: String   Eg: category_example
+	# category: Category   Eg: ANIMALS
 	category,
 	# curated: bool = false   Eg: true
 	curated,
 	# format: Array
+	# Filter by format
 	format,
 	# keywords: String   Eg: keywords_example
 	keywords,
@@ -55,30 +150,26 @@ api.icosa_api_users_get_me_assets(
 	description,
 	# tag: Array
 	tag,
-	# orderBy: String   Eg: orderBy_example
+	# orderBy: Order
 	orderBy,
-	# orderBy2: String   Eg: orderBy_example
-	orderBy2,
 	# maxComplexity: Complexity
 	maxComplexity,
 	# triangleCountMin: int   Eg: 56
 	triangleCountMin,
 	# triangleCountMax: int   Eg: 56
 	triangleCountMax,
+	# zipArchiveUrl: String   Eg: zipArchiveUrl_example
+	zipArchiveUrl,
 	# visibility: String   Eg: visibility_example
 	visibility,
 	# pageToken: String   Eg: pageToken_example
 	pageToken,
-	# pageToken2: String   Eg: pageToken_example
-	pageToken2,
 	# pageSize: String   Eg: pageSize_example
 	pageSize,
-	# pageSize2: String   Eg: pageSize_example
-	pageSize2,
 	# On Success
 	func(response):  # response is ApiResponse
 		prints("Success!", "icosa_api_users_get_me_assets", response)
-		assert(response.data is PagedAssetSchemaOut)
+		assert(response.data is PagedAssetSchema)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -92,7 +183,7 @@ api.icosa_api_users_get_me_assets(
 # **icosa_api_users_get_me_likedassets**   { #icosa_api_users_get_me_likedassets }
 <a name="icosa_api_users_get_me_likedassets"></a>
 
-> `icosa_api_users_get_me_likedassets(category = null,curated = false,format = null,keywords = null,name = null,description = null,tag = null,orderBy = null,orderBy2 = null,maxComplexity = null,triangleCountMin = null,triangleCountMax = null,authorName = null,authorName2 = null,license = null,pageToken = null,pageToken2 = null,pageSize = null,pageSize2 = null, on_success: Callable, on_failure: Callable)`
+> `icosa_api_users_get_me_likedassets(category = null,curated = false,format = null,keywords = null,name = null,description = null,tag = null,orderBy = null,maxComplexity = null,triangleCountMin = null,triangleCountMax = null,zipArchiveUrl = null,authorName = null,license = null,pageToken = null,pageSize = null, on_success: Callable, on_failure: Callable)`
 
 Get Me Likedassets
 
@@ -100,7 +191,7 @@ Get Me Likedassets
 
 ### Example
 
-* Bearer Authentication (`AuthBearer`)
+* Bearer Authentication (`JWTAuth`)
 
 ```gdscript
 
@@ -119,11 +210,12 @@ var api = UsersApi.new(config)
 
 # Invoke an endpoint
 api.icosa_api_users_get_me_likedassets(
-	# category: String   Eg: category_example
+	# category: Category   Eg: ANIMALS
 	category,
 	# curated: bool = false   Eg: true
 	curated,
 	# format: Array
+	# Filter by format
 	format,
 	# keywords: String   Eg: keywords_example
 	keywords,
@@ -133,34 +225,28 @@ api.icosa_api_users_get_me_likedassets(
 	description,
 	# tag: Array
 	tag,
-	# orderBy: String   Eg: orderBy_example
+	# orderBy: Order
 	orderBy,
-	# orderBy2: String   Eg: orderBy_example
-	orderBy2,
 	# maxComplexity: Complexity
 	maxComplexity,
 	# triangleCountMin: int   Eg: 56
 	triangleCountMin,
 	# triangleCountMax: int   Eg: 56
 	triangleCountMax,
+	# zipArchiveUrl: String   Eg: zipArchiveUrl_example
+	zipArchiveUrl,
 	# authorName: String   Eg: authorName_example
 	authorName,
-	# authorName2: String   Eg: authorName_example
-	authorName2,
-	# license: String   Eg: license_example
+	# license: LicenseFilter
 	license,
 	# pageToken: String   Eg: pageToken_example
 	pageToken,
-	# pageToken2: String   Eg: pageToken_example
-	pageToken2,
 	# pageSize: String   Eg: pageSize_example
 	pageSize,
-	# pageSize2: String   Eg: pageSize_example
-	pageSize2,
 	# On Success
 	func(response):  # response is ApiResponse
 		prints("Success!", "icosa_api_users_get_me_likedassets", response)
-		assert(response.data is PagedAssetSchemaOut)
+		assert(response.data is PagedAssetSchema)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -182,7 +268,7 @@ Get Users Me
 
 ### Example
 
-* Bearer Authentication (`AuthBearer`)
+* Bearer Authentication (`JWTAuth`)
 
 ```gdscript
 
@@ -226,7 +312,7 @@ Update User
 
 ### Example
 
-* Bearer Authentication (`AuthBearer`)
+* Bearer Authentication (`JWTAuth`)
 
 ```gdscript
 
@@ -266,7 +352,7 @@ api.icosa_api_users_update_user(
 
 ### Authorization
 
-[AuthBearer](../README.md#AuthBearer)
+[JWTAuth](../README.md#JWTAuth)
 
 [[Back to top]](#__pageTop) \
 [[Back to API list]](../README.md#documentation-for-api-endpoints) \

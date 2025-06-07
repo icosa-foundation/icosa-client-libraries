@@ -27,10 +27,8 @@ class Input(BaseModel):
     Input
     """ # noqa: E501
     page_token: Optional[StrictStr] = Field(default=None, alias="pageToken")
-    page_token: Optional[StrictStr] = None
     page_size: Optional[StrictStr] = Field(default=None, alias="pageSize")
-    page_size: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["pageToken", "page_token", "pageSize", "page_size"]
+    __properties: ClassVar[List[str]] = ["pageToken", "pageSize"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,9 +82,7 @@ class Input(BaseModel):
 
         _obj = cls.model_validate({
             "pageToken": obj.get("pageToken"),
-            "page_token": obj.get("page_token"),
-            "pageSize": obj.get("pageSize"),
-            "page_size": obj.get("page_size")
+            "pageSize": obj.get("pageSize")
         })
         return _obj
 

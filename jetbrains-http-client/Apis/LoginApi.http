@@ -1,0 +1,6 @@
+## LoginApi
+
+### Device Login
+## Device Login
+POST https://api.icosa.gallery/v1/login/device_login?deviceCode={{deviceCode}}
+Accept: application/json

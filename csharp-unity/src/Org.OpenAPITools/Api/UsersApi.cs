@@ -27,28 +27,62 @@ namespace Org.OpenAPITools.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Delete Asset
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>int</returns>
+        int IcosaApiUsersDeleteAsset(string asset);
+
+        /// <summary>
+        /// Delete Asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>ApiResponse of int</returns>
+        ApiResponse<int> IcosaApiUsersDeleteAssetWithHttpInfo(string asset);
+        /// <summary>
+        /// Get Me Asset
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>AssetSchema</returns>
+        AssetSchema IcosaApiUsersGetMeAsset(string asset);
+
+        /// <summary>
+        /// Get Me Asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>ApiResponse of AssetSchema</returns>
+        ApiResponse<AssetSchema> IcosaApiUsersGetMeAssetWithHttpInfo(string asset);
+        /// <summary>
         /// Get Me Assets
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>PagedAssetSchemaOut</returns>
-        PagedAssetSchemaOut IcosaApiUsersGetMeAssets(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?));
+        /// <returns>PagedAssetSchema</returns>
+        PagedAssetSchema IcosaApiUsersGetMeAssets(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?));
 
         /// <summary>
         /// Get Me Assets
@@ -59,48 +93,43 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>ApiResponse of PagedAssetSchemaOut</returns>
-        ApiResponse<PagedAssetSchemaOut> IcosaApiUsersGetMeAssetsWithHttpInfo(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?));
+        /// <returns>ApiResponse of PagedAssetSchema</returns>
+        ApiResponse<PagedAssetSchema> IcosaApiUsersGetMeAssetsWithHttpInfo(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?));
         /// <summary>
         /// Get Me Likedassets
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>PagedAssetSchemaOut</returns>
-        PagedAssetSchemaOut IcosaApiUsersGetMeLikedassets(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?));
+        /// <returns>PagedAssetSchema</returns>
+        PagedAssetSchema IcosaApiUsersGetMeLikedassets(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?));
 
         /// <summary>
         /// Get Me Likedassets
@@ -111,25 +140,22 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>ApiResponse of PagedAssetSchemaOut</returns>
-        ApiResponse<PagedAssetSchemaOut> IcosaApiUsersGetMeLikedassetsWithHttpInfo(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?));
+        /// <returns>ApiResponse of PagedAssetSchema</returns>
+        ApiResponse<PagedAssetSchema> IcosaApiUsersGetMeLikedassetsWithHttpInfo(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?));
         /// <summary>
         /// Get Users Me
         /// </summary>
@@ -174,6 +200,52 @@ namespace Org.OpenAPITools.Api
     {
         #region Asynchronous Operations
         /// <summary>
+        /// Delete Asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of int</returns>
+        System.Threading.Tasks.Task<int> IcosaApiUsersDeleteAssetAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete Asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (int)</returns>
+        System.Threading.Tasks.Task<ApiResponse<int>> IcosaApiUsersDeleteAssetWithHttpInfoAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
+        /// Get Me Asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AssetSchema</returns>
+        System.Threading.Tasks.Task<AssetSchema> IcosaApiUsersGetMeAssetAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get Me Asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AssetSchema)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AssetSchema>> IcosaApiUsersGetMeAssetWithHttpInfoAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <summary>
         /// Get Me Assets
         /// </summary>
         /// <remarks>
@@ -182,24 +254,22 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PagedAssetSchemaOut</returns>
-        System.Threading.Tasks.Task<PagedAssetSchemaOut> IcosaApiUsersGetMeAssetsAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <returns>Task of PagedAssetSchema</returns>
+        System.Threading.Tasks.Task<PagedAssetSchema> IcosaApiUsersGetMeAssetsAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Get Me Assets
@@ -210,24 +280,22 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PagedAssetSchemaOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PagedAssetSchemaOut>> IcosaApiUsersGetMeAssetsWithHttpInfoAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (PagedAssetSchema)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PagedAssetSchema>> IcosaApiUsersGetMeAssetsWithHttpInfoAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Get Me Likedassets
         /// </summary>
@@ -237,26 +305,23 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PagedAssetSchemaOut</returns>
-        System.Threading.Tasks.Task<PagedAssetSchemaOut> IcosaApiUsersGetMeLikedassetsAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <returns>Task of PagedAssetSchema</returns>
+        System.Threading.Tasks.Task<PagedAssetSchema> IcosaApiUsersGetMeLikedassetsAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Get Me Likedassets
@@ -267,26 +332,23 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PagedAssetSchemaOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PagedAssetSchemaOut>> IcosaApiUsersGetMeLikedassetsWithHttpInfoAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (PagedAssetSchema)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PagedAssetSchema>> IcosaApiUsersGetMeLikedassetsWithHttpInfoAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Get Users Me
         /// </summary>
@@ -476,30 +538,304 @@ namespace Org.OpenAPITools.Api
         }
 
         /// <summary>
+        /// Delete Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>int</returns>
+        public int IcosaApiUsersDeleteAsset(string asset)
+        {
+            Org.OpenAPITools.Client.ApiResponse<int> localVarResponse = IcosaApiUsersDeleteAssetWithHttpInfo(asset);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>ApiResponse of int</returns>
+        public Org.OpenAPITools.Client.ApiResponse<int> IcosaApiUsersDeleteAssetWithHttpInfo(string asset)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'asset' when calling UsersApi->IcosaApiUsersDeleteAsset");
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("asset", Org.OpenAPITools.Client.ClientUtils.ParameterToString(asset)); // path parameter
+
+            // authentication (JWTAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<int>("/v1/users/me/assets/{asset}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("IcosaApiUsersDeleteAsset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of int</returns>
+        public async System.Threading.Tasks.Task<int> IcosaApiUsersDeleteAssetAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            var task = IcosaApiUsersDeleteAssetWithHttpInfoAsync(asset, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Org.OpenAPITools.Client.ApiResponse<int> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Org.OpenAPITools.Client.ApiResponse<int> localVarResponse = await task;
+#endif
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (int)</returns>
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<int>> IcosaApiUsersDeleteAssetWithHttpInfoAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'asset' when calling UsersApi->IcosaApiUsersDeleteAsset");
+
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("asset", Org.OpenAPITools.Client.ClientUtils.ParameterToString(asset)); // path parameter
+
+            // authentication (JWTAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var task = this.AsynchronousClient.DeleteAsync<int>("/v1/users/me/assets/{asset}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("IcosaApiUsersDeleteAsset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get Me Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>AssetSchema</returns>
+        public AssetSchema IcosaApiUsersGetMeAsset(string asset)
+        {
+            Org.OpenAPITools.Client.ApiResponse<AssetSchema> localVarResponse = IcosaApiUsersGetMeAssetWithHttpInfo(asset);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get Me Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <returns>ApiResponse of AssetSchema</returns>
+        public Org.OpenAPITools.Client.ApiResponse<AssetSchema> IcosaApiUsersGetMeAssetWithHttpInfo(string asset)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'asset' when calling UsersApi->IcosaApiUsersGetMeAsset");
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("asset", Org.OpenAPITools.Client.ClientUtils.ParameterToString(asset)); // path parameter
+
+            // authentication (JWTAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<AssetSchema>("/v1/users/me/assets/{asset}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("IcosaApiUsersGetMeAsset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get Me Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AssetSchema</returns>
+        public async System.Threading.Tasks.Task<AssetSchema> IcosaApiUsersGetMeAssetAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            var task = IcosaApiUsersGetMeAssetWithHttpInfoAsync(asset, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Org.OpenAPITools.Client.ApiResponse<AssetSchema> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Org.OpenAPITools.Client.ApiResponse<AssetSchema> localVarResponse = await task;
+#endif
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get Me Asset 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AssetSchema)</returns>
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<AssetSchema>> IcosaApiUsersGetMeAssetWithHttpInfoAsync(string asset, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'asset' when calling UsersApi->IcosaApiUsersGetMeAsset");
+
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("asset", Org.OpenAPITools.Client.ClientUtils.ParameterToString(asset)); // path parameter
+
+            // authentication (JWTAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var task = this.AsynchronousClient.GetAsync<AssetSchema>("/v1/users/me/assets/{asset}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("IcosaApiUsersGetMeAsset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get Me Assets 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>PagedAssetSchemaOut</returns>
-        public PagedAssetSchemaOut IcosaApiUsersGetMeAssets(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?))
+        /// <returns>PagedAssetSchema</returns>
+        public PagedAssetSchema IcosaApiUsersGetMeAssets(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?))
         {
-            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> localVarResponse = IcosaApiUsersGetMeAssetsWithHttpInfo(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, visibility, pageToken, pageToken2, pageSize, pageSize2);
+            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> localVarResponse = IcosaApiUsersGetMeAssetsWithHttpInfo(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, visibility, pageToken, pageSize);
             return localVarResponse.Data;
         }
 
@@ -509,23 +845,21 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>ApiResponse of PagedAssetSchemaOut</returns>
-        public Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> IcosaApiUsersGetMeAssetsWithHttpInfo(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?))
+        /// <returns>ApiResponse of PagedAssetSchema</returns>
+        public Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> IcosaApiUsersGetMeAssetsWithHttpInfo(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?))
         {
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
 
@@ -575,10 +909,6 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "orderBy", orderBy));
             }
-            if (orderBy2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy2));
-            }
             if (maxComplexity != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "maxComplexity", maxComplexity));
@@ -591,6 +921,10 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "triangleCountMax", triangleCountMax));
             }
+            if (zipArchiveUrl != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "zipArchiveUrl", zipArchiveUrl));
+            }
             if (visibility != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "visibility", visibility));
@@ -599,20 +933,12 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageToken", pageToken));
             }
-            if (pageToken2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken2));
-            }
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
             }
-            if (pageSize2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize2));
-            }
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -620,7 +946,7 @@ namespace Org.OpenAPITools.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<PagedAssetSchemaOut>("/v1/users/me/assets", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<PagedAssetSchema>("/v1/users/me/assets", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -637,30 +963,28 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PagedAssetSchemaOut</returns>
-        public async System.Threading.Tasks.Task<PagedAssetSchemaOut> IcosaApiUsersGetMeAssetsAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        /// <returns>Task of PagedAssetSchema</returns>
+        public async System.Threading.Tasks.Task<PagedAssetSchema> IcosaApiUsersGetMeAssetsAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
-            var task = IcosaApiUsersGetMeAssetsWithHttpInfoAsync(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, visibility, pageToken, pageToken2, pageSize, pageSize2, cancellationToken);
+            var task = IcosaApiUsersGetMeAssetsWithHttpInfoAsync(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, visibility, pageToken, pageSize, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> localVarResponse = await task.ConfigureAwait(false);
+            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> localVarResponse = await task;
+            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -671,24 +995,22 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="visibility"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PagedAssetSchemaOut)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut>> IcosaApiUsersGetMeAssetsWithHttpInfoAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? visibility = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (PagedAssetSchema)</returns>
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema>> IcosaApiUsersGetMeAssetsWithHttpInfoAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? visibility = default(string?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -740,10 +1062,6 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "orderBy", orderBy));
             }
-            if (orderBy2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy2));
-            }
             if (maxComplexity != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "maxComplexity", maxComplexity));
@@ -756,6 +1074,10 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "triangleCountMax", triangleCountMax));
             }
+            if (zipArchiveUrl != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "zipArchiveUrl", zipArchiveUrl));
+            }
             if (visibility != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "visibility", visibility));
@@ -764,20 +1086,12 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageToken", pageToken));
             }
-            if (pageToken2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken2));
-            }
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
             }
-            if (pageSize2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize2));
-            }
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -786,7 +1100,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<PagedAssetSchemaOut>("/v1/users/me/assets", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<PagedAssetSchema>("/v1/users/me/assets", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -809,27 +1123,24 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>PagedAssetSchemaOut</returns>
-        public PagedAssetSchemaOut IcosaApiUsersGetMeLikedassets(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?))
+        /// <returns>PagedAssetSchema</returns>
+        public PagedAssetSchema IcosaApiUsersGetMeLikedassets(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?))
         {
-            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> localVarResponse = IcosaApiUsersGetMeLikedassetsWithHttpInfo(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, authorName, authorName2, license, pageToken, pageToken2, pageSize, pageSize2);
+            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> localVarResponse = IcosaApiUsersGetMeLikedassetsWithHttpInfo(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, authorName, license, pageToken, pageSize);
             return localVarResponse.Data;
         }
 
@@ -839,25 +1150,22 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
-        /// <returns>ApiResponse of PagedAssetSchemaOut</returns>
-        public Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> IcosaApiUsersGetMeLikedassetsWithHttpInfo(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?))
+        /// <returns>ApiResponse of PagedAssetSchema</returns>
+        public Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> IcosaApiUsersGetMeLikedassetsWithHttpInfo(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?))
         {
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
 
@@ -907,10 +1215,6 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "orderBy", orderBy));
             }
-            if (orderBy2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy2));
-            }
             if (maxComplexity != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "maxComplexity", maxComplexity));
@@ -923,13 +1227,13 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "triangleCountMax", triangleCountMax));
             }
+            if (zipArchiveUrl != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "zipArchiveUrl", zipArchiveUrl));
+            }
             if (authorName != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "authorName", authorName));
-            }
-            if (authorName2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "author_name", authorName2));
             }
             if (license != null)
             {
@@ -939,20 +1243,12 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageToken", pageToken));
             }
-            if (pageToken2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken2));
-            }
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
             }
-            if (pageSize2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize2));
-            }
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -960,7 +1256,7 @@ namespace Org.OpenAPITools.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<PagedAssetSchemaOut>("/v1/users/me/likedassets", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<PagedAssetSchema>("/v1/users/me/likedassets", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -977,32 +1273,29 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PagedAssetSchemaOut</returns>
-        public async System.Threading.Tasks.Task<PagedAssetSchemaOut> IcosaApiUsersGetMeLikedassetsAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        /// <returns>Task of PagedAssetSchema</returns>
+        public async System.Threading.Tasks.Task<PagedAssetSchema> IcosaApiUsersGetMeLikedassetsAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
-            var task = IcosaApiUsersGetMeLikedassetsWithHttpInfoAsync(category, curated, format, keywords, name, description, tag, orderBy, orderBy2, maxComplexity, triangleCountMin, triangleCountMax, authorName, authorName2, license, pageToken, pageToken2, pageSize, pageSize2, cancellationToken);
+            var task = IcosaApiUsersGetMeLikedassetsWithHttpInfoAsync(category, curated, format, keywords, name, description, tag, orderBy, maxComplexity, triangleCountMin, triangleCountMax, zipArchiveUrl, authorName, license, pageToken, pageSize, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> localVarResponse = await task.ConfigureAwait(false);
+            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut> localVarResponse = await task;
+            Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -1013,26 +1306,23 @@ namespace Org.OpenAPITools.Api
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="curated"> (optional, default to false)</param>
-        /// <param name="format"> (optional)</param>
+        /// <param name="format">Filter by format (optional)</param>
         /// <param name="keywords"> (optional)</param>
         /// <param name="name"> (optional)</param>
         /// <param name="description"> (optional)</param>
         /// <param name="tag"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
-        /// <param name="orderBy2"> (optional)</param>
         /// <param name="maxComplexity"> (optional)</param>
         /// <param name="triangleCountMin"> (optional)</param>
         /// <param name="triangleCountMax"> (optional)</param>
+        /// <param name="zipArchiveUrl"> (optional)</param>
         /// <param name="authorName"> (optional)</param>
-        /// <param name="authorName2"> (optional)</param>
         /// <param name="license"> (optional)</param>
         /// <param name="pageToken"> (optional)</param>
-        /// <param name="pageToken2"> (optional)</param>
         /// <param name="pageSize"> (optional)</param>
-        /// <param name="pageSize2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PagedAssetSchemaOut)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<PagedAssetSchemaOut>> IcosaApiUsersGetMeLikedassetsWithHttpInfoAsync(string? category = default(string?), bool? curated = default(bool?), List<string>? format = default(List<string>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), string? orderBy = default(string?), string? orderBy2 = default(string?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? authorName = default(string?), string? authorName2 = default(string?), string? license = default(string?), string? pageToken = default(string?), string? pageToken2 = default(string?), string? pageSize = default(string?), string? pageSize2 = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (PagedAssetSchema)</returns>
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<PagedAssetSchema>> IcosaApiUsersGetMeLikedassetsWithHttpInfoAsync(Category? category = default(Category?), bool? curated = default(bool?), List<FormatFilter>? format = default(List<FormatFilter>?), string? keywords = default(string?), string? name = default(string?), string? description = default(string?), List<string>? tag = default(List<string>?), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string? zipArchiveUrl = default(string?), string? authorName = default(string?), LicenseFilter? license = default(LicenseFilter?), string? pageToken = default(string?), string? pageSize = default(string?), System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -1084,10 +1374,6 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "orderBy", orderBy));
             }
-            if (orderBy2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy2));
-            }
             if (maxComplexity != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "maxComplexity", maxComplexity));
@@ -1100,13 +1386,13 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "triangleCountMax", triangleCountMax));
             }
+            if (zipArchiveUrl != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "zipArchiveUrl", zipArchiveUrl));
+            }
             if (authorName != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "authorName", authorName));
-            }
-            if (authorName2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "author_name", authorName2));
             }
             if (license != null)
             {
@@ -1116,20 +1402,12 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageToken", pageToken));
             }
-            if (pageToken2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken2));
-            }
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
             }
-            if (pageSize2 != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize2));
-            }
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1138,7 +1416,7 @@ namespace Org.OpenAPITools.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<PagedAssetSchemaOut>("/v1/users/me/likedassets", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<PagedAssetSchema>("/v1/users/me/likedassets", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -1190,7 +1468,7 @@ namespace Org.OpenAPITools.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1253,7 +1531,7 @@ namespace Org.OpenAPITools.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1322,7 +1600,7 @@ namespace Org.OpenAPITools.Api
 
             localVarRequestOptions.Data = patchUserSchema;
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1393,7 +1671,7 @@ namespace Org.OpenAPITools.Api
 
             localVarRequestOptions.Data = patchUserSchema;
 
-            // authentication (AuthBearer) required
+            // authentication (JWTAuth) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

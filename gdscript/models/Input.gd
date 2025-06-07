@@ -20,27 +20,11 @@ var __pageToken__was__set := false
 
 # Required: False
 # isArray: false
-@export var pageUnderscoretoken: String:
-	set(value):
-		__pageUnderscoretoken__was__set = true
-		pageUnderscoretoken = value
-var __pageUnderscoretoken__was__set := false
-
-# Required: False
-# isArray: false
 @export var pageSize: String:
 	set(value):
 		__pageSize__was__set = true
 		pageSize = value
 var __pageSize__was__set := false
-
-# Required: False
-# isArray: false
-@export var pageUnderscoresize: String:
-	set(value):
-		__pageUnderscoresize__was__set = true
-		pageUnderscoresize = value
-var __pageUnderscoresize__was__set := false
 
 
 func bzz_collect_missing_properties() -> Array:
@@ -52,12 +36,8 @@ func bzz_normalize() -> Dictionary:
 	var bzz_dictionary := Dictionary()
 	if self.__pageToken__was__set:
 		bzz_dictionary["pageToken"] = self.pageToken
-	if self.__pageUnderscoretoken__was__set:
-		bzz_dictionary["pageUnderscoretoken"] = self.pageUnderscoretoken
 	if self.__pageSize__was__set:
 		bzz_dictionary["pageSize"] = self.pageSize
-	if self.__pageUnderscoresize__was__set:
-		bzz_dictionary["pageUnderscoresize"] = self.pageUnderscoresize
 	return bzz_dictionary
 
 
@@ -66,12 +46,8 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 	var me := new()
 	if from_dict.has("pageToken"):
 		me.pageToken = from_dict["pageToken"]
-	if from_dict.has("pageUnderscoretoken"):
-		me.pageUnderscoretoken = from_dict["pageUnderscoretoken"]
 	if from_dict.has("pageSize"):
 		me.pageSize = from_dict["pageSize"]
-	if from_dict.has("pageUnderscoresize"):
-		me.pageUnderscoresize = from_dict["pageUnderscoresize"]
 	return me
 
 

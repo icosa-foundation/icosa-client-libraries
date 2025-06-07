@@ -12,11 +12,11 @@ class_name PatchUserSchema
 
 # Required: False
 # isArray: false
-@export var url: String:
+@export var email: String:
 	set(value):
-		__url__was__set = true
-		url = value
-var __url__was__set := false
+		__email__was__set = true
+		email = value
+var __email__was__set := false
 
 # Required: False
 # isArray: false
@@ -42,8 +42,8 @@ func bzz_collect_missing_properties() -> Array:
 
 func bzz_normalize() -> Dictionary:
 	var bzz_dictionary := Dictionary()
-	if self.__url__was__set:
-		bzz_dictionary["url"] = self.url
+	if self.__email__was__set:
+		bzz_dictionary["email"] = self.email
 	if self.__displayname__was__set:
 		bzz_dictionary["displayname"] = self.displayname
 	if self.__description__was__set:
@@ -54,8 +54,8 @@ func bzz_normalize() -> Dictionary:
 # Won't work for JSON+LD
 static func bzz_denormalize_single(from_dict: Dictionary):
 	var me := new()
-	if from_dict.has("url"):
-		me.url = from_dict["url"]
+	if from_dict.has("email"):
+		me.email = from_dict["email"]
 	if from_dict.has("displayname"):
 		me.displayname = from_dict["displayname"]
 	if from_dict.has("description"):

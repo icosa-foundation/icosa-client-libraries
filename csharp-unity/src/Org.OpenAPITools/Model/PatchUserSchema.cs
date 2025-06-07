@@ -33,21 +33,21 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PatchUserSchema" /> class.
         /// </summary>
-        /// <param name="url">url.</param>
+        /// <param name="email">email.</param>
         /// <param name="displayname">displayname.</param>
         /// <param name="description">description.</param>
-        public PatchUserSchema(string url = default(string), string displayname = default(string), string description = default(string))
+        public PatchUserSchema(string email = default(string), string displayname = default(string), string description = default(string))
         {
-            this.Url = url;
+            this.Email = email;
             this.Displayname = displayname;
             this.Description = description;
         }
 
         /// <summary>
-        /// Gets or Sets Url
+        /// Gets or Sets Email
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = true)]
-        public string Url { get; set; }
+        [DataMember(Name = "email", EmitDefaultValue = true)]
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or Sets Displayname
@@ -69,7 +69,7 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class PatchUserSchema {\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Displayname: ").Append(Displayname).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("}\n");

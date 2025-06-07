@@ -20,7 +20,6 @@ __version__ = "1.0.0"
 from openapi_client.api.assets_api import AssetsApi
 from openapi_client.api.login_api import LoginApi
 from openapi_client.api.oembed_api import OembedApi
-from openapi_client.api.poly_api import PolyApi
 from openapi_client.api.users_api import UsersApi
 
 # import ApiClient
@@ -38,14 +37,18 @@ from openapi_client.exceptions import ApiException
 from openapi_client.models.asset_filters import AssetFilters
 from openapi_client.models.asset_format import AssetFormat
 from openapi_client.models.asset_resource import AssetResource
-from openapi_client.models.asset_schema_out import AssetSchemaOut
+from openapi_client.models.asset_schema import AssetSchema
+from openapi_client.models.category import Category
 from openapi_client.models.complexity import Complexity
 from openapi_client.models.format_complexity import FormatComplexity
+from openapi_client.models.format_filter import FormatFilter
 from openapi_client.models.full_user_schema import FullUserSchema
 from openapi_client.models.input import Input
+from openapi_client.models.license_filter import LicenseFilter
 from openapi_client.models.login_token import LoginToken
 from openapi_client.models.oembed_out import OembedOut
-from openapi_client.models.paged_asset_schema_out import PagedAssetSchemaOut
+from openapi_client.models.order import Order
+from openapi_client.models.paged_asset_schema import PagedAssetSchema
 from openapi_client.models.patch_user_schema import PatchUserSchema
 from openapi_client.models.thumbnail import Thumbnail
 from openapi_client.models.user_asset_filters import UserAssetFilters

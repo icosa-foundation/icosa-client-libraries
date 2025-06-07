@@ -15,13 +15,6 @@ use crate::{apis::ResponseContent, models};
 use super::{Error, configuration};
 
 
-/// struct for typed errors of method [`icosa_api_assets_delete_asset`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum IcosaApiAssetsDeleteAssetError {
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`icosa_api_assets_get_asset`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -36,52 +29,8 @@ pub enum IcosaApiAssetsGetAssetsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`icosa_api_assets_get_user_asset`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum IcosaApiAssetsGetUserAssetError {
-    UnknownValue(serde_json::Value),
-}
 
-/// struct for typed errors of method [`icosa_api_assets_unpublish_asset`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum IcosaApiAssetsUnpublishAssetError {
-    UnknownValue(serde_json::Value),
-}
-
-
-pub async fn icosa_api_assets_delete_asset(configuration: &configuration::Configuration, asset: &str) -> Result<i32, Error<IcosaApiAssetsDeleteAssetError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/v1/assets/{asset}", local_var_configuration.base_path, asset=crate::apis::urlencode(asset));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<IcosaApiAssetsDeleteAssetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-pub async fn icosa_api_assets_get_asset(configuration: &configuration::Configuration, asset: &str) -> Result<models::AssetSchemaOut, Error<IcosaApiAssetsGetAssetError>> {
+pub async fn icosa_api_assets_get_asset(configuration: &configuration::Configuration, asset: &str) -> Result<models::AssetSchema, Error<IcosaApiAssetsGetAssetError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -108,7 +57,7 @@ pub async fn icosa_api_assets_get_asset(configuration: &configuration::Configura
     }
 }
 
-pub async fn icosa_api_assets_get_assets(configuration: &configuration::Configuration, category: Option<&str>, curated: Option<bool>, format: Option<Vec<String>>, keywords: Option<&str>, name: Option<&str>, description: Option<&str>, tag: Option<Vec<String>>, order_by: Option<&str>, order_by2: Option<&str>, max_complexity: Option<models::Complexity>, triangle_count_min: Option<i32>, triangle_count_max: Option<i32>, author_name: Option<&str>, author_name2: Option<&str>, license: Option<&str>, page_token: Option<&str>, page_token2: Option<&str>, page_size: Option<&str>, page_size2: Option<&str>) -> Result<models::PagedAssetSchemaOut, Error<IcosaApiAssetsGetAssetsError>> {
+pub async fn icosa_api_assets_get_assets(configuration: &configuration::Configuration, category: Option<models::Category>, curated: Option<bool>, format: Option<Vec<models::FormatFilter>>, keywords: Option<&str>, name: Option<&str>, description: Option<&str>, tag: Option<Vec<String>>, order_by: Option<models::Order>, max_complexity: Option<models::Complexity>, triangle_count_min: Option<i32>, triangle_count_max: Option<i32>, zip_archive_url: Option<&str>, author_name: Option<&str>, license: Option<models::LicenseFilter>, page_token: Option<&str>, page_size: Option<&str>) -> Result<models::PagedAssetSchema, Error<IcosaApiAssetsGetAssetsError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -146,9 +95,6 @@ pub async fn icosa_api_assets_get_assets(configuration: &configuration::Configur
     if let Some(ref local_var_str) = order_by {
         local_var_req_builder = local_var_req_builder.query(&[("orderBy", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_str) = order_by2 {
-        local_var_req_builder = local_var_req_builder.query(&[("order_by", &local_var_str.to_string())]);
-    }
     if let Some(ref local_var_str) = max_complexity {
         local_var_req_builder = local_var_req_builder.query(&[("maxComplexity", &local_var_str.to_string())]);
     }
@@ -158,11 +104,11 @@ pub async fn icosa_api_assets_get_assets(configuration: &configuration::Configur
     if let Some(ref local_var_str) = triangle_count_max {
         local_var_req_builder = local_var_req_builder.query(&[("triangleCountMax", &local_var_str.to_string())]);
     }
+    if let Some(ref local_var_str) = zip_archive_url {
+        local_var_req_builder = local_var_req_builder.query(&[("zipArchiveUrl", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = author_name {
         local_var_req_builder = local_var_req_builder.query(&[("authorName", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_str) = author_name2 {
-        local_var_req_builder = local_var_req_builder.query(&[("author_name", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_str) = license {
         local_var_req_builder = local_var_req_builder.query(&[("license", &local_var_str.to_string())]);
@@ -170,14 +116,8 @@ pub async fn icosa_api_assets_get_assets(configuration: &configuration::Configur
     if let Some(ref local_var_str) = page_token {
         local_var_req_builder = local_var_req_builder.query(&[("pageToken", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_str) = page_token2 {
-        local_var_req_builder = local_var_req_builder.query(&[("page_token", &local_var_str.to_string())]);
-    }
     if let Some(ref local_var_str) = page_size {
         local_var_req_builder = local_var_req_builder.query(&[("pageSize", &local_var_str.to_string())]);
-    }
-    if let Some(ref local_var_str) = page_size2 {
-        local_var_req_builder = local_var_req_builder.query(&[("page_size", &local_var_str.to_string())]);
     }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
@@ -193,63 +133,6 @@ pub async fn icosa_api_assets_get_assets(configuration: &configuration::Configur
         serde_json::from_str(&local_var_content).map_err(Error::from)
     } else {
         let local_var_entity: Option<IcosaApiAssetsGetAssetsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-pub async fn icosa_api_assets_get_user_asset(configuration: &configuration::Configuration, userurl: &str, asseturl: &str) -> Result<models::AssetSchemaOut, Error<IcosaApiAssetsGetUserAssetError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/v1/assets/{userurl}/{asseturl}", local_var_configuration.base_path, userurl=crate::apis::urlencode(userurl), asseturl=crate::apis::urlencode(asseturl));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<IcosaApiAssetsGetUserAssetError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
-pub async fn icosa_api_assets_unpublish_asset(configuration: &configuration::Configuration, asset: i32) -> Result<models::AssetSchemaOut, Error<IcosaApiAssetsUnpublishAssetError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/v1/assets/{asset}/unpublish", local_var_configuration.base_path, asset=asset);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PATCH, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    if let Some(ref local_var_token) = local_var_configuration.bearer_access_token {
-        local_var_req_builder = local_var_req_builder.bearer_auth(local_var_token.to_owned());
-    };
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<IcosaApiAssetsUnpublishAssetError> = serde_json::from_str(&local_var_content).ok();
         let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
         Err(Error::ResponseError(local_var_error))
     }

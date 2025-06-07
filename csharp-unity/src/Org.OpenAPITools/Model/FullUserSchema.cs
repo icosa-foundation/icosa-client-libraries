@@ -39,25 +39,32 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="FullUserSchema" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="url">url (required).</param>
+        /// <param name="username">username (required).</param>
         /// <param name="email">email (required).</param>
         /// <param name="displayName">displayName.</param>
         /// <param name="description">description.</param>
-        public FullUserSchema(int id = default(int), string url = default(string), string email = default(string), string displayName = default(string), string description = default(string))
+        /// <param name="url">url (required).</param>
+        public FullUserSchema(int id = default(int), string username = default(string), string email = default(string), string displayName = default(string), string description = default(string), string url = default(string))
         {
             this.Id = id;
-            // to ensure "url" is required (not null)
-            if (url == null)
+            // to ensure "username" is required (not null)
+            if (username == null)
             {
-                throw new ArgumentNullException("url is a required property for FullUserSchema and cannot be null");
+                throw new ArgumentNullException("username is a required property for FullUserSchema and cannot be null");
             }
-            this.Url = url;
+            this.Username = username;
             // to ensure "email" is required (not null)
             if (email == null)
             {
                 throw new ArgumentNullException("email is a required property for FullUserSchema and cannot be null");
             }
             this.Email = email;
+            // to ensure "url" is required (not null)
+            if (url == null)
+            {
+                throw new ArgumentNullException("url is a required property for FullUserSchema and cannot be null");
+            }
+            this.Url = url;
             this.DisplayName = displayName;
             this.Description = description;
         }
@@ -69,10 +76,10 @@ namespace Org.OpenAPITools.Model
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Url
+        /// Gets or Sets Username
         /// </summary>
-        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = true)]
-        public string Url { get; set; }
+        [DataMember(Name = "username", IsRequired = true, EmitDefaultValue = true)]
+        public string Username { get; set; }
 
         /// <summary>
         /// Gets or Sets Email
@@ -93,6 +100,12 @@ namespace Org.OpenAPITools.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or Sets Url
+        /// </summary>
+        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = true)]
+        public string Url { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,10 +114,11 @@ namespace Org.OpenAPITools.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class FullUserSchema {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

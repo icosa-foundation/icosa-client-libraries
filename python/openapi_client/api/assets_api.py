@@ -16,11 +16,16 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictBool, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
-from openapi_client.models.asset_schema_out import AssetSchemaOut
+from typing_extensions import Annotated
+from openapi_client.models.asset_schema import AssetSchema
+from openapi_client.models.category import Category
 from openapi_client.models.complexity import Complexity
-from openapi_client.models.paged_asset_schema_out import PagedAssetSchemaOut
+from openapi_client.models.format_filter import FormatFilter
+from openapi_client.models.license_filter import LicenseFilter
+from openapi_client.models.order import Order
+from openapi_client.models.paged_asset_schema import PagedAssetSchema
 
 from openapi_client.api_client import ApiClient, RequestSerialized
 from openapi_client.api_response import ApiResponse
@@ -41,264 +46,6 @@ class AssetsApi:
 
 
     @validate_call
-    def icosa_api_assets_delete_asset(
-        self,
-        asset: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> int:
-        """Delete Asset
-
-
-        :param asset: (required)
-        :type asset: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_delete_asset_serialize(
-            asset=asset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': "int",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def icosa_api_assets_delete_asset_with_http_info(
-        self,
-        asset: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[int]:
-        """Delete Asset
-
-
-        :param asset: (required)
-        :type asset: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_delete_asset_serialize(
-            asset=asset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': "int",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def icosa_api_assets_delete_asset_without_preload_content(
-        self,
-        asset: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Delete Asset
-
-
-        :param asset: (required)
-        :type asset: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_delete_asset_serialize(
-            asset=asset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '204': "int",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _icosa_api_assets_delete_asset_serialize(
-        self,
-        asset,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if asset is not None:
-            _path_params['asset'] = asset
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'AuthBearer'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/v1/assets/{asset}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def icosa_api_assets_get_asset(
         self,
         asset: StrictStr,
@@ -314,7 +61,7 @@ class AssetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AssetSchemaOut:
+    ) -> AssetSchema:
         """Get Asset
 
 
@@ -351,7 +98,7 @@ class AssetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
+            '200': "AssetSchema",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -380,7 +127,7 @@ class AssetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AssetSchemaOut]:
+    ) -> ApiResponse[AssetSchema]:
         """Get Asset
 
 
@@ -417,7 +164,7 @@ class AssetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
+            '200': "AssetSchema",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -483,7 +230,7 @@ class AssetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
+            '200': "AssetSchema",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -558,25 +305,22 @@ class AssetsApi:
     @validate_call
     def icosa_api_assets_get_assets(
         self,
-        category: Optional[StrictStr] = None,
+        category: Optional[Category] = None,
         curated: Optional[StrictBool] = None,
-        format: Optional[List[Optional[StrictStr]]] = None,
+        format: Annotated[Optional[List[FormatFilter]], Field(description="Filter by format")] = None,
         keywords: Optional[StrictStr] = None,
         name: Optional[StrictStr] = None,
         description: Optional[StrictStr] = None,
         tag: Optional[List[Optional[StrictStr]]] = None,
-        order_by: Optional[StrictStr] = None,
-        order_by2: Optional[StrictStr] = None,
+        order_by: Optional[Order] = None,
         max_complexity: Optional[Complexity] = None,
         triangle_count_min: Optional[StrictInt] = None,
         triangle_count_max: Optional[StrictInt] = None,
+        zip_archive_url: Optional[StrictStr] = None,
         author_name: Optional[StrictStr] = None,
-        author_name2: Optional[StrictStr] = None,
-        license: Optional[StrictStr] = None,
+        license: Optional[LicenseFilter] = None,
         page_token: Optional[StrictStr] = None,
-        page_token2: Optional[StrictStr] = None,
         page_size: Optional[StrictStr] = None,
-        page_size2: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -589,16 +333,16 @@ class AssetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PagedAssetSchemaOut:
+    ) -> PagedAssetSchema:
         """Get Assets
 
 
         :param category:
-        :type category: str
+        :type category: Category
         :param curated:
         :type curated: bool
-        :param format:
-        :type format: List[Optional[str]]
+        :param format: Filter by format
+        :type format: List[FormatFilter]
         :param keywords:
         :type keywords: str
         :param name:
@@ -608,29 +352,23 @@ class AssetsApi:
         :param tag:
         :type tag: List[Optional[str]]
         :param order_by:
-        :type order_by: str
-        :param order_by2:
-        :type order_by2: str
+        :type order_by: Order
         :param max_complexity:
         :type max_complexity: Complexity
         :param triangle_count_min:
         :type triangle_count_min: int
         :param triangle_count_max:
         :type triangle_count_max: int
+        :param zip_archive_url:
+        :type zip_archive_url: str
         :param author_name:
         :type author_name: str
-        :param author_name2:
-        :type author_name2: str
         :param license:
-        :type license: str
+        :type license: LicenseFilter
         :param page_token:
         :type page_token: str
-        :param page_token2:
-        :type page_token2: str
         :param page_size:
         :type page_size: str
-        :param page_size2:
-        :type page_size2: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -662,17 +400,14 @@ class AssetsApi:
             description=description,
             tag=tag,
             order_by=order_by,
-            order_by2=order_by2,
             max_complexity=max_complexity,
             triangle_count_min=triangle_count_min,
             triangle_count_max=triangle_count_max,
+            zip_archive_url=zip_archive_url,
             author_name=author_name,
-            author_name2=author_name2,
             license=license,
             page_token=page_token,
-            page_token2=page_token2,
             page_size=page_size,
-            page_size2=page_size2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -680,7 +415,7 @@ class AssetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PagedAssetSchemaOut",
+            '200': "PagedAssetSchema",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -696,25 +431,22 @@ class AssetsApi:
     @validate_call
     def icosa_api_assets_get_assets_with_http_info(
         self,
-        category: Optional[StrictStr] = None,
+        category: Optional[Category] = None,
         curated: Optional[StrictBool] = None,
-        format: Optional[List[Optional[StrictStr]]] = None,
+        format: Annotated[Optional[List[FormatFilter]], Field(description="Filter by format")] = None,
         keywords: Optional[StrictStr] = None,
         name: Optional[StrictStr] = None,
         description: Optional[StrictStr] = None,
         tag: Optional[List[Optional[StrictStr]]] = None,
-        order_by: Optional[StrictStr] = None,
-        order_by2: Optional[StrictStr] = None,
+        order_by: Optional[Order] = None,
         max_complexity: Optional[Complexity] = None,
         triangle_count_min: Optional[StrictInt] = None,
         triangle_count_max: Optional[StrictInt] = None,
+        zip_archive_url: Optional[StrictStr] = None,
         author_name: Optional[StrictStr] = None,
-        author_name2: Optional[StrictStr] = None,
-        license: Optional[StrictStr] = None,
+        license: Optional[LicenseFilter] = None,
         page_token: Optional[StrictStr] = None,
-        page_token2: Optional[StrictStr] = None,
         page_size: Optional[StrictStr] = None,
-        page_size2: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -727,16 +459,16 @@ class AssetsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PagedAssetSchemaOut]:
+    ) -> ApiResponse[PagedAssetSchema]:
         """Get Assets
 
 
         :param category:
-        :type category: str
+        :type category: Category
         :param curated:
         :type curated: bool
-        :param format:
-        :type format: List[Optional[str]]
+        :param format: Filter by format
+        :type format: List[FormatFilter]
         :param keywords:
         :type keywords: str
         :param name:
@@ -746,29 +478,23 @@ class AssetsApi:
         :param tag:
         :type tag: List[Optional[str]]
         :param order_by:
-        :type order_by: str
-        :param order_by2:
-        :type order_by2: str
+        :type order_by: Order
         :param max_complexity:
         :type max_complexity: Complexity
         :param triangle_count_min:
         :type triangle_count_min: int
         :param triangle_count_max:
         :type triangle_count_max: int
+        :param zip_archive_url:
+        :type zip_archive_url: str
         :param author_name:
         :type author_name: str
-        :param author_name2:
-        :type author_name2: str
         :param license:
-        :type license: str
+        :type license: LicenseFilter
         :param page_token:
         :type page_token: str
-        :param page_token2:
-        :type page_token2: str
         :param page_size:
         :type page_size: str
-        :param page_size2:
-        :type page_size2: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -800,17 +526,14 @@ class AssetsApi:
             description=description,
             tag=tag,
             order_by=order_by,
-            order_by2=order_by2,
             max_complexity=max_complexity,
             triangle_count_min=triangle_count_min,
             triangle_count_max=triangle_count_max,
+            zip_archive_url=zip_archive_url,
             author_name=author_name,
-            author_name2=author_name2,
             license=license,
             page_token=page_token,
-            page_token2=page_token2,
             page_size=page_size,
-            page_size2=page_size2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -818,7 +541,7 @@ class AssetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PagedAssetSchemaOut",
+            '200': "PagedAssetSchema",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -834,25 +557,22 @@ class AssetsApi:
     @validate_call
     def icosa_api_assets_get_assets_without_preload_content(
         self,
-        category: Optional[StrictStr] = None,
+        category: Optional[Category] = None,
         curated: Optional[StrictBool] = None,
-        format: Optional[List[Optional[StrictStr]]] = None,
+        format: Annotated[Optional[List[FormatFilter]], Field(description="Filter by format")] = None,
         keywords: Optional[StrictStr] = None,
         name: Optional[StrictStr] = None,
         description: Optional[StrictStr] = None,
         tag: Optional[List[Optional[StrictStr]]] = None,
-        order_by: Optional[StrictStr] = None,
-        order_by2: Optional[StrictStr] = None,
+        order_by: Optional[Order] = None,
         max_complexity: Optional[Complexity] = None,
         triangle_count_min: Optional[StrictInt] = None,
         triangle_count_max: Optional[StrictInt] = None,
+        zip_archive_url: Optional[StrictStr] = None,
         author_name: Optional[StrictStr] = None,
-        author_name2: Optional[StrictStr] = None,
-        license: Optional[StrictStr] = None,
+        license: Optional[LicenseFilter] = None,
         page_token: Optional[StrictStr] = None,
-        page_token2: Optional[StrictStr] = None,
         page_size: Optional[StrictStr] = None,
-        page_size2: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -870,11 +590,11 @@ class AssetsApi:
 
 
         :param category:
-        :type category: str
+        :type category: Category
         :param curated:
         :type curated: bool
-        :param format:
-        :type format: List[Optional[str]]
+        :param format: Filter by format
+        :type format: List[FormatFilter]
         :param keywords:
         :type keywords: str
         :param name:
@@ -884,29 +604,23 @@ class AssetsApi:
         :param tag:
         :type tag: List[Optional[str]]
         :param order_by:
-        :type order_by: str
-        :param order_by2:
-        :type order_by2: str
+        :type order_by: Order
         :param max_complexity:
         :type max_complexity: Complexity
         :param triangle_count_min:
         :type triangle_count_min: int
         :param triangle_count_max:
         :type triangle_count_max: int
+        :param zip_archive_url:
+        :type zip_archive_url: str
         :param author_name:
         :type author_name: str
-        :param author_name2:
-        :type author_name2: str
         :param license:
-        :type license: str
+        :type license: LicenseFilter
         :param page_token:
         :type page_token: str
-        :param page_token2:
-        :type page_token2: str
         :param page_size:
         :type page_size: str
-        :param page_size2:
-        :type page_size2: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -938,17 +652,14 @@ class AssetsApi:
             description=description,
             tag=tag,
             order_by=order_by,
-            order_by2=order_by2,
             max_complexity=max_complexity,
             triangle_count_min=triangle_count_min,
             triangle_count_max=triangle_count_max,
+            zip_archive_url=zip_archive_url,
             author_name=author_name,
-            author_name2=author_name2,
             license=license,
             page_token=page_token,
-            page_token2=page_token2,
             page_size=page_size,
-            page_size2=page_size2,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -956,7 +667,7 @@ class AssetsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PagedAssetSchemaOut",
+            '200': "PagedAssetSchema",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -975,17 +686,14 @@ class AssetsApi:
         description,
         tag,
         order_by,
-        order_by2,
         max_complexity,
         triangle_count_min,
         triangle_count_max,
+        zip_archive_url,
         author_name,
-        author_name2,
         license,
         page_token,
-        page_token2,
         page_size,
-        page_size2,
         _request_auth,
         _content_type,
         _headers,
@@ -1012,7 +720,7 @@ class AssetsApi:
         # process the query parameters
         if category is not None:
             
-            _query_params.append(('category', category))
+            _query_params.append(('category', category.value))
             
         if curated is not None:
             
@@ -1040,11 +748,7 @@ class AssetsApi:
             
         if order_by is not None:
             
-            _query_params.append(('orderBy', order_by))
-            
-        if order_by2 is not None:
-            
-            _query_params.append(('order_by', order_by2))
+            _query_params.append(('orderBy', order_by.value))
             
         if max_complexity is not None:
             
@@ -1058,33 +762,25 @@ class AssetsApi:
             
             _query_params.append(('triangleCountMax', triangle_count_max))
             
+        if zip_archive_url is not None:
+            
+            _query_params.append(('zipArchiveUrl', zip_archive_url))
+            
         if author_name is not None:
             
             _query_params.append(('authorName', author_name))
             
-        if author_name2 is not None:
-            
-            _query_params.append(('author_name', author_name2))
-            
         if license is not None:
             
-            _query_params.append(('license', license))
+            _query_params.append(('license', license.value))
             
         if page_token is not None:
             
             _query_params.append(('pageToken', page_token))
             
-        if page_token2 is not None:
-            
-            _query_params.append(('page_token', page_token2))
-            
         if page_size is not None:
             
             _query_params.append(('pageSize', page_size))
-            
-        if page_size2 is not None:
-            
-            _query_params.append(('page_size', page_size2))
             
         # process the header parameters
         # process the form parameters
@@ -1107,536 +803,6 @@ class AssetsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/assets',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def icosa_api_assets_get_user_asset(
-        self,
-        userurl: StrictStr,
-        asseturl: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AssetSchemaOut:
-        """Get User Asset
-
-
-        :param userurl: (required)
-        :type userurl: str
-        :param asseturl: (required)
-        :type asseturl: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_get_user_asset_serialize(
-            userurl=userurl,
-            asseturl=asseturl,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def icosa_api_assets_get_user_asset_with_http_info(
-        self,
-        userurl: StrictStr,
-        asseturl: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AssetSchemaOut]:
-        """Get User Asset
-
-
-        :param userurl: (required)
-        :type userurl: str
-        :param asseturl: (required)
-        :type asseturl: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_get_user_asset_serialize(
-            userurl=userurl,
-            asseturl=asseturl,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def icosa_api_assets_get_user_asset_without_preload_content(
-        self,
-        userurl: StrictStr,
-        asseturl: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Get User Asset
-
-
-        :param userurl: (required)
-        :type userurl: str
-        :param asseturl: (required)
-        :type asseturl: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_get_user_asset_serialize(
-            userurl=userurl,
-            asseturl=asseturl,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _icosa_api_assets_get_user_asset_serialize(
-        self,
-        userurl,
-        asseturl,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if userurl is not None:
-            _path_params['userurl'] = userurl
-        if asseturl is not None:
-            _path_params['asseturl'] = asseturl
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/assets/{userurl}/{asseturl}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def icosa_api_assets_unpublish_asset(
-        self,
-        asset: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AssetSchemaOut:
-        """Unpublish Asset
-
-
-        :param asset: (required)
-        :type asset: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_unpublish_asset_serialize(
-            asset=asset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def icosa_api_assets_unpublish_asset_with_http_info(
-        self,
-        asset: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AssetSchemaOut]:
-        """Unpublish Asset
-
-
-        :param asset: (required)
-        :type asset: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_unpublish_asset_serialize(
-            asset=asset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def icosa_api_assets_unpublish_asset_without_preload_content(
-        self,
-        asset: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """Unpublish Asset
-
-
-        :param asset: (required)
-        :type asset: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._icosa_api_assets_unpublish_asset_serialize(
-            asset=asset,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AssetSchemaOut",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _icosa_api_assets_unpublish_asset_serialize(
-        self,
-        asset,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if asset is not None:
-            _path_params['asset'] = asset
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'AuthBearer'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PATCH',
-            resource_path='/v1/assets/{asset}/unpublish',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

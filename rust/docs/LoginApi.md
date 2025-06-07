@@ -1,6 +1,6 @@
 # \LoginApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.icosa.gallery*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

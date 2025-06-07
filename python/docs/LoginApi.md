@@ -1,6 +1,6 @@
 # openapi_client.LoginApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.icosa.gallery*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,10 +21,10 @@ from openapi_client.models.login_token import LoginToken
 from openapi_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.icosa.gallery
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.icosa.gallery"
 )
 
 

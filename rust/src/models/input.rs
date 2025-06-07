@@ -15,11 +15,7 @@ use serde::{Deserialize, Serialize};
 pub struct Input {
     #[serde(rename = "pageToken", skip_serializing_if = "Option::is_none")]
     pub page_token: Option<String>,
-    #[serde(rename = "page_token", skip_serializing_if = "Option::is_none")]
-    pub page_token: Option<String>,
     #[serde(rename = "pageSize", skip_serializing_if = "Option::is_none")]
-    pub page_size: Option<String>,
-    #[serde(rename = "page_size", skip_serializing_if = "Option::is_none")]
     pub page_size: Option<String>,
 }
 
@@ -27,8 +23,6 @@ impl Input {
     pub fn new() -> Input {
         Input {
             page_token: None,
-            page_token: None,
-            page_size: None,
             page_size: None,
         }
     }

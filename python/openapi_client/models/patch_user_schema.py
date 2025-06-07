@@ -26,10 +26,10 @@ class PatchUserSchema(BaseModel):
     """
     PatchUserSchema
     """ # noqa: E501
-    url: Optional[StrictStr] = None
+    email: Optional[StrictStr] = None
     displayname: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["url", "displayname", "description"]
+    __properties: ClassVar[List[str]] = ["email", "displayname", "description"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,10 +70,10 @@ class PatchUserSchema(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if url (nullable) is None
+        # set to None if email (nullable) is None
         # and model_fields_set contains the field
-        if self.url is None and "url" in self.model_fields_set:
-            _dict['url'] = None
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
 
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
@@ -92,7 +92,7 @@ class PatchUserSchema(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "url": obj.get("url"),
+            "email": obj.get("email"),
             "displayname": obj.get("displayname"),
             "description": obj.get("description")
         })

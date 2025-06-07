@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**url** | Option<**String**> |  | [optional]
+**email** | Option<**String**> |  | [optional]
 **displayname** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**url** | **str** |  | [optional] 
+**email** | **str** |  | [optional] 
 **displayname** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 

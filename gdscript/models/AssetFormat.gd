@@ -10,7 +10,7 @@ class_name AssetFormat
 # AssetFormat Model
 
 
-# Required: True
+# Required: False
 # isArray: false
 @export var root: AssetResource:
 	set(value):
@@ -18,7 +18,7 @@ class_name AssetFormat
 		root = value
 var __root__was__set := false
 
-# Required: True
+# Required: False
 # isArray: true
 @export var resources: Array:
 	set(value):
@@ -34,7 +34,7 @@ var __resources__was__set := false
 		formatComplexity = value
 var __formatComplexity__was__set := false
 
-# Required: True
+# Required: False
 # isArray: false
 @export var formatType: String:
 	set(value):
@@ -42,17 +42,27 @@ var __formatComplexity__was__set := false
 		formatType = value
 var __formatType__was__set := false
 
+# Required: False
+# isArray: false
+@export var zipUnderscorearchiveUnderscoreurl: String:
+	set(value):
+		__zipUnderscorearchiveUnderscoreurl__was__set = true
+		zipUnderscorearchiveUnderscoreurl = value
+var __zipUnderscorearchiveUnderscoreurl__was__set := false
+
+# Required: False
+# isArray: false
+@export var role: String:
+	set(value):
+		__role__was__set = true
+		role = value
+var __role__was__set := false
+
 
 func bzz_collect_missing_properties() -> Array:
 	var bzz_missing_properties := Array()
-	if not self.__root__was__set:
-		bzz_missing_properties.append("root")
-	if not self.__resources__was__set:
-		bzz_missing_properties.append("resources")
 	if not self.__formatComplexity__was__set:
 		bzz_missing_properties.append("formatComplexity")
-	if not self.__formatType__was__set:
-		bzz_missing_properties.append("formatType")
 	return bzz_missing_properties
 
 
@@ -66,6 +76,10 @@ func bzz_normalize() -> Dictionary:
 		bzz_dictionary["formatComplexity"] = self.formatComplexity
 	if self.__formatType__was__set:
 		bzz_dictionary["formatType"] = self.formatType
+	if self.__zipUnderscorearchiveUnderscoreurl__was__set:
+		bzz_dictionary["zipUnderscorearchiveUnderscoreurl"] = self.zipUnderscorearchiveUnderscoreurl
+	if self.__role__was__set:
+		bzz_dictionary["role"] = self.role
 	return bzz_dictionary
 
 
@@ -80,6 +94,10 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 		me.formatComplexity = FormatComplexity.bzz_denormalize_single(from_dict["formatComplexity"])
 	if from_dict.has("formatType"):
 		me.formatType = from_dict["formatType"]
+	if from_dict.has("zipUnderscorearchiveUnderscoreurl"):
+		me.zipUnderscorearchiveUnderscoreurl = from_dict["zipUnderscorearchiveUnderscoreurl"]
+	if from_dict.has("role"):
+		me.role = from_dict["role"]
 	return me
 
 

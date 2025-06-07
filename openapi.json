@@ -1,1 +1,2046 @@
-{"openapi": "3.1.0", "info": {"title": "NinjaAPI", "version": "1.0.0", "description": ""}, "paths": {"/v1/assets/{asset}": {"get": {"operationId": "icosa_api_assets_get_asset", "summary": "Get Asset", "parameters": [{"in": "path", "name": "asset", "schema": {"title": "Asset", "type": "string"}, "required": true}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AssetSchemaOut"}}}}}, "tags": ["Assets"]}, "delete": {"operationId": "icosa_api_assets_delete_asset", "summary": "Delete Asset", "parameters": [{"in": "path", "name": "asset", "schema": {"title": "Asset", "type": "string"}, "required": true}], "responses": {"204": {"description": "No Content", "content": {"application/json": {"schema": {"title": "Response", "type": "integer"}}}}}, "tags": ["Assets"], "security": [{"AuthBearer": []}]}}, "/v1/assets/{asset}/unpublish": {"patch": {"operationId": "icosa_api_assets_unpublish_asset", "summary": "Unpublish Asset", "parameters": [{"in": "path", "name": "asset", "schema": {"title": "Asset", "type": "integer"}, "required": true}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AssetSchemaOut"}}}}}, "tags": ["Assets"], "security": [{"AuthBearer": []}]}}, "/v1/assets/{userurl}/{asseturl}": {"get": {"operationId": "icosa_api_assets_get_user_asset", "summary": "Get User Asset", "parameters": [{"in": "path", "name": "userurl", "schema": {"title": "Userurl", "type": "string"}, "required": true}, {"in": "path", "name": "asseturl", "schema": {"title": "Asseturl", "type": "string"}, "required": true}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AssetSchemaOut"}}}}}, "tags": ["Assets"]}}, "/v1/assets": {"get": {"operationId": "icosa_api_assets_get_assets", "summary": "Get Assets", "parameters": [{"in": "query", "name": "category", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Category"}, "required": false}, {"in": "query", "name": "curated", "schema": {"default": false, "title": "Curated", "type": "boolean"}, "required": false}, {"in": "query", "name": "format", "schema": {"items": {"type": "string"}, "title": "Format", "type": "array"}, "required": false}, {"in": "query", "name": "keywords", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Keywords"}, "required": false}, {"in": "query", "name": "name", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Name"}, "required": false}, {"in": "query", "name": "description", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}, "required": false}, {"in": "query", "name": "tag", "schema": {"items": {"type": "string"}, "title": "Tag", "type": "array"}, "required": false}, {"in": "query", "name": "orderBy", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Orderby"}, "required": false}, {"in": "query", "name": "order_by", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Order By"}, "required": false}, {"in": "query", "name": "maxComplexity", "schema": {"anyOf": [{"$ref": "#/components/schemas/Complexity"}, {"type": "null"}]}, "required": false}, {"in": "query", "name": "triangleCountMin", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmin"}, "required": false}, {"in": "query", "name": "triangleCountMax", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmax"}, "required": false}, {"in": "query", "name": "authorName", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Authorname"}, "required": false}, {"in": "query", "name": "author_name", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Author Name"}, "required": false}, {"in": "query", "name": "license", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "License"}, "required": false}, {"in": "query", "name": "pageToken", "schema": {"title": "Pagetoken", "type": "string"}, "required": false}, {"in": "query", "name": "page_token", "schema": {"title": "Page Token", "type": "string"}, "required": false}, {"in": "query", "name": "pageSize", "schema": {"title": "Pagesize", "type": "string"}, "required": false}, {"in": "query", "name": "page_size", "schema": {"title": "Page Size", "type": "string"}, "required": false}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PagedAssetSchemaOut"}}}}}, "tags": ["Assets"]}}, "/v1/login/device_login": {"post": {"operationId": "icosa_api_login_device_login", "summary": "Device Login", "parameters": [{"in": "query", "name": "device_code", "schema": {"title": "Device Code", "type": "string"}, "required": true}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LoginToken"}}}}}, "tags": ["Login"]}}, "/v1/oembed": {"get": {"operationId": "icosa_api_oembed_oembed", "summary": "Oembed", "parameters": [{"in": "query", "name": "url", "schema": {"title": "Url", "type": "string"}, "required": false}, {"in": "query", "name": "format", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Format"}, "required": false}, {"in": "query", "name": "maxwidth", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Maxwidth"}, "required": false}, {"in": "query", "name": "maxheight", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Maxheight"}, "required": false}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OembedOut"}}}}}, "tags": ["Oembed"]}}, "/v1/poly": {"get": {"operationId": "icosa_api_poly_add", "summary": "Add", "parameters": [], "responses": {"200": {"description": "OK"}}, "tags": ["Poly"]}}, "/v1/users/me": {"get": {"operationId": "icosa_api_users_get_users_me", "summary": "Get Users Me", "parameters": [], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FullUserSchema"}}}}}, "tags": ["Users"], "security": [{"AuthBearer": []}]}, "patch": {"operationId": "icosa_api_users_update_user", "summary": "Update User", "parameters": [], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FullUserSchema"}}}}}, "tags": ["Users"], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/PatchUserSchema"}}}, "required": true}, "security": [{"AuthBearer": []}]}}, "/v1/users/me/assets": {"get": {"operationId": "icosa_api_users_get_me_assets", "summary": "Get Me Assets", "parameters": [{"in": "query", "name": "category", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Category"}, "required": false}, {"in": "query", "name": "curated", "schema": {"default": false, "title": "Curated", "type": "boolean"}, "required": false}, {"in": "query", "name": "format", "schema": {"items": {"type": "string"}, "title": "Format", "type": "array"}, "required": false}, {"in": "query", "name": "keywords", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Keywords"}, "required": false}, {"in": "query", "name": "name", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Name"}, "required": false}, {"in": "query", "name": "description", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}, "required": false}, {"in": "query", "name": "tag", "schema": {"items": {"type": "string"}, "title": "Tag", "type": "array"}, "required": false}, {"in": "query", "name": "orderBy", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Orderby"}, "required": false}, {"in": "query", "name": "order_by", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Order By"}, "required": false}, {"in": "query", "name": "maxComplexity", "schema": {"anyOf": [{"$ref": "#/components/schemas/Complexity"}, {"type": "null"}]}, "required": false}, {"in": "query", "name": "triangleCountMin", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmin"}, "required": false}, {"in": "query", "name": "triangleCountMax", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmax"}, "required": false}, {"in": "query", "name": "visibility", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Visibility"}, "required": false}, {"in": "query", "name": "pageToken", "schema": {"title": "Pagetoken", "type": "string"}, "required": false}, {"in": "query", "name": "page_token", "schema": {"title": "Page Token", "type": "string"}, "required": false}, {"in": "query", "name": "pageSize", "schema": {"title": "Pagesize", "type": "string"}, "required": false}, {"in": "query", "name": "page_size", "schema": {"title": "Page Size", "type": "string"}, "required": false}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PagedAssetSchemaOut"}}}}}, "tags": ["Users"], "security": [{"AuthBearer": []}]}}, "/v1/users/me/likedassets": {"get": {"operationId": "icosa_api_users_get_me_likedassets", "summary": "Get Me Likedassets", "parameters": [{"in": "query", "name": "category", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Category"}, "required": false}, {"in": "query", "name": "curated", "schema": {"default": false, "title": "Curated", "type": "boolean"}, "required": false}, {"in": "query", "name": "format", "schema": {"items": {"type": "string"}, "title": "Format", "type": "array"}, "required": false}, {"in": "query", "name": "keywords", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Keywords"}, "required": false}, {"in": "query", "name": "name", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Name"}, "required": false}, {"in": "query", "name": "description", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}, "required": false}, {"in": "query", "name": "tag", "schema": {"items": {"type": "string"}, "title": "Tag", "type": "array"}, "required": false}, {"in": "query", "name": "orderBy", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Orderby"}, "required": false}, {"in": "query", "name": "order_by", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Order By"}, "required": false}, {"in": "query", "name": "maxComplexity", "schema": {"anyOf": [{"$ref": "#/components/schemas/Complexity"}, {"type": "null"}]}, "required": false}, {"in": "query", "name": "triangleCountMin", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmin"}, "required": false}, {"in": "query", "name": "triangleCountMax", "schema": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmax"}, "required": false}, {"in": "query", "name": "authorName", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Authorname"}, "required": false}, {"in": "query", "name": "author_name", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Author Name"}, "required": false}, {"in": "query", "name": "license", "schema": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "License"}, "required": false}, {"in": "query", "name": "pageToken", "schema": {"title": "Pagetoken", "type": "string"}, "required": false}, {"in": "query", "name": "page_token", "schema": {"title": "Page Token", "type": "string"}, "required": false}, {"in": "query", "name": "pageSize", "schema": {"title": "Pagesize", "type": "string"}, "required": false}, {"in": "query", "name": "page_size", "schema": {"title": "Page Size", "type": "string"}, "required": false}], "responses": {"200": {"description": "OK", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PagedAssetSchemaOut"}}}}}, "tags": ["Users"], "security": [{"AuthBearer": []}]}}}, "components": {"schemas": {"AssetFormat": {"properties": {"root": {"anyOf": [{"$ref": "#/components/schemas/AssetResource"}, {"type": "null"}]}, "resources": {"anyOf": [{"items": {"$ref": "#/components/schemas/AssetResource"}, "type": "array"}, {"type": "null"}], "title": "Resources"}, "formatComplexity": {"$ref": "#/components/schemas/FormatComplexity"}, "formatType": {"title": "Formattype", "type": "string"}}, "required": ["root", "resources", "formatComplexity", "formatType"], "title": "AssetFormat", "type": "object"}, "AssetResource": {"properties": {"relativePath": {"title": "Relativepath", "type": "string"}, "contentType": {"title": "Contenttype", "type": "string"}, "url": {"title": "Url", "type": "string"}}, "required": ["relativePath", "contentType", "url"], "title": "AssetResource", "type": "object"}, "AssetSchemaOut": {"properties": {"authorId": {"title": "Authorid", "type": "string"}, "authorName": {"title": "Authorname", "type": "string"}, "name": {"title": "Name", "type": "string"}, "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}, "createTime": {"format": "date-time", "title": "Createtime", "type": "string"}, "updateTime": {"format": "date-time", "title": "Updatetime", "type": "string"}, "url": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Url"}, "assetId": {"title": "Assetid", "type": "string"}, "formats": {"items": {"$ref": "#/components/schemas/AssetFormat"}, "title": "Formats", "type": "array"}, "displayName": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Displayname"}, "visibility": {"title": "Visibility", "type": "string"}, "tags": {"default": [], "items": {"type": "string"}, "title": "Tags", "type": "array"}, "isCurated": {"anyOf": [{"type": "boolean"}, {"type": "null"}], "title": "Iscurated"}, "thumbnail": {"anyOf": [{"$ref": "#/components/schemas/Thumbnail"}, {"type": "null"}]}, "triangleCount": {"title": "Trianglecount", "type": "integer"}, "presentationParams": {"anyOf": [{"type": "object"}, {"type": "null"}], "title": "Presentationparams"}, "license": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "License"}}, "required": ["authorName", "name", "description", "createTime", "updateTime", "url", "assetId", "formats", "displayName", "visibility", "thumbnail", "triangleCount"], "title": "AssetSchemaOut", "type": "object"}, "FormatComplexity": {"properties": {"triangleCount": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecount"}, "lodHint": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Lodhint"}}, "title": "FormatComplexity", "type": "object"}, "Thumbnail": {"properties": {"relativePath": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Relativepath"}, "contentType": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Contenttype"}, "url": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Url"}}, "title": "Thumbnail", "type": "object"}, "AssetFilters": {"properties": {"category": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Category"}, "curated": {"default": false, "title": "Curated", "type": "boolean"}, "format": {"items": {"type": "string"}, "title": "Format", "type": "array"}, "keywords": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Keywords"}, "name": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Name"}, "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}, "tag": {"items": {"type": "string"}, "title": "Tag", "type": "array"}, "orderBy": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Orderby"}, "order_by": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Order By"}, "maxComplexity": {"anyOf": [{"$ref": "#/components/schemas/Complexity"}, {"type": "null"}]}, "triangleCountMin": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmin"}, "triangleCountMax": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmax"}, "authorName": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Authorname"}, "author_name": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Author Name"}, "license": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "License"}}, "title": "AssetFilters", "type": "object"}, "Complexity": {"enum": ["COMPLEX", "MEDIUM", "SIMPLE"], "title": "Complexity", "type": "string"}, "Input": {"properties": {"pageToken": {"title": "Pagetoken", "type": "string"}, "page_token": {"title": "Page Token", "type": "string"}, "pageSize": {"title": "Pagesize", "type": "string"}, "page_size": {"title": "Page Size", "type": "string"}}, "title": "Input", "type": "object"}, "PagedAssetSchemaOut": {"properties": {"assets": {"items": {"$ref": "#/components/schemas/AssetSchemaOut"}, "title": "Assets", "type": "array"}, "totalSize": {"title": "Totalsize", "type": "integer"}, "nextPageToken": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Nextpagetoken"}}, "required": ["assets", "totalSize"], "title": "PagedAssetSchemaOut", "type": "object"}, "LoginToken": {"properties": {"access_token": {"title": "Access Token", "type": "string"}, "token_type": {"title": "Token Type", "type": "string"}}, "required": ["access_token", "token_type"], "title": "LoginToken", "type": "object"}, "OembedOut": {"properties": {"type": {"const": "rich", "title": "Type", "type": "string"}, "version": {"const": "1.0", "title": "Version", "type": "string"}, "title": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Title"}, "author_name": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Author Name"}, "author_url": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Author Url"}, "provider_name": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Provider Name"}, "provider_url": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Provider Url"}, "cache_age": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Cache Age"}, "thumbnail_url": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Thumbnail Url"}, "thumbnail_width": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Thumbnail Width"}, "thumbnail_height": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Thumbnail Height"}, "html": {"title": "Html", "type": "string"}, "width": {"title": "Width", "type": "integer"}, "height": {"title": "Height", "type": "integer"}}, "required": ["type", "version", "html", "width", "height"], "title": "OembedOut", "type": "object"}, "FullUserSchema": {"properties": {"id": {"title": "Id", "type": "integer"}, "url": {"title": "Url", "type": "string"}, "email": {"format": "email", "title": "Email", "type": "string"}, "displayName": {"title": "Displayname", "type": "string"}, "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}}, "required": ["id", "url", "email"], "title": "FullUserSchema", "type": "object"}, "PatchUserSchema": {"properties": {"url": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Url"}, "displayname": {"title": "Displayname", "type": "string"}, "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}}, "title": "PatchUserSchema", "type": "object"}, "UserAssetFilters": {"properties": {"category": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Category"}, "curated": {"default": false, "title": "Curated", "type": "boolean"}, "format": {"items": {"type": "string"}, "title": "Format", "type": "array"}, "keywords": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Keywords"}, "name": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Name"}, "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"}, "tag": {"items": {"type": "string"}, "title": "Tag", "type": "array"}, "orderBy": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Orderby"}, "order_by": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Order By"}, "maxComplexity": {"anyOf": [{"$ref": "#/components/schemas/Complexity"}, {"type": "null"}]}, "triangleCountMin": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmin"}, "triangleCountMax": {"anyOf": [{"type": "integer"}, {"type": "null"}], "title": "Trianglecountmax"}, "visibility": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Visibility"}}, "title": "UserAssetFilters", "type": "object"}}, "securitySchemes": {"AuthBearer": {"type": "http", "scheme": "bearer"}}}, "servers": []}
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "NinjaAPI",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "paths": {
+    "/v1/assets/{asset}": {
+      "get": {
+        "operationId": "icosa_api_assets_get_asset",
+        "summary": "Get Asset",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asset",
+            "schema": {
+              "title": "Asset",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Assets"
+        ]
+      }
+    },
+    "/v1/assets": {
+      "get": {
+        "operationId": "icosa_api_assets_get_assets",
+        "summary": "Get Assets",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Category"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "example": "ANIMALS"
+            },
+            "required": false,
+            "example": "ANIMALS"
+          },
+          {
+            "in": "query",
+            "name": "curated",
+            "schema": {
+              "default": false,
+              "title": "Curated",
+              "type": "boolean"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/FormatFilter"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by format",
+              "title": "Format"
+            },
+            "required": false,
+            "description": "Filter by format"
+          },
+          {
+            "in": "query",
+            "name": "keywords",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Keywords"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "description",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Description"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Tag",
+              "type": "array"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Order"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "maxComplexity",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Complexity"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "triangleCountMin",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trianglecountmin"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "triangleCountMax",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trianglecountmax"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "zipArchiveUrl",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ziparchiveurl"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "authorName",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorname"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "license",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LicenseFilter"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageToken",
+            "schema": {
+              "title": "Pagetoken",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "title": "Pagesize",
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedAssetSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Assets"
+        ]
+      }
+    },
+    "/v1/login/device_login": {
+      "post": {
+        "operationId": "icosa_api_login_device_login",
+        "summary": "Device Login",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "device_code",
+            "schema": {
+              "title": "Device Code",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginToken"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Login"
+        ]
+      }
+    },
+    "/v1/oembed": {
+      "get": {
+        "operationId": "icosa_api_oembed_oembed",
+        "summary": "Oembed",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "url",
+            "schema": {
+              "title": "Url",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Format"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "maxwidth",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maxwidth"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "maxheight",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maxheight"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OembedOut"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Oembed"
+        ]
+      }
+    },
+    "/v1/users/me": {
+      "get": {
+        "operationId": "icosa_api_users_get_users_me",
+        "summary": "Get Users Me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullUserSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "JWTAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "icosa_api_users_update_user",
+        "summary": "Update User",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullUserSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchUserSchema"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "JWTAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/users/me/assets": {
+      "get": {
+        "operationId": "icosa_api_users_get_me_assets",
+        "summary": "Get Me Assets",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Category"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "example": "ANIMALS"
+            },
+            "required": false,
+            "example": "ANIMALS"
+          },
+          {
+            "in": "query",
+            "name": "curated",
+            "schema": {
+              "default": false,
+              "title": "Curated",
+              "type": "boolean"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/FormatFilter"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by format",
+              "title": "Format"
+            },
+            "required": false,
+            "description": "Filter by format"
+          },
+          {
+            "in": "query",
+            "name": "keywords",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Keywords"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "description",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Description"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Tag",
+              "type": "array"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Order"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "maxComplexity",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Complexity"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "triangleCountMin",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trianglecountmin"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "triangleCountMax",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trianglecountmax"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "zipArchiveUrl",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ziparchiveurl"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "visibility",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Visibility"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageToken",
+            "schema": {
+              "title": "Pagetoken",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "title": "Pagesize",
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedAssetSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "JWTAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/users/me/assets/{asset}": {
+      "get": {
+        "operationId": "icosa_api_users_get_me_asset",
+        "summary": "Get Me Asset",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asset",
+            "schema": {
+              "title": "Asset",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "JWTAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "icosa_api_users_delete_asset",
+        "summary": "Delete Asset",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "asset",
+            "schema": {
+              "title": "Asset",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response",
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "JWTAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/users/me/likedassets": {
+      "get": {
+        "operationId": "icosa_api_users_get_me_likedassets",
+        "summary": "Get Me Likedassets",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Category"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "example": "ANIMALS"
+            },
+            "required": false,
+            "example": "ANIMALS"
+          },
+          {
+            "in": "query",
+            "name": "curated",
+            "schema": {
+              "default": false,
+              "title": "Curated",
+              "type": "boolean"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "schema": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/FormatFilter"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by format",
+              "title": "Format"
+            },
+            "required": false,
+            "description": "Filter by format"
+          },
+          {
+            "in": "query",
+            "name": "keywords",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Keywords"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "description",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Description"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Tag",
+              "type": "array"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "orderBy",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Order"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "maxComplexity",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Complexity"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "triangleCountMin",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trianglecountmin"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "triangleCountMax",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trianglecountmax"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "zipArchiveUrl",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ziparchiveurl"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "authorName",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorname"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "license",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LicenseFilter"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageToken",
+            "schema": {
+              "title": "Pagetoken",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "title": "Pagesize",
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedAssetSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "JWTAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssetFormat": {
+        "properties": {
+          "root": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AssetResource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "resources": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AssetResource"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resources"
+          },
+          "formatComplexity": {
+            "$ref": "#/components/schemas/FormatComplexity"
+          },
+          "formatType": {
+            "title": "Formattype",
+            "type": "string"
+          },
+          "zip_archive_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Zip Archive Url"
+          },
+          "role": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "deprecated": true,
+            "description": "This field is deprecated. Do not rely on it for anything.",
+            "title": "Role"
+          }
+        },
+        "required": [
+          "formatComplexity"
+        ],
+        "title": "AssetFormat",
+        "type": "object"
+      },
+      "AssetResource": {
+        "properties": {
+          "relativePath": {
+            "title": "Relativepath",
+            "type": "string"
+          },
+          "contentType": {
+            "title": "Contenttype",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "relativePath",
+          "contentType",
+          "url"
+        ],
+        "title": "AssetResource",
+        "type": "object"
+      },
+      "AssetSchema": {
+        "properties": {
+          "authorId": {
+            "title": "Authorid",
+            "type": "string"
+          },
+          "authorName": {
+            "title": "Authorname",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "createTime": {
+            "format": "date-time",
+            "title": "Createtime",
+            "type": "string"
+          },
+          "updateTime": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatetime"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "assetId": {
+            "title": "Assetid",
+            "type": "string"
+          },
+          "formats": {
+            "items": {
+              "$ref": "#/components/schemas/AssetFormat"
+            },
+            "title": "Formats",
+            "type": "array"
+          },
+          "displayName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Displayname"
+          },
+          "visibility": {
+            "title": "Visibility",
+            "type": "string"
+          },
+          "tags": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          },
+          "isCurated": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iscurated"
+          },
+          "thumbnail": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Thumbnail"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "triangleCount": {
+            "title": "Trianglecount",
+            "type": "integer"
+          },
+          "presentationParams": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Presentationparams"
+          },
+          "license": {
+            "title": "License",
+            "type": "string"
+          },
+          "licenseVersion": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Licenseversion"
+          }
+        },
+        "required": [
+          "authorName",
+          "name",
+          "description",
+          "createTime",
+          "updateTime",
+          "url",
+          "assetId",
+          "formats",
+          "displayName",
+          "visibility",
+          "thumbnail",
+          "triangleCount",
+          "license",
+          "licenseVersion"
+        ],
+        "title": "AssetSchema",
+        "type": "object"
+      },
+      "FormatComplexity": {
+        "properties": {
+          "triangleCount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trianglecount"
+          },
+          "lodHint": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lodhint"
+          }
+        },
+        "title": "FormatComplexity",
+        "type": "object"
+      },
+      "Thumbnail": {
+        "properties": {
+          "relativePath": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relativepath"
+          },
+          "contentType": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contenttype"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "title": "Thumbnail",
+        "type": "object"
+      },
+      "AssetFilters": {
+        "properties": {
+          "category": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Category"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "example": "ANIMALS"
+          },
+          "curated": {
+            "default": false,
+            "title": "Curated",
+            "type": "boolean"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/FormatFilter"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Filter by format",
+            "title": "Format"
+          },
+          "keywords": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Keywords"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "tag": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tag",
+            "type": "array"
+          },
+          "orderBy": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Order"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "maxComplexity": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Complexity"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "triangleCountMin": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trianglecountmin"
+          },
+          "triangleCountMax": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trianglecountmax"
+          },
+          "zipArchiveUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ziparchiveurl"
+          },
+          "authorName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Authorname"
+          },
+          "license": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LicenseFilter"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "title": "AssetFilters",
+        "type": "object"
+      },
+      "Category": {
+        "enum": [
+          "MISCELLANEOUS",
+          "ANIMALS",
+          "ARCHITECTURE",
+          "ART",
+          "CULTURE",
+          "EVENTS",
+          "FOOD",
+          "HISTORY",
+          "HOME",
+          "NATURE",
+          "OBJECTS",
+          "PEOPLE",
+          "PLACES",
+          "SCIENCE",
+          "SPORTS",
+          "TECH",
+          "TRANSPORT",
+          "TRAVEL"
+        ],
+        "title": "Category",
+        "type": "string"
+      },
+      "Complexity": {
+        "enum": [
+          "COMPLEX",
+          "MEDIUM",
+          "SIMPLE"
+        ],
+        "title": "Complexity",
+        "type": "string"
+      },
+      "FormatFilter": {
+        "enum": [
+          "TILT",
+          "BLOCKS",
+          "GLTF",
+          "GLTF1",
+          "GLTF2",
+          "OBJ",
+          "FBX",
+          "-TILT",
+          "-BLOCKS",
+          "-GLTF",
+          "-GLTF1",
+          "-GLTF2",
+          "-OBJ",
+          "-FBX"
+        ],
+        "title": "FormatFilter",
+        "type": "string"
+      },
+      "Input": {
+        "properties": {
+          "pageToken": {
+            "title": "Pagetoken",
+            "type": "string"
+          },
+          "pageSize": {
+            "title": "Pagesize",
+            "type": "string"
+          }
+        },
+        "title": "Input",
+        "type": "object"
+      },
+      "LicenseFilter": {
+        "enum": [
+          "REMIXABLE",
+          "ALL_CC",
+          "CREATIVE_COMMONS_BY_3_0",
+          "CREATIVE_COMMONS_BY_ND_3_0",
+          "CREATIVE_COMMONS_BY_4_0",
+          "CREATIVE_COMMONS_BY_ND_4_0",
+          "CREATIVE_COMMONS_BY",
+          "CREATIVE_COMMONS_BY_ND",
+          "CREATIVE_COMMONS_0"
+        ],
+        "title": "LicenseFilter",
+        "type": "string"
+      },
+      "Order": {
+        "enum": [
+          "NEWEST",
+          "OLDEST",
+          "BEST",
+          "CREATE_TIME",
+          "-CREATE_TIME",
+          "UPDATE_TIME",
+          "-UPDATE_TIME",
+          "TRIANGLE_COUNT",
+          "-TRIANGLE_COUNT",
+          "LIKED_TIME",
+          "-LIKED_TIME",
+          "LIKES",
+          "-LIKES",
+          "DOWNLOADS",
+          "-DOWNLOADS",
+          "DISPLAY_NAME",
+          "-DISPLAY_NAME",
+          "AUTHOR_NAME",
+          "-AUTHOR_NAME"
+        ],
+        "title": "Order",
+        "type": "string"
+      },
+      "PagedAssetSchema": {
+        "properties": {
+          "assets": {
+            "items": {
+              "$ref": "#/components/schemas/AssetSchema"
+            },
+            "title": "Assets",
+            "type": "array"
+          },
+          "totalSize": {
+            "title": "Totalsize",
+            "type": "integer"
+          },
+          "nextPageToken": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nextpagetoken"
+          }
+        },
+        "required": [
+          "assets",
+          "totalSize"
+        ],
+        "title": "PagedAssetSchema",
+        "type": "object"
+      },
+      "LoginToken": {
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "token_type": {
+            "title": "Token Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "access_token",
+          "token_type"
+        ],
+        "title": "LoginToken",
+        "type": "object"
+      },
+      "OembedOut": {
+        "properties": {
+          "type": {
+            "const": "rich",
+            "title": "Type",
+            "type": "string"
+          },
+          "version": {
+            "const": "1.0",
+            "title": "Version",
+            "type": "string"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "author_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Author Name"
+          },
+          "author_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Author Url"
+          },
+          "provider_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider Name"
+          },
+          "provider_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider Url"
+          },
+          "cache_age": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cache Age"
+          },
+          "thumbnail_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thumbnail Url"
+          },
+          "thumbnail_width": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thumbnail Width"
+          },
+          "thumbnail_height": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thumbnail Height"
+          },
+          "html": {
+            "title": "Html",
+            "type": "string"
+          },
+          "width": {
+            "title": "Width",
+            "type": "integer"
+          },
+          "height": {
+            "title": "Height",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "type",
+          "version",
+          "html",
+          "width",
+          "height"
+        ],
+        "title": "OembedOut",
+        "type": "object"
+      },
+      "FullUserSchema": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "email",
+          "url"
+        ],
+        "title": "FullUserSchema",
+        "type": "object"
+      },
+      "PatchUserSchema": {
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "format": "email",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "displayname": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          }
+        },
+        "title": "PatchUserSchema",
+        "type": "object"
+      },
+      "UserAssetFilters": {
+        "properties": {
+          "category": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Category"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "example": "ANIMALS"
+          },
+          "curated": {
+            "default": false,
+            "title": "Curated",
+            "type": "boolean"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/FormatFilter"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Filter by format",
+            "title": "Format"
+          },
+          "keywords": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Keywords"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "tag": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tag",
+            "type": "array"
+          },
+          "orderBy": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Order"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "maxComplexity": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Complexity"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "triangleCountMin": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trianglecountmin"
+          },
+          "triangleCountMax": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trianglecountmax"
+          },
+          "zipArchiveUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ziparchiveurl"
+          },
+          "visibility": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visibility"
+          }
+        },
+        "title": "UserAssetFilters",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "JWTAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.icosa.gallery",
+      "description": "Production server"
+    }
+  ]
+}

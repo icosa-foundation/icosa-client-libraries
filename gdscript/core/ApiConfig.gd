@@ -26,7 +26,7 @@ class_name ApiConfig
 
 # These are constant, immutable default values.  Best not edit them.
 # To set different values at runtime, use the @export'ed properties below.
-const BEE_DEFAULT_HOST := "localhost"
+const BEE_DEFAULT_HOST := "api.icosa.gallery"
 const BEE_DEFAULT_PORT_HTTP := 80
 const BEE_DEFAULT_PORT_HTTPS := 443
 const BEE_DEFAULT_POLLING_INTERVAL_MS := 333  # milliseconds
@@ -129,9 +129,9 @@ func log_debug(message: String):
 		print(message)
 
 
-# Authentication method `AuthBearer`.
+# Authentication method `JWTAuth`.
 # Basic Bearer Authentication ``
-func set_security_AuthBearer(value: String):
+func set_security_JWTAuth(value: String):
 	self.headers_base["Authorization"] = "Bearer %s" % value
 
 

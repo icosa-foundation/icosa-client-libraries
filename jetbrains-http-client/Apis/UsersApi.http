@@ -1,0 +1,45 @@
+## UsersApi
+
+### Delete Asset
+## Delete Asset
+DELETE https://api.icosa.gallery/v1/users/me/assets/{{asset}}
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get Me Asset
+## Get Me Asset
+GET https://api.icosa.gallery/v1/users/me/assets/{{asset}}
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get Me Assets
+## Get Me Assets
+GET https://api.icosa.gallery/v1/users/me/assets?category={{category}}&curated={{curated}}&format={{format}}&keywords={{keywords}}&name={{name}}&description={{description}}&tag={{tag}}&orderBy={{orderBy}}&maxComplexity={{maxComplexity}}&triangleCountMin={{triangleCountMin}}&triangleCountMax={{triangleCountMax}}&zipArchiveUrl={{zipArchiveUrl}}&visibility={{visibility}}&pageToken={{pageToken}}&pageSize={{pageSize}}
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get Me Likedassets
+## Get Me Likedassets
+GET https://api.icosa.gallery/v1/users/me/likedassets?category={{category}}&curated={{curated}}&format={{format}}&keywords={{keywords}}&name={{name}}&description={{description}}&tag={{tag}}&orderBy={{orderBy}}&maxComplexity={{maxComplexity}}&triangleCountMin={{triangleCountMin}}&triangleCountMax={{triangleCountMax}}&zipArchiveUrl={{zipArchiveUrl}}&authorName={{authorName}}&license={{license}}&pageToken={{pageToken}}&pageSize={{pageSize}}
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get Users Me
+## Get Users Me
+GET https://api.icosa.gallery/v1/users/me
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Update User
+## Update User
+PATCH https://api.icosa.gallery/v1/users/me
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+ "email": "<string>",
+ "displayname": "<string>",
+ "description": "<string>"
+}
+

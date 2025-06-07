@@ -34,14 +34,10 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="Input" /> class.
         /// </summary>
         /// <param name="pageToken">pageToken.</param>
-        /// <param name="pageToken">pageToken.</param>
         /// <param name="pageSize">pageSize.</param>
-        /// <param name="pageSize">pageSize.</param>
-        public Input(string pageToken = default(string), string pageToken = default(string), string pageSize = default(string), string pageSize = default(string))
+        public Input(string pageToken = default(string), string pageSize = default(string))
         {
             this.PageToken = pageToken;
-            this.PageToken = pageToken;
-            this.PageSize = pageSize;
             this.PageSize = pageSize;
         }
 
@@ -52,21 +48,9 @@ namespace Org.OpenAPITools.Model
         public string PageToken { get; set; }
 
         /// <summary>
-        /// Gets or Sets PageToken
-        /// </summary>
-        [DataMember(Name = "page_token", EmitDefaultValue = false)]
-        public string PageToken { get; set; }
-
-        /// <summary>
         /// Gets or Sets PageSize
         /// </summary>
         [DataMember(Name = "pageSize", EmitDefaultValue = false)]
-        public string PageSize { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PageSize
-        /// </summary>
-        [DataMember(Name = "page_size", EmitDefaultValue = false)]
         public string PageSize { get; set; }
 
         /// <summary>
@@ -78,8 +62,6 @@ namespace Org.OpenAPITools.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Input {\n");
             sb.Append("  PageToken: ").Append(PageToken).Append("\n");
-            sb.Append("  PageToken: ").Append(PageToken).Append("\n");
-            sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

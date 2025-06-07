@@ -13,8 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PatchUserSchema {
-    #[serde(rename = "url", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub url: Option<Option<String>>,
+    #[serde(rename = "email", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub email: Option<Option<String>>,
     #[serde(rename = "displayname", skip_serializing_if = "Option::is_none")]
     pub displayname: Option<String>,
     #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -24,7 +24,7 @@ pub struct PatchUserSchema {
 impl PatchUserSchema {
     pub fn new() -> PatchUserSchema {
         PatchUserSchema {
-            url: None,
+            email: None,
             displayname: None,
             description: None,
         }

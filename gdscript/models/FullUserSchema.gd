@@ -20,11 +20,11 @@ var __id__was__set := false
 
 # Required: True
 # isArray: false
-@export var url: String:
+@export var username: String:
 	set(value):
-		__url__was__set = true
-		url = value
-var __url__was__set := false
+		__username__was__set = true
+		username = value
+var __username__was__set := false
 
 # Required: True
 # isArray: false
@@ -50,15 +50,25 @@ var __displayName__was__set := false
 		description = value
 var __description__was__set := false
 
+# Required: True
+# isArray: false
+@export var url: String:
+	set(value):
+		__url__was__set = true
+		url = value
+var __url__was__set := false
+
 
 func bzz_collect_missing_properties() -> Array:
 	var bzz_missing_properties := Array()
 	if not self.__id__was__set:
 		bzz_missing_properties.append("id")
-	if not self.__url__was__set:
-		bzz_missing_properties.append("url")
+	if not self.__username__was__set:
+		bzz_missing_properties.append("username")
 	if not self.__email__was__set:
 		bzz_missing_properties.append("email")
+	if not self.__url__was__set:
+		bzz_missing_properties.append("url")
 	return bzz_missing_properties
 
 
@@ -66,14 +76,16 @@ func bzz_normalize() -> Dictionary:
 	var bzz_dictionary := Dictionary()
 	if self.__id__was__set:
 		bzz_dictionary["id"] = self.id
-	if self.__url__was__set:
-		bzz_dictionary["url"] = self.url
+	if self.__username__was__set:
+		bzz_dictionary["username"] = self.username
 	if self.__email__was__set:
 		bzz_dictionary["email"] = self.email
 	if self.__displayName__was__set:
 		bzz_dictionary["displayName"] = self.displayName
 	if self.__description__was__set:
 		bzz_dictionary["description"] = self.description
+	if self.__url__was__set:
+		bzz_dictionary["url"] = self.url
 	return bzz_dictionary
 
 
@@ -82,14 +94,16 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 	var me := new()
 	if from_dict.has("id"):
 		me.id = from_dict["id"]
-	if from_dict.has("url"):
-		me.url = from_dict["url"]
+	if from_dict.has("username"):
+		me.username = from_dict["username"]
 	if from_dict.has("email"):
 		me.email = from_dict["email"]
 	if from_dict.has("displayName"):
 		me.displayName = from_dict["displayName"]
 	if from_dict.has("description"):
 		me.description = from_dict["description"]
+	if from_dict.has("url"):
+		me.url = from_dict["url"]
 	return me
 
 

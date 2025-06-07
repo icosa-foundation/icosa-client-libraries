@@ -5,10 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**root** | [**AssetResource**](AssetResource.md) |  | 
-**resources** | [**List[AssetResource]**](AssetResource.md) |  | 
+**root** | [**AssetResource**](AssetResource.md) |  | [optional] 
+**resources** | [**List[AssetResource]**](AssetResource.md) |  | [optional] 
 **format_complexity** | [**FormatComplexity**](FormatComplexity.md) |  | 
-**format_type** | **str** |  | 
+**format_type** | **str** |  | [optional] 
+**zip_archive_url** | **str** |  | [optional] 
+**role** | **str** |  | [optional] 
 
 ## Example
 

@@ -28,11 +28,13 @@ class AssetFormat(BaseModel):
     """
     AssetFormat
     """ # noqa: E501
-    root: Optional[AssetResource]
-    resources: Optional[List[AssetResource]]
+    root: Optional[AssetResource] = None
+    resources: Optional[List[AssetResource]] = None
     format_complexity: FormatComplexity = Field(alias="formatComplexity")
-    format_type: StrictStr = Field(alias="formatType")
-    __properties: ClassVar[List[str]] = ["root", "resources", "formatComplexity", "formatType"]
+    format_type: Optional[StrictStr] = Field(default=None, alias="formatType")
+    zip_archive_url: Optional[StrictStr] = None
+    role: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["root", "resources", "formatComplexity", "formatType", "zip_archive_url", "role"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +98,16 @@ class AssetFormat(BaseModel):
         if self.resources is None and "resources" in self.model_fields_set:
             _dict['resources'] = None
 
+        # set to None if zip_archive_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.zip_archive_url is None and "zip_archive_url" in self.model_fields_set:
+            _dict['zip_archive_url'] = None
+
+        # set to None if role (nullable) is None
+        # and model_fields_set contains the field
+        if self.role is None and "role" in self.model_fields_set:
+            _dict['role'] = None
+
         return _dict
 
     @classmethod
@@ -111,7 +123,9 @@ class AssetFormat(BaseModel):
             "root": AssetResource.from_dict(obj["root"]) if obj.get("root") is not None else None,
             "resources": [AssetResource.from_dict(_item) for _item in obj["resources"]] if obj.get("resources") is not None else None,
             "formatComplexity": FormatComplexity.from_dict(obj["formatComplexity"]) if obj.get("formatComplexity") is not None else None,
-            "formatType": obj.get("formatType")
+            "formatType": obj.get("formatType"),
+            "zip_archive_url": obj.get("zip_archive_url"),
+            "role": obj.get("role")
         })
         return _obj
 

@@ -1,0 +1,11 @@
+## AssetsApi
+
+### Get Asset
+## Get Asset
+GET https://api.icosa.gallery/v1/assets/{{asset}}
+Accept: application/json
+
+### Get Assets
+## Get Assets
+GET https://api.icosa.gallery/v1/assets?category={{category}}&curated={{curated}}&format={{format}}&keywords={{keywords}}&name={{name}}&description={{description}}&tag={{tag}}&orderBy={{orderBy}}&maxComplexity={{maxComplexity}}&triangleCountMin={{triangleCountMin}}&triangleCountMax={{triangleCountMax}}&zipArchiveUrl={{zipArchiveUrl}}&authorName={{authorName}}&license={{license}}&pageToken={{pageToken}}&pageSize={{pageSize}}
+Accept: application/json

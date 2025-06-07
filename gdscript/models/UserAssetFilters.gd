@@ -12,7 +12,7 @@ class_name UserAssetFilters
 
 # Required: False
 # isArray: false
-@export var category: String:
+@export var category: Category:
 	set(value):
 		__category__was__set = true
 		category = value
@@ -68,19 +68,11 @@ var __tag__was__set := false
 
 # Required: False
 # isArray: false
-@export var orderBy: String:
+@export var orderBy: Order:
 	set(value):
 		__orderBy__was__set = true
 		orderBy = value
 var __orderBy__was__set := false
-
-# Required: False
-# isArray: false
-@export var orderUnderscoreby: String:
-	set(value):
-		__orderUnderscoreby__was__set = true
-		orderUnderscoreby = value
-var __orderUnderscoreby__was__set := false
 
 # Required: False
 # isArray: false
@@ -105,6 +97,14 @@ var __triangleCountMin__was__set := false
 		__triangleCountMax__was__set = true
 		triangleCountMax = value
 var __triangleCountMax__was__set := false
+
+# Required: False
+# isArray: false
+@export var zipArchiveUrl: String:
+	set(value):
+		__zipArchiveUrl__was__set = true
+		zipArchiveUrl = value
+var __zipArchiveUrl__was__set := false
 
 # Required: False
 # isArray: false
@@ -138,14 +138,14 @@ func bzz_normalize() -> Dictionary:
 		bzz_dictionary["tag"] = self.tag
 	if self.__orderBy__was__set:
 		bzz_dictionary["orderBy"] = self.orderBy
-	if self.__orderUnderscoreby__was__set:
-		bzz_dictionary["orderUnderscoreby"] = self.orderUnderscoreby
 	if self.__maxComplexity__was__set:
 		bzz_dictionary["maxComplexity"] = self.maxComplexity
 	if self.__triangleCountMin__was__set:
 		bzz_dictionary["triangleCountMin"] = self.triangleCountMin
 	if self.__triangleCountMax__was__set:
 		bzz_dictionary["triangleCountMax"] = self.triangleCountMax
+	if self.__zipArchiveUrl__was__set:
+		bzz_dictionary["zipArchiveUrl"] = self.zipArchiveUrl
 	if self.__visibility__was__set:
 		bzz_dictionary["visibility"] = self.visibility
 	return bzz_dictionary
@@ -170,14 +170,14 @@ static func bzz_denormalize_single(from_dict: Dictionary):
 		me.tag = from_dict["tag"]
 	if from_dict.has("orderBy"):
 		me.orderBy = from_dict["orderBy"]
-	if from_dict.has("orderUnderscoreby"):
-		me.orderUnderscoreby = from_dict["orderUnderscoreby"]
 	if from_dict.has("maxComplexity"):
 		me.maxComplexity = from_dict["maxComplexity"]
 	if from_dict.has("triangleCountMin"):
 		me.triangleCountMin = from_dict["triangleCountMin"]
 	if from_dict.has("triangleCountMax"):
 		me.triangleCountMax = from_dict["triangleCountMax"]
+	if from_dict.has("zipArchiveUrl"):
+		me.zipArchiveUrl = from_dict["zipArchiveUrl"]
 	if from_dict.has("visibility"):
 		me.visibility = from_dict["visibility"]
 	return me

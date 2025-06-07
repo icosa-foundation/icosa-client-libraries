@@ -19,7 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from openapi_client.models.category import Category
 from openapi_client.models.complexity import Complexity
+from openapi_client.models.format_filter import FormatFilter
+from openapi_client.models.license_filter import LicenseFilter
+from openapi_client.models.order import Order
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,22 +31,21 @@ class AssetFilters(BaseModel):
     """
     AssetFilters
     """ # noqa: E501
-    category: Optional[StrictStr] = None
+    category: Optional[Category] = None
     curated: Optional[StrictBool] = False
-    format: Optional[List[StrictStr]] = None
+    format: Optional[List[FormatFilter]] = None
     keywords: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
     tag: Optional[List[StrictStr]] = None
-    order_by: Optional[StrictStr] = Field(default=None, alias="orderBy")
-    order_by: Optional[StrictStr] = None
+    order_by: Optional[Order] = Field(default=None, alias="orderBy")
     max_complexity: Optional[Complexity] = Field(default=None, alias="maxComplexity")
     triangle_count_min: Optional[StrictInt] = Field(default=None, alias="triangleCountMin")
     triangle_count_max: Optional[StrictInt] = Field(default=None, alias="triangleCountMax")
+    zip_archive_url: Optional[StrictStr] = Field(default=None, alias="zipArchiveUrl")
     author_name: Optional[StrictStr] = Field(default=None, alias="authorName")
-    author_name: Optional[StrictStr] = None
-    license: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["category", "curated", "format", "keywords", "name", "description", "tag", "orderBy", "order_by", "maxComplexity", "triangleCountMin", "triangleCountMax", "authorName", "author_name", "license"]
+    license: Optional[LicenseFilter] = None
+    __properties: ClassVar[List[str]] = ["category", "curated", "format", "keywords", "name", "description", "tag", "orderBy", "maxComplexity", "triangleCountMin", "triangleCountMax", "zipArchiveUrl", "authorName", "license"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,6 +91,11 @@ class AssetFilters(BaseModel):
         if self.category is None and "category" in self.model_fields_set:
             _dict['category'] = None
 
+        # set to None if format (nullable) is None
+        # and model_fields_set contains the field
+        if self.format is None and "format" in self.model_fields_set:
+            _dict['format'] = None
+
         # set to None if keywords (nullable) is None
         # and model_fields_set contains the field
         if self.keywords is None and "keywords" in self.model_fields_set:
@@ -108,11 +116,6 @@ class AssetFilters(BaseModel):
         if self.order_by is None and "order_by" in self.model_fields_set:
             _dict['orderBy'] = None
 
-        # set to None if order_by (nullable) is None
-        # and model_fields_set contains the field
-        if self.order_by is None and "order_by" in self.model_fields_set:
-            _dict['order_by'] = None
-
         # set to None if max_complexity (nullable) is None
         # and model_fields_set contains the field
         if self.max_complexity is None and "max_complexity" in self.model_fields_set:
@@ -128,15 +131,15 @@ class AssetFilters(BaseModel):
         if self.triangle_count_max is None and "triangle_count_max" in self.model_fields_set:
             _dict['triangleCountMax'] = None
 
-        # set to None if author_name (nullable) is None
+        # set to None if zip_archive_url (nullable) is None
         # and model_fields_set contains the field
-        if self.author_name is None and "author_name" in self.model_fields_set:
-            _dict['authorName'] = None
+        if self.zip_archive_url is None and "zip_archive_url" in self.model_fields_set:
+            _dict['zipArchiveUrl'] = None
 
         # set to None if author_name (nullable) is None
         # and model_fields_set contains the field
         if self.author_name is None and "author_name" in self.model_fields_set:
-            _dict['author_name'] = None
+            _dict['authorName'] = None
 
         # set to None if license (nullable) is None
         # and model_fields_set contains the field
@@ -163,12 +166,11 @@ class AssetFilters(BaseModel):
             "description": obj.get("description"),
             "tag": obj.get("tag"),
             "orderBy": obj.get("orderBy"),
-            "order_by": obj.get("order_by"),
             "maxComplexity": obj.get("maxComplexity"),
             "triangleCountMin": obj.get("triangleCountMin"),
             "triangleCountMax": obj.get("triangleCountMax"),
+            "zipArchiveUrl": obj.get("zipArchiveUrl"),
             "authorName": obj.get("authorName"),
-            "author_name": obj.get("author_name"),
             "license": obj.get("license")
         })
         return _obj

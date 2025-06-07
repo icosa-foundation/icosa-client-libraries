@@ -55,21 +55,12 @@ import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.icosa.gallery
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "http://localhost"
+    host = "https://api.icosa.gallery"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: AuthBearer
-configuration = openapi_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
 
 
 # Enter a context with an instance of the API client
@@ -79,29 +70,27 @@ with openapi_client.ApiClient(configuration) as api_client:
     asset = 'asset_example' # str | 
 
     try:
-        # Delete Asset
-        api_response = api_instance.icosa_api_assets_delete_asset(asset)
-        print("The response of AssetsApi->icosa_api_assets_delete_asset:\n")
+        # Get Asset
+        api_response = api_instance.icosa_api_assets_get_asset(asset)
+        print("The response of AssetsApi->icosa_api_assets_get_asset:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AssetsApi->icosa_api_assets_delete_asset: %s\n" % e)
+        print("Exception when calling AssetsApi->icosa_api_assets_get_asset: %s\n" % e)
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.icosa.gallery*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssetsApi* | [**icosa_api_assets_delete_asset**](docs/AssetsApi.md#icosa_api_assets_delete_asset) | **DELETE** /v1/assets/{asset} | Delete Asset
 *AssetsApi* | [**icosa_api_assets_get_asset**](docs/AssetsApi.md#icosa_api_assets_get_asset) | **GET** /v1/assets/{asset} | Get Asset
 *AssetsApi* | [**icosa_api_assets_get_assets**](docs/AssetsApi.md#icosa_api_assets_get_assets) | **GET** /v1/assets | Get Assets
-*AssetsApi* | [**icosa_api_assets_get_user_asset**](docs/AssetsApi.md#icosa_api_assets_get_user_asset) | **GET** /v1/assets/{userurl}/{asseturl} | Get User Asset
-*AssetsApi* | [**icosa_api_assets_unpublish_asset**](docs/AssetsApi.md#icosa_api_assets_unpublish_asset) | **PATCH** /v1/assets/{asset}/unpublish | Unpublish Asset
 *LoginApi* | [**icosa_api_login_device_login**](docs/LoginApi.md#icosa_api_login_device_login) | **POST** /v1/login/device_login | Device Login
 *OembedApi* | [**icosa_api_oembed_oembed**](docs/OembedApi.md#icosa_api_oembed_oembed) | **GET** /v1/oembed | Oembed
-*PolyApi* | [**icosa_api_poly_add**](docs/PolyApi.md#icosa_api_poly_add) | **GET** /v1/poly | Add
+*UsersApi* | [**icosa_api_users_delete_asset**](docs/UsersApi.md#icosa_api_users_delete_asset) | **DELETE** /v1/users/me/assets/{asset} | Delete Asset
+*UsersApi* | [**icosa_api_users_get_me_asset**](docs/UsersApi.md#icosa_api_users_get_me_asset) | **GET** /v1/users/me/assets/{asset} | Get Me Asset
 *UsersApi* | [**icosa_api_users_get_me_assets**](docs/UsersApi.md#icosa_api_users_get_me_assets) | **GET** /v1/users/me/assets | Get Me Assets
 *UsersApi* | [**icosa_api_users_get_me_likedassets**](docs/UsersApi.md#icosa_api_users_get_me_likedassets) | **GET** /v1/users/me/likedassets | Get Me Likedassets
 *UsersApi* | [**icosa_api_users_get_users_me**](docs/UsersApi.md#icosa_api_users_get_users_me) | **GET** /v1/users/me | Get Users Me
@@ -113,14 +102,18 @@ Class | Method | HTTP request | Description
  - [AssetFilters](docs/AssetFilters.md)
  - [AssetFormat](docs/AssetFormat.md)
  - [AssetResource](docs/AssetResource.md)
- - [AssetSchemaOut](docs/AssetSchemaOut.md)
+ - [AssetSchema](docs/AssetSchema.md)
+ - [Category](docs/Category.md)
  - [Complexity](docs/Complexity.md)
  - [FormatComplexity](docs/FormatComplexity.md)
+ - [FormatFilter](docs/FormatFilter.md)
  - [FullUserSchema](docs/FullUserSchema.md)
  - [Input](docs/Input.md)
+ - [LicenseFilter](docs/LicenseFilter.md)
  - [LoginToken](docs/LoginToken.md)
  - [OembedOut](docs/OembedOut.md)
- - [PagedAssetSchemaOut](docs/PagedAssetSchemaOut.md)
+ - [Order](docs/Order.md)
+ - [PagedAssetSchema](docs/PagedAssetSchema.md)
  - [PatchUserSchema](docs/PatchUserSchema.md)
  - [Thumbnail](docs/Thumbnail.md)
  - [UserAssetFilters](docs/UserAssetFilters.md)
@@ -131,8 +124,8 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-<a id="AuthBearer"></a>
-### AuthBearer
+<a id="JWTAuth"></a>
+### JWTAuth
 
 - **Type**: Bearer authentication
 

@@ -13,23 +13,29 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AssetFormat {
-    #[serde(rename = "root", deserialize_with = "Option::deserialize")]
-    pub root: Option<Box<models::AssetResource>>,
-    #[serde(rename = "resources", deserialize_with = "Option::deserialize")]
-    pub resources: Option<Vec<models::AssetResource>>,
+    #[serde(rename = "root", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub root: Option<Option<Box<models::AssetResource>>>,
+    #[serde(rename = "resources", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub resources: Option<Option<Vec<models::AssetResource>>>,
     #[serde(rename = "formatComplexity")]
     pub format_complexity: Box<models::FormatComplexity>,
-    #[serde(rename = "formatType")]
-    pub format_type: String,
+    #[serde(rename = "formatType", skip_serializing_if = "Option::is_none")]
+    pub format_type: Option<String>,
+    #[serde(rename = "zip_archive_url", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub zip_archive_url: Option<Option<String>>,
+    #[serde(rename = "role", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub role: Option<Option<String>>,
 }
 
 impl AssetFormat {
-    pub fn new(root: Option<models::AssetResource>, resources: Option<Vec<models::AssetResource>>, format_complexity: models::FormatComplexity, format_type: String) -> AssetFormat {
+    pub fn new(format_complexity: models::FormatComplexity) -> AssetFormat {
         AssetFormat {
-            root: if let Some(x) = root {Some(Box::new(x))} else {None},
-            resources,
+            root: None,
+            resources: None,
             format_complexity: Box::new(format_complexity),
-            format_type,
+            format_type: None,
+            zip_archive_url: None,
+            role: None,
         }
     }
 }

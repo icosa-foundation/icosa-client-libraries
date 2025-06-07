@@ -6,10 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
-**url** | **str** |  | 
+**username** | **str** |  | 
 **email** | **str** |  | 
 **display_name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
+**url** | **str** |  | 
 
 ## Example
 

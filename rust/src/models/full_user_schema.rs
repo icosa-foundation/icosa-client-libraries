@@ -15,24 +15,27 @@ use serde::{Deserialize, Serialize};
 pub struct FullUserSchema {
     #[serde(rename = "id")]
     pub id: i32,
-    #[serde(rename = "url")]
-    pub url: String,
+    #[serde(rename = "username")]
+    pub username: String,
     #[serde(rename = "email")]
     pub email: String,
     #[serde(rename = "displayName", skip_serializing_if = "Option::is_none")]
     pub display_name: Option<String>,
     #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub description: Option<Option<String>>,
+    #[serde(rename = "url")]
+    pub url: String,
 }
 
 impl FullUserSchema {
-    pub fn new(id: i32, url: String, email: String) -> FullUserSchema {
+    pub fn new(id: i32, username: String, email: String, url: String) -> FullUserSchema {
         FullUserSchema {
             id,
-            url,
+            username,
             email,
             display_name: None,
             description: None,
+            url,
         }
     }
 }

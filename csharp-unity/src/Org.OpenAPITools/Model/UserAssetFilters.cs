@@ -32,6 +32,18 @@ namespace Org.OpenAPITools.Model
     {
 
         /// <summary>
+        /// Gets or Sets Category
+        /// </summary>
+        [DataMember(Name = "category", EmitDefaultValue = true)]
+        public Category? Category { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderBy
+        /// </summary>
+        [DataMember(Name = "orderBy", EmitDefaultValue = true)]
+        public Order? OrderBy { get; set; }
+
+        /// <summary>
         /// Gets or Sets MaxComplexity
         /// </summary>
         [DataMember(Name = "maxComplexity", EmitDefaultValue = true)]
@@ -47,12 +59,12 @@ namespace Org.OpenAPITools.Model
         /// <param name="description">description.</param>
         /// <param name="tag">tag.</param>
         /// <param name="orderBy">orderBy.</param>
-        /// <param name="orderBy">orderBy.</param>
         /// <param name="maxComplexity">maxComplexity.</param>
         /// <param name="triangleCountMin">triangleCountMin.</param>
         /// <param name="triangleCountMax">triangleCountMax.</param>
+        /// <param name="zipArchiveUrl">zipArchiveUrl.</param>
         /// <param name="visibility">visibility.</param>
-        public UserAssetFilters(string category = default(string), bool curated = false, List<string> format = default(List<string>), string keywords = default(string), string name = default(string), string description = default(string), List<string> tag = default(List<string>), string orderBy = default(string), string orderBy = default(string), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string visibility = default(string))
+        public UserAssetFilters(Category? category = default(Category?), bool curated = false, List<FormatFilter> format = default(List<FormatFilter>), string keywords = default(string), string name = default(string), string description = default(string), List<string> tag = default(List<string>), Order? orderBy = default(Order?), Complexity? maxComplexity = default(Complexity?), int? triangleCountMin = default(int?), int? triangleCountMax = default(int?), string zipArchiveUrl = default(string), string visibility = default(string))
         {
             this.Category = category;
             this.Curated = curated;
@@ -62,18 +74,12 @@ namespace Org.OpenAPITools.Model
             this.Description = description;
             this.Tag = tag;
             this.OrderBy = orderBy;
-            this.OrderBy = orderBy;
             this.MaxComplexity = maxComplexity;
             this.TriangleCountMin = triangleCountMin;
             this.TriangleCountMax = triangleCountMax;
+            this.ZipArchiveUrl = zipArchiveUrl;
             this.Visibility = visibility;
         }
-
-        /// <summary>
-        /// Gets or Sets Category
-        /// </summary>
-        [DataMember(Name = "category", EmitDefaultValue = true)]
-        public string Category { get; set; }
 
         /// <summary>
         /// Gets or Sets Curated
@@ -84,8 +90,8 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Gets or Sets Format
         /// </summary>
-        [DataMember(Name = "format", EmitDefaultValue = false)]
-        public List<string> Format { get; set; }
+        [DataMember(Name = "format", EmitDefaultValue = true)]
+        public List<FormatFilter> Format { get; set; }
 
         /// <summary>
         /// Gets or Sets Keywords
@@ -112,18 +118,6 @@ namespace Org.OpenAPITools.Model
         public List<string> Tag { get; set; }
 
         /// <summary>
-        /// Gets or Sets OrderBy
-        /// </summary>
-        [DataMember(Name = "orderBy", EmitDefaultValue = true)]
-        public string OrderBy { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OrderBy
-        /// </summary>
-        [DataMember(Name = "order_by", EmitDefaultValue = true)]
-        public string OrderBy { get; set; }
-
-        /// <summary>
         /// Gets or Sets TriangleCountMin
         /// </summary>
         [DataMember(Name = "triangleCountMin", EmitDefaultValue = true)]
@@ -134,6 +128,12 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         [DataMember(Name = "triangleCountMax", EmitDefaultValue = true)]
         public int? TriangleCountMax { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ZipArchiveUrl
+        /// </summary>
+        [DataMember(Name = "zipArchiveUrl", EmitDefaultValue = true)]
+        public string ZipArchiveUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Visibility
@@ -157,10 +157,10 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  OrderBy: ").Append(OrderBy).Append("\n");
-            sb.Append("  OrderBy: ").Append(OrderBy).Append("\n");
             sb.Append("  MaxComplexity: ").Append(MaxComplexity).Append("\n");
             sb.Append("  TriangleCountMin: ").Append(TriangleCountMin).Append("\n");
             sb.Append("  TriangleCountMax: ").Append(TriangleCountMax).Append("\n");
+            sb.Append("  ZipArchiveUrl: ").Append(ZipArchiveUrl).Append("\n");
             sb.Append("  Visibility: ").Append(Visibility).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

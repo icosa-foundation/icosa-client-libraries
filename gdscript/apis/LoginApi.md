@@ -2,7 +2,7 @@
 # LoginApi   { #LoginApi }
 
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.icosa.gallery*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -56,7 +56,7 @@ api.icosa_api_login_device_login(
 
 ### Authorization
 
-[AuthBearer](../README.md#AuthBearer)
+[JWTAuth](../README.md#JWTAuth)
 
 [[Back to top]](#__pageTop) \
 [[Back to API list]](../README.md#documentation-for-api-endpoints) \

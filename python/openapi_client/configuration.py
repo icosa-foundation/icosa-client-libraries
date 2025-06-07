@@ -113,7 +113,7 @@ HTTPSignatureAuthSetting = TypedDict(
 AuthSettings = TypedDict(
     "AuthSettings",
     {
-        "AuthBearer": BearerAuthSetting,
+        "JWTAuth": BearerAuthSetting,
     },
     total=False,
 )
@@ -187,7 +187,7 @@ class Configuration:
     ) -> None:
         """Constructor
         """
-        self._base_path = "http://localhost" if host is None else host
+        self._base_path = "https://api.icosa.gallery" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -486,7 +486,7 @@ class Configuration:
         """
         auth: AuthSettings = {}
         if self.access_token is not None:
-            auth['AuthBearer'] = {
+            auth['JWTAuth'] = {
                 'type': 'bearer',
                 'in': 'header',
                 'key': 'Authorization',
@@ -513,8 +513,8 @@ class Configuration:
         """
         return [
             {
-                'url': "",
-                'description': "No description provided",
+                'url': "https://api.icosa.gallery",
+                'description': "Production server",
             }
         ]
 

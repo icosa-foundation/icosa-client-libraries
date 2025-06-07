@@ -1,0 +1,6 @@
+## OembedApi
+
+### Oembed
+## Oembed
+GET https://api.icosa.gallery/v1/oembed?url={{url}}&format={{format}}&maxwidth={{maxwidth}}&maxheight={{maxheight}}
+Accept: application/json

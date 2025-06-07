@@ -38,48 +38,37 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AssetFormat" /> class.
         /// </summary>
-        /// <param name="root">root (required).</param>
-        /// <param name="resources">resources (required).</param>
+        /// <param name="root">root.</param>
+        /// <param name="resources">resources.</param>
         /// <param name="formatComplexity">formatComplexity (required).</param>
-        /// <param name="formatType">formatType (required).</param>
-        public AssetFormat(AssetResource root = default(AssetResource), List<AssetResource> resources = default(List<AssetResource>), FormatComplexity formatComplexity = default(FormatComplexity), string formatType = default(string))
+        /// <param name="formatType">formatType.</param>
+        /// <param name="zipArchiveUrl">zipArchiveUrl.</param>
+        /// <param name="role">role.</param>
+        public AssetFormat(AssetResource root = default(AssetResource), List<AssetResource> resources = default(List<AssetResource>), FormatComplexity formatComplexity = default(FormatComplexity), string formatType = default(string), string zipArchiveUrl = default(string), string role = default(string))
         {
-            // to ensure "root" is required (not null)
-            if (root == null)
-            {
-                throw new ArgumentNullException("root is a required property for AssetFormat and cannot be null");
-            }
-            this.Root = root;
-            // to ensure "resources" is required (not null)
-            if (resources == null)
-            {
-                throw new ArgumentNullException("resources is a required property for AssetFormat and cannot be null");
-            }
-            this.Resources = resources;
             // to ensure "formatComplexity" is required (not null)
             if (formatComplexity == null)
             {
                 throw new ArgumentNullException("formatComplexity is a required property for AssetFormat and cannot be null");
             }
             this.FormatComplexity = formatComplexity;
-            // to ensure "formatType" is required (not null)
-            if (formatType == null)
-            {
-                throw new ArgumentNullException("formatType is a required property for AssetFormat and cannot be null");
-            }
+            this.Root = root;
+            this.Resources = resources;
             this.FormatType = formatType;
+            this.ZipArchiveUrl = zipArchiveUrl;
+            this.Role = role;
         }
 
         /// <summary>
         /// Gets or Sets Root
         /// </summary>
-        [DataMember(Name = "root", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "root", EmitDefaultValue = true)]
         public AssetResource Root { get; set; }
 
         /// <summary>
         /// Gets or Sets Resources
         /// </summary>
-        [DataMember(Name = "resources", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "resources", EmitDefaultValue = true)]
         public List<AssetResource> Resources { get; set; }
 
         /// <summary>
@@ -91,8 +80,20 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Gets or Sets FormatType
         /// </summary>
-        [DataMember(Name = "formatType", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "formatType", EmitDefaultValue = false)]
         public string FormatType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ZipArchiveUrl
+        /// </summary>
+        [DataMember(Name = "zip_archive_url", EmitDefaultValue = true)]
+        public string ZipArchiveUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Role
+        /// </summary>
+        [DataMember(Name = "role", EmitDefaultValue = true)]
+        public string Role { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,6 +107,8 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Resources: ").Append(Resources).Append("\n");
             sb.Append("  FormatComplexity: ").Append(FormatComplexity).Append("\n");
             sb.Append("  FormatType: ").Append(FormatType).Append("\n");
+            sb.Append("  ZipArchiveUrl: ").Append(ZipArchiveUrl).Append("\n");
+            sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

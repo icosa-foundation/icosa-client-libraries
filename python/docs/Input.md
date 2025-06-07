@@ -6,8 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **page_token** | **str** |  | [optional] 
-**page_token** | **str** |  | [optional] 
-**page_size** | **str** |  | [optional] 
 **page_size** | **str** |  | [optional] 
 
 ## Example

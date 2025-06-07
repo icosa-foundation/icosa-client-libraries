@@ -27,11 +27,12 @@ class FullUserSchema(BaseModel):
     FullUserSchema
     """ # noqa: E501
     id: StrictInt
-    url: StrictStr
+    username: StrictStr
     email: StrictStr
     display_name: Optional[StrictStr] = Field(default=None, alias="displayName")
     description: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "url", "email", "displayName", "description"]
+    url: StrictStr
+    __properties: ClassVar[List[str]] = ["id", "username", "email", "displayName", "description", "url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,10 +91,11 @@ class FullUserSchema(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "url": obj.get("url"),
+            "username": obj.get("username"),
             "email": obj.get("email"),
             "displayName": obj.get("displayName"),
-            "description": obj.get("description")
+            "description": obj.get("description"),
+            "url": obj.get("url")
         })
         return _obj
 

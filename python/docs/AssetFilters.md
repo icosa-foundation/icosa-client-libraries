@@ -5,21 +5,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | **str** |  | [optional] 
+**category** | [**Category**](Category.md) |  | [optional] 
 **curated** | **bool** |  | [optional] [default to False]
-**format** | **List[str]** |  | [optional] 
+**format** | [**List[FormatFilter]**](FormatFilter.md) |  | [optional] 
 **keywords** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **tag** | **List[str]** |  | [optional] 
-**order_by** | **str** |  | [optional] 
-**order_by** | **str** |  | [optional] 
+**order_by** | [**Order**](Order.md) |  | [optional] 
 **max_complexity** | [**Complexity**](Complexity.md) |  | [optional] 
 **triangle_count_min** | **int** |  | [optional] 
 **triangle_count_max** | **int** |  | [optional] 
+**zip_archive_url** | **str** |  | [optional] 
 **author_name** | **str** |  | [optional] 
-**author_name** | **str** |  | [optional] 
-**license** | **str** |  | [optional] 
+**license** | [**LicenseFilter**](LicenseFilter.md) |  | [optional] 
 
 ## Example
 
